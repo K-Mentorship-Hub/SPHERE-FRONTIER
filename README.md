@@ -1,258 +1,113 @@
-# K Mentorship Hub
+# K Mentorship Hub · SET Learning and Build System
 
-Open-Source Learning, Build, and Navigation Hub by Oksana Kolisnyk
+**A structured guidance layer for turning interests into learning paths, MVPs, and real next steps**
 
-**Continuous Learning, Continuous Integration.**
+[![Org](https://img.shields.io/badge/GitHub-K--Mentorship--Hub-black)](https://github.com/K-Mentorship-Hub)
+[![Sphere I](https://img.shields.io/badge/Sphere%20I-Science-2d6cdf)](https://github.com/K-Mentorship-Hub/SPHERE-I-SCIENCE)
+[![Sphere II](https://img.shields.io/badge/Sphere%20II-Entrepreneurship-f08c2e)](https://github.com/K-Mentorship-Hub/SPHERE-II-ENTREPRENEURSHIP)
+[![Sphere III](https://img.shields.io/badge/Sphere%20III-Technology-2f9e44)](https://github.com/K-Mentorship-Hub/SPHERE-III-TECHNOLOGY)
+[![Stack](https://img.shields.io/badge/stack-Notion%20%2B%20Discord%20%2B%20GitHub-purple)](#recommended-stack)
 
-GitHub · Notion · Discord · K-RnD Lab
+*Find the direction. Learn the path. Build the next step.*
 
-`K Mentorship Hub` is the practical part of the wider `SET` ecosystem.
-
-It is designed for people who want to:
-
-- learn through structured but human-friendly paths
-- turn interests into practical MVPs, public cases, or contribution steps
-- connect across science, entrepreneurship, and technology
-- stop feeling lost and move toward a clear next step
+> Designed to reduce confusion for learners, founders, researchers, and early builders who want a practical way to move across science, entrepreneurship, and technology.
 
 ---
 
-## What `SET` Means
+## What Is K Mentorship Hub?
 
-Inside this ecosystem, `SET` is the main orientation layer:
+`K Mentorship Hub` is the practical guidance layer of the wider `SET` ecosystem by Oksana Kolisnyk.
 
-- `S = Science`
-- `E = Entrepreneurship`
-- `T = Technology`
+It helps people move across:
 
-These are **not** three isolated worlds.
+- `S` · Science
+- `E` · Entrepreneurship
+- `T` · Technology
 
-They are a practical way to understand:
+The user-facing path stays simple:
 
-- where a person is starting from
-- what kind of work they want to do
-- what kind of support or documentation they need next
+1. `Orient`
+2. `Learn`
+3. `Build`
+4. `Connect`
 
----
+The internal structure stays clear:
 
-## Three Orientation Spheres
+- domain questions and evidence-facing directions live in `S`
+- founder logic, validation, and opportunity framing live in `E`
+- tools, data, AI, and implementation systems live in `T`
 
-```text
-K Mentorship Hub
-│
-├── 🔬 SCIENCE            — domains, systems, measurable questions, research-facing logic
-├── 🚀 ENTREPRENEURSHIP   — ventures, products, validation, growth, founder decisions
-└── 💻 TECHNOLOGY         — tools, code, AI, data, infrastructure, implementation
-```
+Hybrid work is welcome:
 
-How this hub is meant to be used:
-
-- learners -> find a path, practical starting point, and useful next step
-- founders / operators -> frame ideas, validate direction, and connect with builders
-- contributors -> practice through docs, data, reproducibility, and small public tasks
-- curious people -> explore without needing to commit to one identity forever
+- `S+T`
+- `S+E`
+- `E+T`
+- `S+E+T`
 
 ---
 
-## 🔬 SPHERE I — SCIENCE
+## What Lives Here
 
-Science is the domain-facing sphere.
-
-Use `S` when the main question is:
-
-`What are we trying to understand, investigate, test, measure, or explain?`
-
-Inside KMH, this can include:
-
-- Bio / Med
-- Green / Sustainability
-- AgTech & Food Security
-- cognition and measurable human systems
-- science-informed problem framing
-
-How it appears inside the hub:
-
-- `Academy` -> domain-first learning paths and guided basics
-- `MVP Lab` -> science-informed venture ideas and translational concepts
-- `Networking` -> researchers, domain-curious builders, and impact-first collaborators
+- public guidebook and orientation docs
+- learning-path logic and practical direction maps
+- Discord operating guidance
+- contribution bridges into deeper repos
+- metadata rules for hybrid `SET` work
+- lightweight templates for academy practice and collaboration
 
 ---
 
-## 🚀 SPHERE II — ENTREPRENEURSHIP
+## Core Repositories
 
-Entrepreneurship is the decision and venture-facing sphere.
+| Repository | Role |
+| --- | --- |
+| [`K-Mentorship-Hub`](https://github.com/K-Mentorship-Hub/K-Mentorship-Hub) | Public front door, guidebook, documentation, routing |
+| [`SPHERE-I-SCIENCE`](https://github.com/K-Mentorship-Hub/SPHERE-I-SCIENCE) | Science-first questions, measurable domains, research-facing framing |
+| [`SPHERE-II-ENTREPRENEURSHIP`](https://github.com/K-Mentorship-Hub/SPHERE-II-ENTREPRENEURSHIP) | Venture logic, validation, founder systems, public cases |
+| [`SPHERE-III-TECHNOLOGY`](https://github.com/K-Mentorship-Hub/SPHERE-III-TECHNOLOGY) | Tools, code, AI, dashboards, automation, reusable systems |
 
-Use `E` when the main question is:
+Supporting docs in this repo:
 
-`What are we trying to build, validate, position, grow, organize, or turn into a real opportunity?`
-
-Inside KMH, this can include:
-
-- founder thinking
-- product direction
-- validation logic
-- audience and market understanding
-- partner and ecosystem mapping
-- public cases and operating systems
-
-How it appears inside the hub:
-
-- `Academy` -> product, growth, and founder-facing guidance
-- `MVP Lab` -> ideas, validation, build tracks, and team assembly
-- `Networking` -> operators, founders, collaborators, and ecosystem bridges
+- [`docs/SET-GUIDEBOOK.md`](./docs/SET-GUIDEBOOK.md)
+- [`docs/REPO-SYSTEM.md`](./docs/REPO-SYSTEM.md)
+- [`docs/DISCORD-BLUEPRINT.md`](./docs/DISCORD-BLUEPRINT.md)
+- [`docs/CONTRIBUTION-BRIDGE.md`](./docs/CONTRIBUTION-BRIDGE.md)
 
 ---
 
-## 💻 SPHERE III — TECHNOLOGY
+## Recommended Stack
 
-Technology is the implementation and tooling sphere.
+This hub is intentionally not built around one bloated platform.
 
-Use `T` when the main question is:
+It uses a low-friction stack that people can actually maintain:
 
-`What tools, systems, code, data, interfaces, or infrastructure make this work possible and reusable?`
-
-Inside KMH, this can include:
-
-- AI and data tools
-- analytics
-- software and automation
-- dashboards and open tooling
-- reproducible systems
-- technical execution support for science or venture work
-
-How it appears inside the hub:
-
-- `Academy` -> technical foundations and practical tooling paths
-- `MVP Lab` -> software, platform, automation, or infrastructure-oriented builds
-- `Networking` -> builders, analysts, technical contributors, and tool-minded collaborators
+- `Notion` for guidebook, intake, operating notes, and routing
+- `Discord` for live communication and lightweight community energy
+- `GitHub` for structure, docs, templates, issues, and contribution surfaces
+- `Hugging Face` for demo or runtime layers when needed
+- `K-RnD-Lab` for deeper research and open investigation
 
 ---
 
-## Hybrid Lanes
+## Fast Start For A New Person
 
-The strongest work in this ecosystem is often hybrid.
+For most people, the right starting bundle is:
 
-You do **not** need to force everything into one pure box.
+1. one `Guidebook` page
+2. one `Passport` or intake form
+3. one `Discord` entry point
+4. one clear `path` or `MVP` direction
+5. one practical next step
 
-### `S + T`
+Rule:
 
-Science problems powered by technical systems.
-
-Examples:
-
-- bioinformatics
-- AI for science
-- research analytics
-- science dashboards
-
-### `E + T`
-
-Business execution powered by tools, systems, and data.
-
-Examples:
-
-- digital product and growth
-- AI productivity
-- analytics for decision-making
-- software or automation MVPs
-
-### `S + E`
-
-Domain-heavy problems translated into opportunity spaces.
-
-Examples:
-
-- health ventures
-- climate ventures
-- agri ventures
-- impact-focused product thinking
-
-### `S + E + T`
-
-Frontier translational work.
-
-Examples:
-
-- research-informed startups
-- dual-use or hardtech concepts
-- science-backed platforms
-- cross-sphere public cases
+Do not spread the same truth across too many tools. Use `Notion` as the guidance layer, `Discord` as the live layer, and `GitHub` as the structural layer.
 
 ---
 
-## What This Repository Is
+## Discord Launch Logic
 
-This repository is the **public front door** of the hub.
-
-Its job is to hold:
-
-- the public explanation layer
-- the `SET` logic
-- the navigation and documentation map
-- Discord and contribution guidance
-- bridges into deeper repositories and external spaces
-
-It is **not** meant to hold every artifact or every research output.
-
----
-
-## Repository System
-
-Recommended GitHub layout:
-
-- `K-Mentorship-Hub` -> public home repo and documentation shell
-- `SPHERE-I-SCIENCE` -> science-first depth
-- `SPHERE-II-ENTREPRENEURSHIP` -> venture and product depth
-- `SPHERE-III-TECHNOLOGY` -> tooling and implementation depth
-
-If something is cross-sphere, do **not** turn the whole folder structure into `S1-E1-T1`.
-
-Use metadata instead:
-
-- `primary_sphere`
-- `secondary_spheres`
-- `combo`
-- `artifact_type`
-- `delivery_layers`
-
-This keeps the system clean without losing hybrid meaning.
-
----
-
-## Practical Layers
-
-`K Mentorship Hub` works best as a layered system:
-
-- `GitHub` -> source-of-truth docs, repo structure, contribution surface
-- `Discord` -> live discussion, routing, community energy, lightweight coordination
-- `Notion` -> guidebook, intake, operations, and navigation
-- `Hugging Face` -> demos, spaces, and runtime layer when relevant
-
----
-
-## How KMH Relates To `K-RnD-Lab`
-
-Use [K-RnD-Lab](https://github.com/K-RnD-Lab) as the deeper research and open contribution surface.
-
-Use `K Mentorship Hub` as the practical guidance and activation layer.
-
-In short:
-
-- `K Mentorship Hub` -> learn, orient, build, connect
-- `K-RnD-Lab` -> investigate, document, replicate, extend, publish
-
-That means people can:
-
-- start in KMH
-- find their direction
-- practice through issues, docs, dashboards, or small tasks
-- then move into deeper repo work when ready
-
----
-
-## Discord Recommendation
-
-If you want Discord to stay alive and not become exhausting, launch smaller first.
+If you want Discord to stay alive and not become exhausting, start smaller first.
 
 Recommended launch channels:
 
@@ -264,47 +119,78 @@ Recommended launch channels:
 - `#resources`
 - `#wins-and-blockers`
 
-Do **not** split everything into `S / E / T` channels on day one unless activity is already real.
+Do not split everything into `S / E / T` channels on day one unless activity is already real.
 
-Let the sphere logic live through:
+Let `SET` live through:
 
 - roles
 - thread prefixes
-- post tags
-- forum naming
+- tags
+- contribution labels
 
 ---
 
-## Hall of Fame
+## Hall Of Fame
 
-A `Hall of Fame` can be helpful, but keep it lightweight.
+You can add a lightweight `Hall of Fame`, but it should stay simple:
 
-Good launch version:
-
-- one markdown page
 - monthly highlights
 - best contribution
 - best docs improvement
 - best academy-practice task
 - best helpful community action
 
-That is enough to feel alive without turning the hub into a gamification machine.
+That is enough to create momentum without turning the hub into a heavy gamification system.
 
 ---
 
-## Documentation Map
+## How KMH Relates To K-RnD-Lab
 
-See:
+`K Mentorship Hub` is the practical activation layer.
 
-- [SET Guidebook](./docs/SET-GUIDEBOOK.md)
-- [Repo System](./docs/REPO-SYSTEM.md)
-- [Discord Blueprint](./docs/DISCORD-BLUEPRINT.md)
-- [Contribution Bridge](./docs/CONTRIBUTION-BRIDGE.md)
-- [Org Profile Setup](./docs/ORG-PROFILE-SETUP.md)
-- [Project Metadata Template](./docs/templates/PROJECT-METADATA-TEMPLATE.md)
+`K-RnD-Lab` is the deeper research and open investigation layer.
+
+Use KMH to:
+
+- orient people
+- guide learning
+- frame practical next steps
+- connect people to contribution surfaces
+
+Use `K-RnD-Lab` to:
+
+- investigate
+- document
+- replicate
+- extend
+- publish deeper work
+
+---
+
+## Beginner Promise
+
+This hub is designed so that people do not get buried in complexity on day one.
+
+The minimum rhythm should feel like this:
+
+- choose one direction
+- take one practical step
+- get one useful feedback loop
+- keep moving without getting lost
+
+That is enough to begin.
+
+---
+
+## Source Of Truth
+
+- `GitHub` for structure, versioned docs, templates, and contribution flow
+- `Notion` for guidebook, intake, and operational routing
+- `Discord` for live discussion and lightweight coordination
+- `K-RnD-Lab` for research depth and evidence-facing extensions
 
 ---
 
 ## Public Line
 
-`K Mentorship Hub` helps people learn, build, and connect across science, entrepreneurship, and technology. It is a practical navigation layer that turns curiosity into direction, contribution, and real next steps.
+`K Mentorship Hub` helps people learn, build, and connect across science, entrepreneurship, and technology. It is a practical navigation and activation layer for people who want a real next step, not more noise.
