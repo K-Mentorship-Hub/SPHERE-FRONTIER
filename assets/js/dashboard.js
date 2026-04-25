@@ -358,6 +358,9 @@ const raceCards = [
 const directionGrid = document.getElementById("directionGrid");
 const sphereFilter = document.getElementById("sphereFilter");
 const focusFilter = document.getElementById("focusFilter");
+const missionPlaceholder = document.getElementById("missionPlaceholder");
+const missionLab = document.getElementById("missionLab");
+const missionStatus = document.getElementById("missionStatus");
 const simulatorCard = document.getElementById("simulatorCard");
 const horsePicker = document.getElementById("horsePicker");
 const trackList = document.getElementById("trackList");
@@ -367,6 +370,7 @@ const simulatorResult = document.getElementById("simulatorResult");
 
 let selectedHorse = null;
 let cardIndex = 0;
+let activeMissionId = null;
 
 function renderDirections() {
   const sphereValue = sphereFilter.value;
@@ -381,8 +385,9 @@ function renderDirections() {
   directionGrid.innerHTML = filtered
     .map((direction) => {
       const surface = getSurface(direction.sphere);
+      const activeClass = activeMissionId === direction.id ? " active" : "";
       return `
-        <article class="direction-card">
+        <article class="direction-card${activeClass}">
           <div class="direction-topline">
             <span class="chip chip-${direction.sphere.toLowerCase()}">${direction.sphere}</span>
             <span class="chip subtle">${direction.focus.join(" / ")}</span>
@@ -414,12 +419,19 @@ function renderDirections() {
             </ul>
           </details>
           <div class="card-actions">
+            <button class="mission-launch" data-direction-id="${direction.id}" type="button">Launch Mission</button>
             <a href="${surface.url}" target="_blank" rel="noreferrer">Open Repo Surface</a>
           </div>
         </article>
       `;
     })
     .join("");
+
+  directionGrid.querySelectorAll(".mission-launch").forEach((button) => {
+    button.addEventListener("click", () => {
+      launchMission(button.dataset.directionId);
+    });
+  });
 }
 
 function getSurface(sphere) {
@@ -445,6 +457,361 @@ function getSurface(sphere) {
         url: "https://github.com/K-Mentorship-Hub/K-Mentorship-Hub"
       };
   }
+}
+
+function getDirectionById(directionId) {
+  return directions.find((direction) => direction.id === directionId);
+}
+
+function getModeLabel(mode) {
+  switch (mode) {
+    case "academy":
+      return "Academy";
+    case "mvp":
+      return "MVP Lab";
+    case "networking":
+      return "Networking";
+    default:
+      return mode;
+  }
+}
+
+function getDeliverableOptions(direction, mode) {
+  const bySphere = {
+    S: ["Glossary sheet", "Problem map", "Evidence summary", "Resource ladder"],
+    E: ["Opportunity map", "Validation brief", "Interview guide", "Experiment tracker"],
+    T: ["Starter dashboard", "Workflow plan", "Mini app spec", "Implementation checklist"],
+    Bridge: ["Learning map", "Framework note", "Collaboration brief", "Starter toolkit"]
+  };
+
+  const byMode = {
+    academy: ["Cheat sheet", "Beginner guide", "Study sprint board"],
+    mvp: ["Prototype brief", "Feature scope board", "Validation sheet"],
+    networking: ["Intro post", "Need-help brief", "Collaboration thread outline"]
+  };
+
+  return [...bySphere[direction.sphere], ...(byMode[mode] || [])];
+}
+
+function getTwistPool(direction, mode) {
+  const common = [
+    "Explain your result to a complete beginner in 150 words.",
+    "Use one table or mini visual instead of only paragraphs.",
+    "Finish a v0 in 30 minutes before polishing anything.",
+    "Compare two sources before choosing your final direction."
+  ];
+
+  const sphereTwists = {
+    S: [
+      "State one real-world question before naming any tool.",
+      "Add one evidence caveat or limitation at the end."
+    ],
+    E: [
+      "Write one user problem before writing any feature.",
+      "Reduce the scope until it can be tested in one week."
+    ],
+    T: [
+      "Turn one vague idea into a concrete stack or workflow.",
+      "Prefer one tiny working prototype over a broad plan."
+    ],
+    Bridge: [
+      "Translate the idea into language a non-expert can follow.",
+      "Connect the task to one community or collaborator use case."
+    ]
+  };
+
+  const modeTwists = {
+    academy: ["End with one thing you understand better now."],
+    mvp: ["Define one metric that would tell you this is working."],
+    networking: ["Turn the result into a shareable post or conversation starter."]
+  };
+
+  return [...common, ...sphereTwists[direction.sphere], ...(modeTwists[mode] || [])];
+}
+
+function getMissionStorageKey(directionId) {
+  return `kmh-mission-${directionId}`;
+}
+
+function buildDefaultMissionState(direction) {
+  const mode = direction.focus[0];
+  return {
+    mode,
+    deliverable: getDeliverableOptions(direction, mode)[0],
+    checks: direction.tasks.map(() => false),
+    twist: getTwistPool(direction, mode)[0],
+    notes: ""
+  };
+}
+
+function readMissionState(direction) {
+  const fallback = buildDefaultMissionState(direction);
+
+  try {
+    const raw = window.localStorage.getItem(getMissionStorageKey(direction.id));
+    if (!raw) {
+      return fallback;
+    }
+
+    const parsed = JSON.parse(raw);
+    const mode = direction.focus.includes(parsed.mode) ? parsed.mode : fallback.mode;
+    const deliverables = getDeliverableOptions(direction, mode);
+
+    return {
+      mode,
+      deliverable: deliverables.includes(parsed.deliverable) ? parsed.deliverable : deliverables[0],
+      checks: direction.tasks.map((_, index) => Boolean(parsed.checks?.[index])),
+      twist: typeof parsed.twist === "string" && parsed.twist ? parsed.twist : getTwistPool(direction, mode)[0],
+      notes: typeof parsed.notes === "string" ? parsed.notes : ""
+    };
+  } catch (error) {
+    return fallback;
+  }
+}
+
+function saveMissionState(direction, state) {
+  window.localStorage.setItem(getMissionStorageKey(direction.id), JSON.stringify(state));
+}
+
+function setMissionStatus(message) {
+  missionStatus.textContent = message;
+}
+
+function getProgress(state) {
+  if (!state.checks.length) {
+    return 0;
+  }
+
+  const completed = state.checks.filter(Boolean).length;
+  return Math.round((completed / state.checks.length) * 100);
+}
+
+function getShareTarget(mode) {
+  switch (mode) {
+    case "mvp":
+      return "#mvp-lab";
+    case "networking":
+      return "#networking";
+    default:
+      return "#academy";
+  }
+}
+
+function buildMissionTemplate(direction, state) {
+  const completedList = direction.tasks
+    .map((task, index) => `- [${state.checks[index] ? "x" : " "}] ${task}`)
+    .join("\n");
+  const resourceList = direction.resources
+    .slice(0, 3)
+    .map((resource) => `- ${resource.label}: ${resource.url}`)
+    .join("\n");
+
+  return `# ${direction.title} Mission
+
+Mode: ${getModeLabel(state.mode)}
+Deliverable: ${state.deliverable}
+Twist: ${state.twist}
+Share target: ${getShareTarget(state.mode)}
+
+## Checklist
+${completedList}
+
+## Starter resources
+${resourceList}
+
+## Notes
+${state.notes || "Add what you learned, built, or want help with."}
+`;
+}
+
+function launchMission(directionId) {
+  activeMissionId = directionId;
+  renderDirections();
+  renderMission();
+  missionPlaceholder.hidden = true;
+  missionLab.hidden = false;
+  missionLab.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function renderMission() {
+  if (!activeMissionId) {
+    missionPlaceholder.hidden = false;
+    missionLab.hidden = true;
+    return;
+  }
+
+  const direction = getDirectionById(activeMissionId);
+  const state = readMissionState(direction);
+  const deliverables = getDeliverableOptions(direction, state.mode);
+  const progress = getProgress(state);
+
+  missionLab.innerHTML = `
+    <div class="mission-header">
+      <div>
+        <p class="eyebrow">${direction.sphere} / ${direction.focus.join(" / ")}</p>
+        <h3>${direction.title}</h3>
+        <p>${direction.summary}</p>
+      </div>
+      <div class="mission-progress">
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${progress}%"></div>
+        </div>
+        <p class="progress-copy">${progress}% complete</p>
+      </div>
+    </div>
+
+    <div class="mission-grid">
+      <section class="mission-section">
+        <h3>1. Choose Your Mode</h3>
+        <div class="pill-row">
+          ${direction.focus
+            .map(
+              (mode) => `
+                <button class="pill-button${state.mode === mode ? " active" : ""}" data-mode="${mode}" type="button">
+                  ${getModeLabel(mode)}
+                </button>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <section class="mission-section">
+        <h3>2. Lock A Deliverable</h3>
+        <div class="pill-row">
+          ${deliverables
+            .map(
+              (deliverable) => `
+                <button
+                  class="pill-button${state.deliverable === deliverable ? " active" : ""}"
+                  data-deliverable="${encodeURIComponent(deliverable)}"
+                  type="button"
+                >
+                  ${deliverable}
+                </button>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <section class="mission-section full-span">
+        <h3>3. Complete The Sprint</h3>
+        <div class="checklist">
+          ${direction.tasks
+            .map(
+              (task, index) => `
+                <label class="check-item">
+                  <input type="checkbox" data-check-index="${index}" ${state.checks[index] ? "checked" : ""} />
+                  <span class="check-copy">${task}</span>
+                </label>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+
+      <section class="mission-section">
+        <h3>4. Random Twist</h3>
+        <div class="twist-card">${state.twist}</div>
+      </section>
+
+      <section class="mission-section">
+        <h3>5. Best Resources Right Now</h3>
+        <ul class="resource-list">
+          ${direction.resources
+            .slice(0, 3)
+            .map((resource) => `<li><a href="${resource.url}" target="_blank" rel="noreferrer">${resource.label}</a></li>`)
+            .join("")}
+        </ul>
+      </section>
+
+      <section class="mission-section full-span">
+        <h3>6. Working Notes</h3>
+        <textarea class="mission-notes" id="missionNotes" placeholder="Write what you discovered, built, or still need help with.">${state.notes}</textarea>
+      </section>
+    </div>
+
+    <div class="mission-actions">
+      <button id="missionTwistButton" type="button">New Twist</button>
+      <button id="missionCopyButton" type="button">Copy Share Template</button>
+      <button id="missionResetButton" type="button">Reset Mission</button>
+    </div>
+  `;
+
+  missionLab.querySelectorAll("[data-mode]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextMode = button.dataset.mode;
+      const nextState = {
+        ...state,
+        mode: nextMode,
+        deliverable: getDeliverableOptions(direction, nextMode)[0],
+        twist: getTwistPool(direction, nextMode)[0]
+      };
+      saveMissionState(direction, nextState);
+      setMissionStatus(`Mode switched to ${getModeLabel(nextMode)}.`);
+      renderMission();
+    });
+  });
+
+  missionLab.querySelectorAll("[data-deliverable]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextState = {
+        ...state,
+        deliverable: decodeURIComponent(button.dataset.deliverable)
+      };
+      saveMissionState(direction, nextState);
+      setMissionStatus(`Deliverable locked: ${nextState.deliverable}.`);
+      renderMission();
+    });
+  });
+
+  missionLab.querySelectorAll("[data-check-index]").forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      const nextChecks = [...state.checks];
+      nextChecks[Number(checkbox.dataset.checkIndex)] = checkbox.checked;
+      const nextState = { ...state, checks: nextChecks };
+      saveMissionState(direction, nextState);
+      setMissionStatus("Mission progress saved.");
+      renderMission();
+    });
+  });
+
+  const notesField = document.getElementById("missionNotes");
+  notesField.addEventListener("input", () => {
+    const nextState = {
+      ...state,
+      notes: notesField.value
+    };
+    saveMissionState(direction, nextState);
+  });
+
+  document.getElementById("missionTwistButton").addEventListener("click", () => {
+    const pool = getTwistPool(direction, state.mode).filter((twist) => twist !== state.twist);
+    const twist = pool[Math.floor(Math.random() * pool.length)] || state.twist;
+    const nextState = { ...state, twist };
+    saveMissionState(direction, nextState);
+    setMissionStatus("New mission twist generated.");
+    renderMission();
+  });
+
+  document.getElementById("missionCopyButton").addEventListener("click", async () => {
+    const payload = buildMissionTemplate(direction, readMissionState(direction));
+
+    try {
+      await navigator.clipboard.writeText(payload);
+      setMissionStatus("Mission template copied. You can drop it into Discord, GitHub, or your notes.");
+    } catch (error) {
+      setMissionStatus("Clipboard was blocked here, but the mission template is ready to generate.");
+    }
+  });
+
+  document.getElementById("missionResetButton").addEventListener("click", () => {
+    const nextState = buildDefaultMissionState(direction);
+    saveMissionState(direction, nextState);
+    setMissionStatus("Mission reset. Fresh start.");
+    renderMission();
+  });
 }
 
 function renderCard() {
@@ -522,4 +889,5 @@ nextCardButton.addEventListener("click", () => {
 });
 
 renderDirections();
+renderMission();
 renderCard();

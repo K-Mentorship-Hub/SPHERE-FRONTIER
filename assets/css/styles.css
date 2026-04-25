@@ -174,6 +174,10 @@ button{
   padding:24px;
   box-shadow:0 24px 70px rgba(0,0,0,.18);
 }
+.direction-card.active{
+  border-color:rgba(255,255,255,.42);
+  box-shadow:0 26px 72px rgba(79,124,255,.16);
+}
 .card-meta{
   margin:12px 0 0;
   font-size:.96rem;
@@ -219,6 +223,9 @@ button{
 }
 .card-actions{
   margin-top:16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
 }
 .card-actions a{
   display:inline-flex;
@@ -233,6 +240,132 @@ button{
 }
 .card-actions a:hover{
   background:rgba(255,255,255,.08);
+}
+.card-actions button{
+  padding:10px 14px;
+  border-radius:999px;
+}
+.mission-panel{
+  margin-top:18px;
+  align-items:start;
+}
+.mission-placeholder,
+.mission-lab{
+  margin-top:16px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  border-radius:22px;
+  padding:18px;
+}
+.mission-header{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:16px;
+}
+.mission-header h3{
+  margin:0 0 8px;
+}
+.mission-progress{
+  min-width:220px;
+}
+.progress-bar{
+  height:12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.05);
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%;
+  width:0;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--science),var(--technology),var(--entrepreneurship));
+  transition:width .25s ease;
+}
+.progress-copy{
+  margin:8px 0 0;
+  font-size:.92rem;
+}
+.mission-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.mission-section{
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+  padding:16px;
+}
+.mission-section.full-span{
+  grid-column:1 / -1;
+}
+.pill-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.pill-button{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  border-radius:999px;
+  padding:10px 14px;
+}
+.pill-button.active{
+  border-color:rgba(255,255,255,.45);
+  background:rgba(255,255,255,.12);
+  color:#fff;
+}
+.checklist{
+  display:grid;
+  gap:12px;
+}
+.check-item{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.03);
+}
+.check-item input{
+  margin-top:4px;
+}
+.check-copy{
+  color:#fff;
+}
+.twist-card{
+  border:1px dashed rgba(255,255,255,.28);
+  border-radius:16px;
+  padding:14px;
+  background:rgba(255,255,255,.03);
+}
+.mission-notes{
+  width:100%;
+  min-height:120px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  padding:14px;
+  font:inherit;
+  resize:vertical;
+}
+.mission-lab a{
+  color:#fff;
+}
+.mission-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+.mission-actions button{
+  border-radius:999px;
 }
 .direction-topline{
   display:flex;
@@ -355,4 +488,5 @@ blockquote{
 }
 @media (max-width:900px){
   .panel,.sphere-grid,.grid,.direction-grid,.horse-picker{grid-template-columns:1fr}
+  .mission-grid{grid-template-columns:1fr}
 }

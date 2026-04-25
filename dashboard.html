@@ -71,6 +71,30 @@
         <div id="directionGrid" class="direction-grid"></div>
       </section>
 
+      <section class="panel mission-panel">
+        <div>
+          <h2>Interactive Mission Lab</h2>
+          <p>
+            Static tasks are the archive. This block is the practice engine: pick one direction, lock one mode,
+            choose one deliverable, and move through a guided sprint.
+          </p>
+          <div id="missionPlaceholder" class="mission-placeholder">
+            Select <strong>Launch Mission</strong> on any direction card to open a guided practice sprint.
+          </div>
+          <div id="missionLab" class="mission-lab" hidden></div>
+        </div>
+        <div>
+          <h2>What Changes Here</h2>
+          <ul>
+            <li>One direction becomes one active mission instead of a passive reading list.</li>
+            <li>You choose a mode: Academy, MVP Lab, or Networking.</li>
+            <li>Your checkpoints and notes are saved locally in the browser.</li>
+            <li>A random twist keeps the task from feeling flat.</li>
+          </ul>
+          <p id="missionStatus" class="status-text"></p>
+        </div>
+      </section>
+
       <section class="panel simulator-panel">
         <div>
           <h2>Solo Logic Race Simulator</h2>
