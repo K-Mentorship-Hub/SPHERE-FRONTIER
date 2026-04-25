@@ -6,7 +6,7 @@
 [![Sphere I](https://img.shields.io/badge/Sphere%20I-Science-2d6cdf)](https://github.com/K-Mentorship-Hub/SPHERE-I-SCIENCE)
 [![Sphere II](https://img.shields.io/badge/Sphere%20II-Entrepreneurship-f08c2e)](https://github.com/K-Mentorship-Hub/SPHERE-II-ENTREPRENEURSHIP)
 [![Sphere III](https://img.shields.io/badge/Sphere%20III-Technology-2f9e44)](https://github.com/K-Mentorship-Hub/SPHERE-III-TECHNOLOGY)
-[![Stack](https://img.shields.io/badge/stack-Notion%20%2B%20Discord%20%2B%20GitHub-purple)](#recommended-stack)
+[![Stack](https://img.shields.io/badge/stack-GitHub%20%2B%20Discord%20%2B%20Tally-purple)](#recommended-stack)
 
 *Find the direction. Learn the path. Build the next step.*
 
@@ -72,6 +72,7 @@ Supporting docs in this repo:
 - [`docs/REPO-SYSTEM.md`](./docs/REPO-SYSTEM.md)
 - [`docs/DISCORD-BLUEPRINT.md`](./docs/DISCORD-BLUEPRINT.md)
 - [`docs/CONTRIBUTION-BRIDGE.md`](./docs/CONTRIBUTION-BRIDGE.md)
+- [`dashboard.html`](./dashboard.html)
 
 ---
 
@@ -81,9 +82,9 @@ This hub is intentionally not built around one bloated platform.
 
 It uses a low-friction stack that people can actually maintain:
 
-- `Notion` for guidebook, intake, operating notes, and routing
-- `Discord` for live communication and lightweight community energy
 - `GitHub` for structure, docs, templates, issues, and contribution surfaces
+- `Discord` for live communication and lightweight community energy
+- `Tally` for Passport and access routing
 - `Hugging Face` for demo or runtime layers when needed
 - `K-RnD-Lab` for deeper research and open investigation
 
@@ -101,7 +102,7 @@ For most people, the right starting bundle is:
 
 Rule:
 
-Do not spread the same truth across too many tools. Use `Notion` as the guidance layer, `Discord` as the live layer, and `GitHub` as the structural layer.
+Do not spread the same truth across too many tools. Use `GitHub` as the guidance layer, `Discord` as the live layer, and `Tally` as the intake layer.
 
 ---
 
@@ -182,11 +183,28 @@ That is enough to begin.
 
 ---
 
+## Practice Layer
+
+The hub should not be only descriptive.
+
+It should let people:
+
+- choose a direction
+- start one practical
+- fork when exploring
+- open a PR when their output improves the shared surface
+
+The local prototype dashboard for this lives here:
+
+- [`dashboard.html`](./dashboard.html)
+
+---
+
 ## Source Of Truth
 
 - `GitHub` for structure, versioned docs, templates, and contribution flow
-- `Notion` for guidebook, intake, and operational routing
 - `Discord` for live discussion and lightweight coordination
+- `Tally` for form-based intake and opt-in access
 - `K-RnD-Lab` for research depth and evidence-facing extensions
 
 ---

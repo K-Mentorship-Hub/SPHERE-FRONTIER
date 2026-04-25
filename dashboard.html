@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>K Mentorship Hub Dashboard</title>
+    <meta
+      name="description"
+      content="Interactive practice dashboard and race simulator for K Mentorship Hub."
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body>
+    <main class="wrap dashboard-page">
+      <section class="hero dashboard-hero">
+        <p class="eyebrow">SET / practice board / simulator</p>
+        <h1>KMH Interactive Dashboard</h1>
+        <p class="lede">Choose a sphere. Pick a direction. Start a practical. Or play a solo logic race.</p>
+        <div class="actions">
+          <a href="./index.html">Back To Front Door</a>
+          <a href="https://github.com/K-Mentorship-Hub" target="_blank" rel="noreferrer">Open GitHub Org</a>
+        </div>
+      </section>
+
+      <section class="panel filters-panel">
+        <div>
+          <h2>Filter Directions</h2>
+          <div class="filter-row">
+            <label>
+              Sphere
+              <select id="sphereFilter">
+                <option value="all">All</option>
+                <option value="S">Science</option>
+                <option value="E">Entrepreneurship</option>
+                <option value="T">Technology</option>
+                <option value="Bridge">Bridge</option>
+              </select>
+            </label>
+            <label>
+              Focus
+              <select id="focusFilter">
+                <option value="all">All</option>
+                <option value="academy">Academy</option>
+                <option value="mvp">MVP Lab</option>
+                <option value="networking">Networking</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div>
+          <h2>How To Use</h2>
+          <ul>
+            <li>Browse directions and pick one entry point.</li>
+            <li>Start with one small practice instead of ten tabs.</li>
+            <li>Fork when exploring, open a PR when the output improves the shared surface.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>Direction Map</h2>
+          <p>These are your practical specialties across the hub. I kept the richer 14-direction logic and grouped it under S / E / T and bridge lanes.</p>
+        </div>
+        <div id="directionGrid" class="direction-grid"></div>
+      </section>
+
+      <section class="panel simulator-panel">
+        <div>
+          <h2>Solo Logic Race Simulator</h2>
+          <p>
+            Pick the horse you think will win based on the task card. Then run the race and see what happens.
+            This is the first playful prototype, not the final game system.
+          </p>
+          <div class="simulator-card" id="simulatorCard"></div>
+          <div class="horse-picker" id="horsePicker"></div>
+          <div class="actions">
+            <button id="raceButton" type="button">Run Race</button>
+            <button id="nextCardButton" type="button">Next Card</button>
+          </div>
+          <p id="simulatorResult" class="status-text"></p>
+        </div>
+        <div>
+          <h2>Race Track</h2>
+          <div class="track-list" id="trackList"></div>
+        </div>
+      </section>
+
+      <section class="panel note-panel">
+        <div>
+          <h2>Why this simulator exists</h2>
+          <p>
+            It gives the hub a playful “think before you click” layer. Later, each direction can get its own set of logic cards, scenarios, and domain-flavored board mechanics.
+          </p>
+        </div>
+        <div>
+          <h2>Future upgrades</h2>
+          <ul>
+            <li>direction-specific card packs</li>
+            <li>co-op mode for two players</li>
+            <li>career and MVP scenario branches</li>
+            <li>save progress and challenge history</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="./assets/js/dashboard.js"></script>
+  </body>
+</html>
