@@ -8,7 +8,7 @@ Use this line:
 
 `Science tells us what matters. Entrepreneurship tells us what can move. Technology tells us how to build it.`
 
-## Sphere Meanings
+## What SET Means
 
 - `S = Science`
 - `E = Entrepreneurship`
@@ -16,6 +16,35 @@ Use this line:
 
 These are not silo boxes.
 They are orientation layers.
+
+## What You Should Do With Them
+
+Use `S` when your main question is about:
+
+- the world
+- life
+- health
+- environment
+- biology
+- measurable systems
+
+Use `E` when your main question is about:
+
+- opportunities
+- products
+- ventures
+- validation
+- positioning
+- growth
+
+Use `T` when your main question is about:
+
+- tools
+- code
+- data
+- automation
+- dashboards
+- reproducibility
 
 ## Main Hub Blocks
 
@@ -26,7 +55,7 @@ They are orientation layers.
 - `Resource Bridge`
 - `Founder Ops`
 
-## What the Hub Is For
+## What The Hub Is For
 
 - practical paths
 - guidance
@@ -34,7 +63,7 @@ They are orientation layers.
 - lightweight collaboration
 - connecting people to the right next layer
 
-## What the Hub Is Not For
+## What The Hub Is Not For
 
 - forcing every activity into one place
 - duplicating every external ecosystem

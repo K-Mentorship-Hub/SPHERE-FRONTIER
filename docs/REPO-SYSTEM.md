@@ -63,7 +63,7 @@ Use metadata instead.
 - `secondary_spheres: [T]`
 - `combo: E+T`
 - `artifact_type: venture_case`
-- `delivery_layers: [GitHub, Notion, GoogleSite]`
+- `delivery_layers: [GitHub, Discord, GoogleSite]`
 
 ### Research dashboard
 

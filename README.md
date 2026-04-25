@@ -1,4 +1,4 @@
-# K Mentorship Hub · SET Learning and Build System
+# K Mentorship Hub - SET Learning and Build System
 
 **A structured guidance layer for turning interests into learning paths, MVPs, and real next steps**
 
@@ -20,9 +20,9 @@
 
 It helps people move across:
 
-- `S` · Science
-- `E` · Entrepreneurship
-- `T` · Technology
+- `S` - Science
+- `E` - Entrepreneurship
+- `T` - Technology
 
 The user-facing path stays simple:
 
@@ -50,6 +50,7 @@ Hybrid work is welcome:
 
 - public guidebook and orientation docs
 - learning-path logic and practical direction maps
+- an interactive dashboard with starter resources, tasks, and MVP ideas
 - Discord operating guidance
 - contribution bridges into deeper repos
 - metadata rules for hybrid `SET` work
@@ -61,10 +62,10 @@ Hybrid work is welcome:
 
 | Repository | Role |
 | --- | --- |
-| [`K-Mentorship-Hub`](https://github.com/K-Mentorship-Hub/K-Mentorship-Hub) | Public front door, guidebook, documentation, routing |
+| [`K-Mentorship-Hub`](https://github.com/K-Mentorship-Hub/K-Mentorship-Hub) | Public front door, guidebook, dashboard, and routing |
 | [`SPHERE-I-SCIENCE`](https://github.com/K-Mentorship-Hub/SPHERE-I-SCIENCE) | Science-first questions, measurable domains, research-facing framing |
-| [`SPHERE-II-ENTREPRENEURSHIP`](https://github.com/K-Mentorship-Hub/SPHERE-II-ENTREPRENEURSHIP) | Venture logic, validation, founder systems, public cases |
-| [`SPHERE-III-TECHNOLOGY`](https://github.com/K-Mentorship-Hub/SPHERE-III-TECHNOLOGY) | Tools, code, AI, dashboards, automation, reusable systems |
+| [`SPHERE-II-ENTREPRENEURSHIP`](https://github.com/K-Mentorship-Hub/SPHERE-II-ENTREPRENEURSHIP) | Venture logic, validation, founder systems, and public cases |
+| [`SPHERE-III-TECHNOLOGY`](https://github.com/K-Mentorship-Hub/SPHERE-III-TECHNOLOGY) | Tools, code, AI, dashboards, automation, and reusable systems |
 
 Supporting docs in this repo:
 
@@ -72,6 +73,7 @@ Supporting docs in this repo:
 - [`docs/REPO-SYSTEM.md`](./docs/REPO-SYSTEM.md)
 - [`docs/DISCORD-BLUEPRINT.md`](./docs/DISCORD-BLUEPRINT.md)
 - [`docs/CONTRIBUTION-BRIDGE.md`](./docs/CONTRIBUTION-BRIDGE.md)
+- [`docs/DIRECTION-LIBRARY.md`](./docs/DIRECTION-LIBRARY.md)
 - [`dashboard.html`](./dashboard.html)
 
 ---
@@ -103,6 +105,24 @@ For most people, the right starting bundle is:
 Rule:
 
 Do not spread the same truth across too many tools. Use `GitHub` as the guidance layer, `Discord` as the live layer, and `Tally` as the intake layer.
+
+---
+
+## Practice Layer
+
+The hub should not be only descriptive.
+
+It should let people:
+
+- choose a direction
+- start one practical
+- fork when exploring
+- open a PR when their output improves the shared surface
+
+The main public surfaces for that are:
+
+- [`dashboard.html`](./dashboard.html)
+- [`docs/DIRECTION-LIBRARY.md`](./docs/DIRECTION-LIBRARY.md)
 
 ---
 
@@ -165,38 +185,6 @@ Use `K-RnD-Lab` to:
 - replicate
 - extend
 - publish deeper work
-
----
-
-## Beginner Promise
-
-This hub is designed so that people do not get buried in complexity on day one.
-
-The minimum rhythm should feel like this:
-
-- choose one direction
-- take one practical step
-- get one useful feedback loop
-- keep moving without getting lost
-
-That is enough to begin.
-
----
-
-## Practice Layer
-
-The hub should not be only descriptive.
-
-It should let people:
-
-- choose a direction
-- start one practical
-- fork when exploring
-- open a PR when their output improves the shared surface
-
-The local prototype dashboard for this lives here:
-
-- [`dashboard.html`](./dashboard.html)
 
 ---
 

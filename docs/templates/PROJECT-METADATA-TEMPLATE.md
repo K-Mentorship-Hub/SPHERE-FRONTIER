@@ -53,8 +53,8 @@ summary:
 
 - `GitHub`
 - `HuggingFace`
-- `Notion`
 - `Discord`
+- `Tally`
 - `GoogleSite`
 
 ### `validation_stage`
