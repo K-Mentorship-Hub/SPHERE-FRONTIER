@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="./assets/css/mentorship.css">
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+  <script>const t=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",t);document.getElementById("themeToggle").textContent=t==="dark"?"☀️":"🌙";</script>
   <main class="page">
     <section class="hero">
       <p class="eyebrow">SET ecosystem / public front door</p>
@@ -81,5 +83,6 @@
       </blockquote>
     </section>
   </main>
+  <script>document.getElementById("themeToggle").addEventListener("click",function(){const c=this.textContent==="🌙"?"dark":"light";document.documentElement.setAttribute("data-theme",c);localStorage.setItem("theme",c);this.textContent=c==="dark"?"☀️":"🌙";});</script>
 </body>
 </html>
