@@ -1,34 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SPHERE FRONTIER Dashboard</title>
-    <meta
-      name="description"
-      content="Interactive practice dashboard and race simulator for K Mentorship Hub."
-    />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-  </head>
-  <body>
-    <main class="wrap dashboard-page">
-      <section class="hero dashboard-hero">
-        <p class="eyebrow">SET / practice board / simulator</p>
-        <h1>SPHERE FRONTIER Dashboard</h1>
-        <p class="lede">Choose a sphere. Pick a direction. Start a practical. Or play a solo logic race.</p>
-        <div class="actions">
-          <a href="./index.html">Back To Front Door</a>
-          <a href="https://github.com/K-Mentorship-Hub" target="_blank" rel="noreferrer">Open GitHub Org</a>
-        </div>
-      </section>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPHERE FRONTIER — Dashboard</title>
+  <link rel="stylesheet" href="./assets/css/k-rnd-lab.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">SPHERE FRONTIER / practice board / simulator</p>
+      <h1>Interactive Dashboard</h1>
+      <p class="lede">Choose a sphere. Pick a direction. Start a practical. Or play a solo logic race.</p>
+      <div class="hero-links">
+        <a href="./index.html">Front Door</a>
+        <a href="./quest.html">Quest Viewer</a>
+        <a href="https://github.com/K-Mentorship-Hub" target="_blank" rel="noreferrer">GitHub Org</a>
+      </div>
+    </section>
 
-      <section class="panel filters-panel">
+    <section class="panel-section" style="padding:24px;margin-top:18px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
         <div>
           <h2>Filter Directions</h2>
-          <div class="filter-row">
-            <label>
-              Sphere
-              <select id="sphereFilter">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+            <label style="display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:14px">
+              <span>Sphere</span>
+              <select id="sphereFilter" style="border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-size:15px;background:#fffdfa;color:var(--ink)">
                 <option value="all">All</option>
                 <option value="S">Science</option>
                 <option value="E">Entrepreneurship</option>
@@ -36,9 +34,9 @@
                 <option value="Bridge">Bridge</option>
               </select>
             </label>
-            <label>
-              Focus
-              <select id="focusFilter">
+            <label style="display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:14px">
+              <span>Focus</span>
+              <select id="focusFilter" style="border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-size:15px;background:#fffdfa;color:var(--ink)">
                 <option value="all">All</option>
                 <option value="academy">Academy</option>
                 <option value="mvp">MVP Lab</option>
@@ -49,93 +47,84 @@
         </div>
         <div>
           <h2>How To Use</h2>
-          <ul>
+          <ul style="color:var(--muted);font-size:14px;line-height:1.6">
             <li>Browse directions and pick one entry point instead of ten tabs.</li>
             <li>Open one resource, do one starter task, and turn it into one visible artifact.</li>
-            <li>Fork when exploring. Open a PR when the output improves the shared surface for others.</li>
+            <li>Fork when exploring. Open a PR when the output improves the shared surface.</li>
           </ul>
-          <div class="actions compact-actions">
-            <a href="./docs/DIRECTION-LIBRARY.md">Open Direction Library</a>
-          </div>
+          <a href="./docs.html" class="link-pill" style="margin-top:8px;display:inline-block">Open Direction Library</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <div class="section-heading">
-          <h2>Direction Map</h2>
-          <p>
-            These are your practical specialties across the hub. The richer 14-direction logic stays intact and
-            now lives under S / E / T plus bridge lanes.
-          </p>
-        </div>
-        <div id="directionGrid" class="direction-grid"></div>
-      </section>
+    <section class="panel-section" style="padding:24px;margin-top:18px">
+      <h2>Direction Map</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:16px">These are your practical specialties across the hub. The 14-direction logic stays intact, now grouped under S / E / T plus bridge lanes.</p>
+      <div id="directionGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px"></div>
+    </section>
 
-      <section class="panel mission-panel">
+    <section class="panel-section" style="padding:24px;margin-top:18px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
         <div>
           <h2>Interactive Mission Lab</h2>
-          <p>
-            Static tasks are the archive. This block is the practice engine: pick one direction, lock one mode,
-            choose one deliverable, and move through a guided sprint.
-          </p>
-          <div id="missionPlaceholder" class="mission-placeholder">
+          <p style="color:var(--muted);font-size:14px">Static tasks are the archive. This block is the practice engine: pick one direction, lock one mode, choose one deliverable, and move through a guided sprint.</p>
+          <div id="missionPlaceholder" style="border:1px dashed var(--line);border-radius:20px;padding:28px;text-align:center;color:var(--muted);background:rgba(255,255,255,.5)">
             Select <strong>Launch Mission</strong> on any direction card to open a guided practice sprint.
           </div>
-          <div id="missionLab" class="mission-lab" hidden></div>
+          <div id="missionLab" hidden></div>
         </div>
         <div>
           <h2>What Changes Here</h2>
-          <ul>
+          <ul style="color:var(--muted);font-size:14px;line-height:1.6">
             <li>One direction becomes one active mission instead of a passive reading list.</li>
             <li>You choose a mode: Academy, MVP Lab, or Networking.</li>
             <li>Your checkpoints and notes are saved locally in the browser.</li>
             <li>A random twist keeps the task from feeling flat.</li>
           </ul>
-          <p id="missionStatus" class="status-text"></p>
+          <p id="missionStatus" style="color:var(--muted);font-size:13px;margin-top:8px"></p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="panel simulator-panel">
+    <section class="panel-section" style="padding:24px;margin-top:18px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
         <div>
           <h2>Solo Logic Race Simulator</h2>
-          <p>
-            Pick the horse you think will win based on the task card. Then run the race and see what happens.
-            This is the first playful prototype, not the final game system.
-          </p>
-          <div class="simulator-card" id="simulatorCard"></div>
-          <div class="horse-picker" id="horsePicker"></div>
-          <div class="actions">
-            <button id="raceButton" type="button">Run Race</button>
-            <button id="nextCardButton" type="button">Next Card</button>
+          <p style="color:var(--muted);font-size:14px">Pick the horse you think will win based on the task card. Then run the race and see what happens. This is the first playful prototype.</p>
+          <div id="simulatorCard" style="background:#fffdfa;border:1px solid var(--line);border-radius:22px;padding:18px;margin:12px 0"></div>
+          <div id="horsePicker" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0"></div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="raceButton" style="background:var(--ink);color:#fff;border:none;border-radius:999px;padding:10px 18px;font-weight:600;cursor:pointer">Run Race</button>
+            <button id="nextCardButton" style="background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:10px 18px;font-weight:600;cursor:pointer">Next Card</button>
           </div>
-          <p id="simulatorResult" class="status-text"></p>
+          <p id="simulatorResult" style="color:var(--muted);font-size:13px;margin-top:8px"></p>
         </div>
         <div>
           <h2>Race Track</h2>
-          <div class="track-list" id="trackList"></div>
+          <div id="trackList" style="font-size:14px"></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="panel note-panel">
+    <section class="panel-section" style="padding:24px;margin-top:18px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
         <div>
           <h2>Why this simulator exists</h2>
-          <p>
-            It gives the hub a playful "think before you click" layer. Later, each direction can get its own
-            set of logic cards, scenarios, and domain-flavored board mechanics.
-          </p>
+          <p style="color:var(--muted);font-size:14px">It gives the hub a playful "think before you click" layer. Later, each direction can get its own set of logic cards, scenarios, and domain-flavored board mechanics.</p>
         </div>
         <div>
           <h2>Future upgrades</h2>
-          <ul>
-            <li>direction-specific card packs</li>
-            <li>co-op mode for two players</li>
-            <li>career and MVP scenario branches</li>
-            <li>save progress and challenge history</li>
+          <ul style="color:var(--muted);font-size:14px;line-height:1.6">
+            <li>Direction-specific card packs</li>
+            <li>Co-op mode for two players</li>
+            <li>Career and MVP scenario branches</li>
+            <li>Save progress and challenge history</li>
           </ul>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <script src="./assets/js/dashboard.js"></script>
-  </body>
+  <script src="./assets/js/dashboard.js"></script>
+</body>
 </html>
