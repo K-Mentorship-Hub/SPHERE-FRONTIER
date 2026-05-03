@@ -168,26 +168,40 @@ That is enough to create momentum without turning the hub into a heavy gamificat
 
 ---
 
-## How KMH Relates To K-RnD-Lab
+## SET Ecosystem — Three Organizations
 
-`K Mentorship Hub` is the practical activation layer.
+This hub is part of a three-organization ecosystem, each with a distinct role:
 
-`K-RnD-Lab` is the deeper research and open investigation layer.
+| Organization | Role | Focus |
+| --- | --- | --- |
+| [`K-Mentorship-Hub`](https://github.com/K-Mentorship-Hub) | 🎓 Education & guidance | Free quests, direction library, test-drives, academy practice |
+| [`K-RnD-Lab`](https://github.com/K-RnD-Lab) | 🔬 Research & investigation | Computational science, open data, HuggingFace demos, reproducible studies |
+| [`K-Venture-Studio-Hub`](https://github.com/K-Venture-Studio-Hub) | 💼 Venture building | Pre-structured business models, canvas templates, venture architecture, startup acceleration |
 
-Use SPHERE FRONTIER to:
+**Flow between organizations:**
 
-- orient people
-- guide learning
+```
+K-Mentorship-Hub (learn) → K-RnD-Lab (research) → K-Venture-Studio-Hub (build ventures)
+```
+
+- **Mentorship Hub** orients and teaches — the entry point
+- **R&D Lab** investigates deeper — for those who want to research
+- **Venture Studio** accelerates — pre-prepared business architectures based on SET directions
+
+Use `K-Mentorship-Hub` to:
+- orient people and guide learning
 - frame practical next steps
 - connect people to contribution surfaces
 
 Use `K-RnD-Lab` to:
+- investigate, document, replicate, extend
+- publish deeper research work
+- run live demos on HuggingFace
 
-- investigate
-- document
-- replicate
-- extend
-- publish deeper work
+Use `K-Venture-Studio-Hub` to:
+- access pre-structured business models and canvas templates
+- accelerate venture creation from SET directions
+- bridge from learning to real venture building
 
 ---
 
@@ -197,9 +211,10 @@ Use `K-RnD-Lab` to:
 - `Discord` for live discussion and lightweight coordination
 - `Tally` for form-based intake and opt-in access
 - `K-RnD-Lab` for research depth and evidence-facing extensions
+- `K-Venture-Studio-Hub` for venture architecture and business model scaffolds
 
 ---
 
 ## Public Line
 
-`SPHERE FRONTIER` helps people learn, build, and connect across science, entrepreneurship, and technology. It is a practical navigation and activation layer for people who want a real next step, not more noise.
+`SPHERE FRONTIER` helps people learn, build, and connect across science, entrepreneurship, and technology. It is a practical navigation and activation layer for people who want a real next step, not more noise. Free quests lead to research, research leads to ventures — all grounded in the SET framework.
