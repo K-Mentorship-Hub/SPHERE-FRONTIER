@@ -1,8 +1,9 @@
-# K Mentorship Hub - SET Learning and Build System
+# SPHERE FRONTIER — SET Learning & Build System
 
 **A structured guidance layer for turning interests into learning paths, MVPs, and real next steps**
 
 [![Org](https://img.shields.io/badge/GitHub-K--Mentorship--Hub-black)](https://github.com/K-Mentorship-Hub)
+[![Frontier](https://img.shields.io/badge/Frontier-SPHERE--FRONTIER-blueviolet)](https://github.com/K-Mentorship-Hub/SPHERE-FRONTIER)
 [![Sphere I](https://img.shields.io/badge/Sphere%20I-Science-2d6cdf)](https://github.com/K-Mentorship-Hub/SPHERE-I-SCIENCE)
 [![Sphere II](https://img.shields.io/badge/Sphere%20II-Entrepreneurship-f08c2e)](https://github.com/K-Mentorship-Hub/SPHERE-II-ENTREPRENEURSHIP)
 [![Sphere III](https://img.shields.io/badge/Sphere%20III-Technology-2f9e44)](https://github.com/K-Mentorship-Hub/SPHERE-III-TECHNOLOGY)
@@ -14,9 +15,9 @@
 
 ---
 
-## What Is K Mentorship Hub?
+## What Is SPHERE FRONTIER?
 
-`K Mentorship Hub` is the practical guidance layer of the wider `SET` ecosystem by Oksana Kolisnyk.
+`SPHERE FRONTIER` is the practical guidance layer of the wider `SET` ecosystem by Oksana Kolisnyk.
 
 It helps people move across:
 
@@ -62,7 +63,7 @@ Hybrid work is welcome:
 
 | Repository | Role |
 | --- | --- |
-| [`K-Mentorship-Hub`](https://github.com/K-Mentorship-Hub/K-Mentorship-Hub) | Public front door, guidebook, dashboard, and routing |
+| [`SPHERE-FRONTIER`](https://github.com/K-Mentorship-Hub/SPHERE-FRONTIER) | Public front door, guidebook, dashboard, and routing |
 | [`SPHERE-I-SCIENCE`](https://github.com/K-Mentorship-Hub/SPHERE-I-SCIENCE) | Science-first questions, measurable domains, research-facing framing |
 | [`SPHERE-II-ENTREPRENEURSHIP`](https://github.com/K-Mentorship-Hub/SPHERE-II-ENTREPRENEURSHIP) | Venture logic, validation, founder systems, and public cases |
 | [`SPHERE-III-TECHNOLOGY`](https://github.com/K-Mentorship-Hub/SPHERE-III-TECHNOLOGY) | Tools, code, AI, dashboards, automation, and reusable systems |
@@ -173,7 +174,7 @@ That is enough to create momentum without turning the hub into a heavy gamificat
 
 `K-RnD-Lab` is the deeper research and open investigation layer.
 
-Use KMH to:
+Use SPHERE FRONTIER to:
 
 - orient people
 - guide learning
@@ -201,4 +202,4 @@ Use `K-RnD-Lab` to:
 
 ## Public Line
 
-`K Mentorship Hub` helps people learn, build, and connect across science, entrepreneurship, and technology. It is a practical navigation and activation layer for people who want a real next step, not more noise.
+`SPHERE FRONTIER` helps people learn, build, and connect across science, entrepreneurship, and technology. It is a practical navigation and activation layer for people who want a real next step, not more noise.
