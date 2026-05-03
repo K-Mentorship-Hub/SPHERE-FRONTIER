@@ -1,149 +1,85 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SPHERE FRONTIER</title>
-    <meta
-      name="description"
-      content="A practical navigation layer across science, entrepreneurship, and technology."
-    />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-  </head>
-  <body>
-    <main class="wrap">
-      <section class="hero">
-        <p class="eyebrow">SET ecosystem / public front door</p>
-        <h1>SPHERE FRONTIER</h1>
-        <p class="lede">Continuous Learning, Continuous Integration.</p>
-        <p>
-          A practical navigation layer for people who want to learn, build, and connect across
-          <strong>science</strong>, <strong>entrepreneurship</strong>, and <strong>technology</strong>.
-        </p>
-        <div class="actions">
-          <a href="./dashboard.html">Interactive Dashboard</a>
-          <a href="./quest.html">Quest Viewer</a>
-          <a href="./docs/DIRECTION-LIBRARY.md">Direction Library</a>
-          <a href="https://github.com/K-RnD-Lab" target="_blank" rel="noreferrer">K-RnD Lab</a>
-        </div>
-      </section>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPHERE FRONTIER</title>
+  <meta name="description" content="A practical navigation layer across science, entrepreneurship, and technology.">
+  <link rel="stylesheet" href="./assets/css/k-rnd-lab.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">SET ecosystem / public front door</p>
+      <h1>SPHERE FRONTIER</h1>
+      <p class="lede">Continuous Learning, Continuous Integration.</p>
+      <p>A practical navigation layer for people who want to learn, build, and connect across <strong>science</strong>, <strong>entrepreneurship</strong>, and <strong>technology</strong>.</p>
+      <div class="hero-links">
+        <a href="./quest.html">Quest Viewer</a>
+        <a href="./docs.html">Documentation</a>
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="https://github.com/K-Mentorship-Hub" target="_blank" rel="noreferrer">GitHub Org</a>
+      </div>
+    </section>
 
-      <section class="panel intro">
+    <div class="stats-row">
+      <article class="stat-card"><div class="stat-value">3</div><div class="stat-label">Spheres</div></article>
+      <article class="stat-card science"><div class="stat-value">4</div><div class="stat-label">Science Quests</div></article>
+      <article class="stat-card entrepreneurship"><div class="stat-value">4</div><div class="stat-label">Entrepreneurship Quests</div></article>
+      <article class="stat-card technology"><div class="stat-value">4</div><div class="stat-label">Technology Quests</div></article>
+    </div>
+
+    <section class="panel-section" style="padding:28px;margin-top:18px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+        <article style="background:#fffdfa;border:1px solid var(--line);border-radius:22px;padding:18px">
+          <h3 style="color:var(--science)">🩺 Science</h3>
+          <p style="color:var(--muted);font-size:14px">Domains, systems, hypotheses, measurable questions, and research-facing logic.</p>
+          <ul style="font-size:14px"><li>Bio / Med</li><li>Green / Sustainability</li><li>AgTech</li><li>Human Systems</li></ul>
+          <a href="./quest.html#S-1" class="link-pill" style="margin-top:8px;display:inline-block">Start S1 →</a>
+        </article>
+        <article style="background:#fffdfa;border:1px solid var(--line);border-radius:22px;padding:18px">
+          <h3 style="color:var(--entrepreneurship)">💼 Entrepreneurship</h3>
+          <p style="color:var(--muted);font-size:14px">Ventures, products, validation, growth, operating systems, and opportunity design.</p>
+          <ul style="font-size:14px"><li>MVPs</li><li>Founder logic</li><li>Market validation</li><li>Ecosystem & Ops</li></ul>
+          <a href="./quest.html#E-1" class="link-pill" style="margin-top:8px;display:inline-block">Start E1 →</a>
+        </article>
+        <article style="background:#fffdfa;border:1px solid var(--line);border-radius:22px;padding:18px">
+          <h3 style="color:var(--technology)">🤖 Technology</h3>
+          <p style="color:var(--muted);font-size:14px">Tools, data, AI, code, reproducibility, interfaces, and technical execution.</p>
+          <ul style="font-size:14px"><li>Analytics</li><li>Engineering</li><li>Dashboards</li><li>Infrastructure</li></ul>
+          <a href="./quest.html#T-1" class="link-pill" style="margin-top:8px;display:inline-block">Start T1 →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel-section" style="padding:28px;margin-top:18px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
         <div>
           <h2>What this is</h2>
-          <p>
-            This hub is not meant to become five disconnected systems. It is a clean public shell that helps
-            people understand where they belong, what they can build, and where to go next.
-          </p>
+          <p style="color:var(--muted)">A clean public shell that helps people understand where they belong, what they can build, and where to go next.</p>
         </div>
         <div>
           <h2>What this connects</h2>
-          <ul>
+          <ul style="color:var(--muted);font-size:14px">
             <li>GitHub for documentation and sphere repos</li>
             <li>Discord for live discussion and practical routing</li>
             <li>Tally for Passport and access routing</li>
             <li>Hugging Face for demo and runtime surfaces</li>
           </ul>
         </div>
-      </section>
-
-      <section class="sphere-grid">
-        <article class="sphere science">
-          <p class="sphere-tag">S</p>
-          <h3>Science</h3>
-          <p>Domains, systems, hypotheses, measurable questions, and research-facing logic.</p>
-          <ul>
-            <li>Bio / Med</li>
-            <li>Green / Sustainability</li>
-            <li>AgTech</li>
-          </ul>
-        </article>
-
-        <article class="sphere entrepreneurship">
-          <p class="sphere-tag">E</p>
-          <h3>Entrepreneurship</h3>
-          <p>Ventures, products, validation, growth, operating systems, and opportunity design.</p>
-          <ul>
-            <li>MVPs</li>
-            <li>Founder logic</li>
-            <li>Market validation</li>
-          </ul>
-        </article>
-
-        <article class="sphere technology">
-          <p class="sphere-tag">T</p>
-          <h3>Technology</h3>
-          <p>Tools, data, AI, code, reproducibility, interfaces, and technical execution.</p>
-          <ul>
-            <li>Analytics</li>
-            <li>Engineering</li>
-            <li>Infrastructure</li>
-          </ul>
-        </article>
-      </section>
-
-      <section class="grid">
-        <article>
-          <h2>Recommended Discord launch</h2>
-          <p>Start small, then split by sphere only if traffic is real.</p>
-          <ul>
-            <li>#start-here</li>
-            <li>#academy</li>
-            <li>#mvp-lab</li>
-            <li>#networking</li>
-            <li>#resources</li>
-          </ul>
-        </article>
-        <article>
-          <h2>Recommended repo model</h2>
-          <p>One home repo plus deeper sphere repos.</p>
-          <ul>
-            <li>SPHERE-FRONTIER = front door</li>
-            <li>SPHERE-I-SCIENCE = science depth</li>
-            <li>SPHERE-II-ENTREPRENEURSHIP = venture depth</li>
-            <li>SPHERE-III-TECHNOLOGY = technical depth</li>
-          </ul>
-        </article>
-        <article>
-          <h2>Recommended metadata</h2>
-          <p>Do not encode all hybrids in folder names.</p>
-          <ul>
-            <li>primary_sphere</li>
-            <li>secondary_spheres</li>
-            <li>combo</li>
-            <li>artifact_type</li>
-            <li>delivery_layers</li>
-          </ul>
-        </article>
-      </section>
-
-      <section class="panel">
-        <div>
-          <h2>Now Live In The Hub Logic</h2>
-          <ul>
-            <li>14 directions grouped across S / E / T and bridge lanes</li>
-            <li>Academy, MVP, and Networking as one map, not three disconnected products</li>
-            <li>Practice-first interaction through forks, tiny outputs, and PRs</li>
-          </ul>
-        </div>
         <div>
           <h2>Next Useful Click</h2>
-          <p>
-            Open the interactive dashboard to browse directions, starter tasks, and a playful solo logic race
-            prototype that can later grow into a fuller simulator.
-          </p>
-          <div class="actions">
-            <a href="./dashboard.html">Open Dashboard</a>
-            <a href="./docs/DIRECTION-LIBRARY.md">Browse 14 Directions</a>
-          </div>
+          <p style="color:var(--muted)">Open the quest viewer to browse directions, starter tasks, and a playful solo logic race prototype.</p>
+          <a href="./quest.html" class="link-pill" style="margin-top:8px;display:inline-block">Open Quest Viewer</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="panel quote-panel">
-        <blockquote>
-          "You do not need to fit into one sphere forever. The goal is to find your most useful starting point."
-        </blockquote>
-      </section>
-    </main>
-  </body>
+    <section class="panel-section" style="padding:28px;margin-top:18px">
+      <blockquote style="border-left:3px solid var(--accent);margin:0;padding:12px 20px;background:rgba(30,122,94,.06);border-radius:0 12px 12px 0;font-style:italic;color:var(--muted)">
+        "You do not need to fit into one sphere forever. The goal is to find your most useful starting point."
+      </blockquote>
+    </section>
+  </main>
+</body>
 </html>

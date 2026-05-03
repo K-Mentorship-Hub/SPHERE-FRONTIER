@@ -25,7 +25,23 @@ const QUESTS = {
 };
 
 const content = document.getElementById('questContent');
+const stats = document.getElementById('stats');
 let activeLink = null;
+
+// Build stats
+const statCards = [
+  { label: 'Total Quests', value: 12, className: '' },
+  { label: 'Science', value: QUESTS.S.length, className: 'science' },
+  { label: 'Entrepreneurship', value: QUESTS.E.length, className: 'entrepreneurship' },
+  { label: 'Technology', value: QUESTS.T.length, className: 'technology' },
+];
+stats.innerHTML = '';
+for (const c of statCards) {
+  const el = document.createElement('article');
+  el.className = `stat-card ${c.className}`;
+  el.innerHTML = `<div class="stat-value">${c.value}</div><div class="stat-label">${c.label}</div>`;
+  stats.appendChild(el);
+}
 
 // Build nav
 Object.entries(QUESTS).forEach(([sphere, quests]) => {
@@ -33,7 +49,6 @@ Object.entries(QUESTS).forEach(([sphere, quests]) => {
     sphere === 'S' ? 'navScience' :
     sphere === 'E' ? 'navEntrepreneurship' : 'navTechnology'
   );
-  container.setAttribute('data-sphere', sphere);
   quests.forEach(q => {
     const a = document.createElement('a');
     a.textContent = q.label;
@@ -51,8 +66,8 @@ async function loadQuest(q, sphere, link) {
   link.classList.add('active');
   activeLink = link;
 
-  content.className = `quest-content sphere-${sphere}`;
-  content.innerHTML = '<p class="muted">Loading…</p>';
+  content.className = `md-content sphere-${sphere}`;
+  content.innerHTML = '<p style="color:var(--muted);font-style:italic">Loading…</p>';
 
   try {
     const url = `${BASE}/${q.repo}/${BRANCH}/${q.path}`;
@@ -63,7 +78,7 @@ async function loadQuest(q, sphere, link) {
     content.scrollTop = 0;
     window.scrollTo(0, 0);
   } catch (err) {
-    content.innerHTML = `<p class="muted">Failed to load: ${err.message}</p>`;
+    content.innerHTML = `<p style="color:var(--muted)">Failed to load: ${err.message}</p>`;
   }
 }
 
@@ -74,7 +89,7 @@ if (hash) {
   const idx = parseInt(i) - 1;
   if (QUESTS[s] && QUESTS[s][idx]) {
     const q = QUESTS[s][idx];
-    const container = document.querySelector(`[data-sphere="${s}"]`);
+    const container = document.querySelector(`.nav-${s}`);
     const links = container.querySelectorAll('a');
     if (links[idx]) loadQuest(q, s, links[idx]);
   }

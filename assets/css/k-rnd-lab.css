@@ -1,0 +1,83 @@
+/* K-RnD-Lab inspired theme — warm light palette */
+:root{
+  --bg:#f5f1e8;
+  --panel:rgba(255,252,246,.88);
+  --ink:#13211c;
+  --muted:#53635c;
+  --line:rgba(19,33,28,.14);
+  --accent:#1e7a5e;
+  --accent-2:#b56b2d;
+  --science:#1e7a5e;
+  --entrepreneurship:#b56b2d;
+  --technology:#244f8f;
+  --shadow:0 20px 50px rgba(19,33,28,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left,rgba(30,122,94,.14),transparent 26%),
+    radial-gradient(circle at top right,rgba(181,107,45,.14),transparent 24%),
+    linear-gradient(180deg,#faf7f1 0%,var(--bg) 100%);
+  font-family:"Segoe UI","Inter",sans-serif;
+}
+.page{width:min(1180px,calc(100vw - 32px));margin:0 auto;padding:32px 0 56px}
+.hero,.panel-section{background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.hero{padding:32px}
+.eyebrow{margin:0 0 8px;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent);font-weight:700}
+.hero h1{margin:0;font-size:clamp(34px,5vw,56px);line-height:.95}
+.lede{max-width:760px;color:var(--muted);font-size:18px;line-height:1.55}
+.hero-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.hero-links a,.link-pill{text-decoration:none;border:1px solid var(--line);color:var(--ink);background:#fff;padding:10px 14px;border-radius:999px;font-weight:600;font-size:14px;transition:all .15s}
+.hero-links a:hover,.link-pill:hover{background:var(--ink);color:#fff}
+.breadcrumb{margin:0 0 16px;font-size:13px;color:var(--muted)}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.md-content{background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:36px 40px;max-width:860px}
+.md-content h1{font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 16px;border-bottom:2px solid var(--line);padding-bottom:12px}
+.md-content h2{font-size:1.5rem;margin:32px 0 12px;color:var(--ink)}
+.md-content h3{font-size:1.15rem;margin:24px 0 8px;color:var(--muted)}
+.md-content p{line-height:1.7;margin:0 0 12px}
+.md-content ul,.md-content ol{padding-left:24px;margin:0 0 12px}
+.md-content li{line-height:1.6;margin:4px 0}
+.md-content blockquote{border-left:3px solid var(--accent);margin:16px 0;padding:8px 16px;background:rgba(30,122,94,.06);border-radius:0 12px 12px 0;font-style:italic;color:var(--muted)}
+.md-content code{background:rgba(19,33,28,.08);padding:2px 6px;border-radius:4px;font-size:.88em;font-family:"Cascadia Code",Fira Code,monospace}
+.md-content pre{background:rgba(19,33,28,.06);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:12px 0}
+.md-content pre code{background:none;padding:0;font-size:.82em;line-height:1.5}
+.md-content table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88em}
+.md-content th,.md-content td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+.md-content th{background:rgba(19,33,28,.05);font-weight:600}
+.md-content tr:hover{background:rgba(19,33,28,.03)}
+.md-content hr{border:none;border-top:1px solid var(--line);margin:24px 0}
+.md-content details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:12px 0;background:rgba(255,255,255,.6)}
+.md-content summary{cursor:pointer;font-weight:600;color:var(--muted);user-select:none}
+.md-content details[open] summary{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.md-content a{color:var(--technology);text-decoration:none}
+.md-content a:hover{text-decoration:underline}
+.md-content.sphere-S blockquote{border-left-color:var(--science);background:rgba(30,122,94,.06)}
+.md-content.sphere-E blockquote{border-left-color:var(--entrepreneurship);background:rgba(181,107,45,.06)}
+.md-content.sphere-T blockquote{border-left-color:var(--technology);background:rgba(36,79,143,.06)}
+.quest-layout{display:grid;grid-template-columns:240px 1fr;gap:24px}
+.quest-nav{background:var(--panel);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:20px 16px;position:sticky;top:24px;max-height:calc(100vh - 48px);overflow-y:auto}
+.quest-nav h2{font-size:1rem;margin:0 0 12px}
+.quest-nav h3{font-size:.82rem;margin:10px 0 4px}
+.quest-nav a{display:block;color:var(--muted);font-size:.78rem;padding:3px 0 3px 12px;text-decoration:none;border-left:2px solid transparent;transition:all .15s}
+.quest-nav a:hover,.quest-nav a.active{color:var(--ink);border-left-color:var(--technology)}
+.quest-nav .nav-S a:hover,.quest-nav .nav-S a.active{border-left-color:var(--science)}
+.quest-nav .nav-E a:hover,.quest-nav .nav-E a.active{border-left-color:var(--entrepreneurship)}
+.quest-nav .nav-T a:hover,.quest-nav .nav-T a.active{border-left-color:var(--technology)}
+.back-link{display:inline-block;color:var(--muted);font-size:.8rem;margin-bottom:12px;text-decoration:none}
+.back-link:hover{color:var(--ink)}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:18px 0}
+.stat-card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow)}
+.stat-card.science{border-color:rgba(30,122,94,.2)}
+.stat-card.entrepreneurship{border-color:rgba(181,107,45,.2)}
+.stat-card.technology{border-color:rgba(36,79,143,.2)}
+.stat-value{font-size:30px;font-weight:700}
+.stat-label{margin-top:6px;color:var(--muted);font-size:14px}
+@media(max-width:768px){
+  .quest-layout{grid-template-columns:1fr}
+  .quest-nav{position:static;max-height:none}
+  .md-content{padding:20px}
+}
