@@ -12,7 +12,7 @@
   <script>const t=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",t);document.getElementById("themeToggle").textContent=t==="dark"?"☀️":"🌙";</script>
   <main class="page">
     <section class="hero">
-      <p class="eyebrow">SET ecosystem / public front door</p>
+      <p class="eyebrow">K Mentorship Hub / learning front door</p>
       <h1>SPHERE FRONTIER</h1>
       <p class="lede">Continuous Learning, Continuous Integration.</p>
       <p>A practical navigation layer for people who want to learn, build, and connect across <strong>science</strong>, <strong>entrepreneurship</strong>, and <strong>technology</strong>.</p>
@@ -20,6 +20,8 @@
         <a href="./quest.html">Quest Viewer</a>
         <a href="./docs.html">Documentation</a>
         <a href="./dashboard.html">Dashboard</a>
+        <a href="https://sphere-rnd-lab.vercel.app" target="_blank" rel="noreferrer">R&D Lab</a>
+        <a href="https://sphere-venture-studio.vercel.app" target="_blank" rel="noreferrer">Venture Studio</a>
         <a href="https://github.com/K-Mentorship-Hub" target="_blank" rel="noreferrer">GitHub Org</a>
       </div>
     </section>
@@ -33,19 +35,19 @@
 
     <section class="panel-section" style="padding:28px;margin-top:18px">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
-        <article style="background:#fffdfa;border:1px solid var(--line);border-radius:22px;padding:18px">
+        <article class="direction-card">
           <h3 style="color:var(--science)">🩺 Science</h3>
           <p style="color:var(--muted);font-size:14px">Domains, systems, hypotheses, measurable questions, and research-facing logic.</p>
           <ul style="font-size:14px"><li>Bio / Med</li><li>Green / Sustainability</li><li>AgTech</li><li>Human Systems</li></ul>
           <a href="./quest.html#S-1" class="link-pill" style="margin-top:8px;display:inline-block">Start S1 →</a>
         </article>
-        <article style="background:#fffdfa;border:1px solid var(--line);border-radius:22px;padding:18px">
+        <article class="direction-card">
           <h3 style="color:var(--entrepreneurship)">💼 Entrepreneurship</h3>
           <p style="color:var(--muted);font-size:14px">Ventures, products, validation, growth, operating systems, and opportunity design.</p>
           <ul style="font-size:14px"><li>MVPs</li><li>Founder logic</li><li>Market validation</li><li>Ecosystem & Ops</li></ul>
           <a href="./quest.html#E-1" class="link-pill" style="margin-top:8px;display:inline-block">Start E1 →</a>
         </article>
-        <article style="background:#fffdfa;border:1px solid var(--line);border-radius:22px;padding:18px">
+        <article class="direction-card">
           <h3 style="color:var(--technology)">🤖 Technology</h3>
           <p style="color:var(--muted);font-size:14px">Tools, data, AI, code, reproducibility, interfaces, and technical execution.</p>
           <ul style="font-size:14px"><li>Analytics</li><li>Engineering</li><li>Dashboards</li><li>Infrastructure</li></ul>
@@ -61,13 +63,14 @@
           <p style="color:var(--muted)">A clean public shell that helps people understand where they belong, what they can build, and where to go next.</p>
         </div>
         <div>
-          <h2>What this connects</h2>
-          <ul style="color:var(--muted);font-size:14px">
-            <li>GitHub for documentation and sphere repos</li>
-            <li>Discord for live discussion and practical routing</li>
-            <li>Tally for Passport and access routing</li>
-            <li>Hugging Face for demo and runtime surfaces</li>
-          </ul>
+          <h2>SET Ecosystem</h2>
+          <div style="background:var(--card-bg);border:1px solid var(--line);border-radius:16px;padding:16px;font-size:14px;line-height:1.8">
+            <div style="display:flex;align-items:center;gap:8px"><span class="chip chip-s">LEARN</span> <strong>K-Mentorship-Hub</strong> ← you are here</div>
+            <div style="text-align:center;color:var(--muted)">↓</div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="chip chip-t">RESEARCH</span> <a href="https://sphere-rnd-lab.vercel.app" target="_blank" rel="noreferrer">K-RnD-Lab</a></div>
+            <div style="text-align:center;color:var(--muted)">↓</div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="chip chip-e">BUILD</span> <a href="https://sphere-venture-studio.vercel.app" target="_blank" rel="noreferrer">K-Venture-Studio</a></div>
+          </div>
         </div>
         <div>
           <h2>Next Useful Click</h2>
