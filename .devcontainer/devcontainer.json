@@ -1,0 +1,19 @@
+{
+  "name": "SPHERE FRONTIER — Quest Explorer",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "postCreateCommand": "echo '🚀 SPHERE FRONTIER DevContainer ready!' && echo '' && echo '📂 Quest structure:' && find . -name '*.md' -path '*/quests/*' -exec echo '  →' {} \\; 2>/dev/null || echo '  No quests/ folder in this repo' && echo '' && echo '💡 Open any quest .md file to start your path.'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "shd101wyy.markdown-preview-enhanced"
+      ],
+      "settings": {
+        "markdown.preview.breaks": true,
+        "editor.wordWrap": "on"
+      }
+    }
+  },
+  "forwardPorts": [8000]
+}
