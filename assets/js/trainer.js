@@ -9,7 +9,7 @@ const I18N={
   ua:{
     eyebrow:"K Mentorship Hub / 🧭 REAL-PREP-EDUCATION",
     title:"Master Training",
-    lede:"🤝 Ми з тобою, ти впораєшся. Обери сферу — 🩺 Science, � Entrepreneurship, 💻 Technology — і тренуйся поруч із спільнотою.",
+    lede:"\u{1F91D} Ми з тобою, ти впораєшся. Обери сферу \u2014 \u{1FA7A} Science, \u{1F4BC} Entrepreneurship, \u{1F4BB} Technology \u2014 і тренуйся поруч із спільнотою.",
     frontDoor:"Головна",
     uiLang:"Мова інтерфейсу",qLang:"Мова питань",
     subS:"🔬 Біологія, хімія, фізика, медицина, екологія",
@@ -36,7 +36,7 @@ const I18N={
   en:{
     eyebrow:"K Mentorship Hub / 🧭 REAL-PREP-EDUCATION",
     title:"Master Training",
-    lede:"🤝 You've got this. Pick your sphere — 🩺 Science, � Entrepreneurship, 💻 Technology — and train alongside the community.",
+    lede:"\u{1F91D} You've got this. Pick your sphere \u2014 \u{1FA7A} Science, \u{1F4BC} Entrepreneurship, \u{1F4BB} Technology \u2014 and train alongside the community.",
     frontDoor:"Front Door",
     uiLang:"Interface language",qLang:"Question language",
     subS:"🔬 Biology, chemistry, physics, medicine, ecology",
