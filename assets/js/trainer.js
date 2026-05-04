@@ -2,14 +2,14 @@
 const SHEET_ID="1GcgjCJEPDAFtqOwONsfN_np5zdZFe3v2qa2lNzqDZd4";
 const SHEET_URL=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 // Apps Script web app URL for writing — deploy from Extensions > Apps Script
-let APPS_SCRIPT_URL="";
+let APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbzDJy4ysMJpXiDXI1_nwZYP1BCx0S1bZ7y9NHmDiD6wPhgfyRb4oXwDRO4twW2NfwNr1A/exec";
 
 // i18n
 const I18N={
   ua:{
     eyebrow:"K Mentorship Hub / 🧭 REAL-PREP-EDUCATION",
     title:"Master Training",
-    lede:"🤝 Ми з тобою, ти впораєшся. Обери сферу — 🩺 Science, 🚀 Entrepreneurship, 💻 Technology — і тренуйся поруч із спільнотою.",
+    lede:"🤝 Ми з тобою, ти впораєшся. Обери сферу — 🩺 Science, � Entrepreneurship, 💻 Technology — і тренуйся поруч із спільнотою.",
     frontDoor:"Головна",
     uiLang:"Мова інтерфейсу",qLang:"Мова питань",
     subS:"🔬 Біологія, хімія, фізика, медицина, екологія",
@@ -36,7 +36,7 @@ const I18N={
   en:{
     eyebrow:"K Mentorship Hub / 🧭 REAL-PREP-EDUCATION",
     title:"Master Training",
-    lede:"🤝 You've got this. Pick your sphere — 🩺 Science, 🚀 Entrepreneurship, 💻 Technology — and train alongside the community.",
+    lede:"🤝 You've got this. Pick your sphere — 🩺 Science, � Entrepreneurship, 💻 Technology — and train alongside the community.",
     frontDoor:"Front Door",
     uiLang:"Interface language",qLang:"Question language",
     subS:"🔬 Biology, chemistry, physics, medicine, ecology",
