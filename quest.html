@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPHERE FRONTIER — Quest Viewer</title>
+  <link rel="stylesheet" href="./assets/css/mentorship.css">
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+  <script>const t=localStorage.getItem("theme")||"light";document.documentElement.setAttribute("data-theme",t);document.getElementById("themeToggle").textContent=t==="dark"?"☀️":"🌙";</script>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">SPHERE FRONTIER</p>
+      <h1>Quest Viewer</h1>
+      <p class="lede">Browse and follow practice quests across Science, Entrepreneurship, and Technology.</p>
+      <div class="hero-links">
+        <a href="./index.html">Front Door</a>
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./docs.html">Docs</a>
+      </div>
+    </section>
+    <div class="stats-row" id="stats"></div>
+    <div class="quest-layout">
+      <nav class="quest-nav" id="questNav">
+        <a href="./index.html" class="back-link">← SPHERE FRONTIER</a>
+        <h2>Quests</h2>
+        <div class="nav-S" id="navScience"><h3 style="color:var(--science)">🩺 Science</h3></div>
+        <div class="nav-E" id="navEntrepreneurship"><h3 style="color:var(--entrepreneurship)">💼 Entrepreneurship</h3></div>
+        <div class="nav-T" id="navTechnology"><h3 style="color:var(--technology)">🤖 Technology</h3></div>
+      </nav>
+      <article class="md-content" id="questContent">
+        <p style="color:var(--muted);font-style:italic">Select a quest from the sidebar to begin.</p>
+      </article>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="./assets/js/quest.js"></script>
+  <script>document.getElementById("themeToggle").addEventListener("click",function(){const c=this.textContent==="🌙"?"dark":"light";document.documentElement.setAttribute("data-theme",c);localStorage.setItem("theme",c);this.textContent=c==="dark"?"☀️":"🌙";});</script>
+</body>
+</html>

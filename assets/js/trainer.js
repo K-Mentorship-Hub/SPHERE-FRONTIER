@@ -4,6 +4,76 @@ const SHEET_URL=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=
 // Apps Script web app URL for writing — deploy from Extensions > Apps Script
 let APPS_SCRIPT_URL="";
 
+// i18n
+const I18N={
+  ua:{
+    eyebrow:"K Mentorship Hub / 🧭 REAL-PREP-EDUCATION",
+    title:"Master Training",
+    lede:"🤝 Ми з тобою, ти впораєшся. Обери сферу — 🩺 Science, 🚀 Entrepreneurship, 💻 Technology — і тренуйся поруч із спільнотою.",
+    frontDoor:"Головна",
+    uiLang:"Мова інтерфейсу",qLang:"Мова питань",
+    subS:"🔬 Біологія, хімія, фізика, медицина, екологія",
+    subE:"📈 Менеджмент, маркетинг, фінанси, венчур, інновації",
+    subT:"🛠️ Програмування, AI, системи, безпека, DevOps",
+    msgTitle:"Твій тренер поруч.",msgBody:"Обери сферу та рівень — і почнемо разом. Ти впораєшся!",
+    practice:"Практика",simulation:"Симуляція",
+    resources:"Ресурси",back:"Назад",next:"Далі",
+    desc:"Описова",diag:"Діагностична",presc:"Прескриптивна",pred:"Предиктивна",
+    descTitle:"Описова аналітика — що сталося?",
+    diagTitle:"Діагностична — чому?",
+    prescTitle:"Прескриптивна — що робити?",
+    predTitle:"Предиктивна — що буде?",
+    readiness:"Сигнал готовності",sharedTitle:"Загальний прогрес по предметах",
+    endTitle:"Сесію завершено!",endGreat:"Ти молодець!",
+    endMsg:"Кожна сесія — крок уперед. Продовжуй, ти впораєшся!",
+    newSession:"Нова сесія",
+    allSubjects:"Усі предмети",correct:"Правильно!",wrong:"Неправильно. Відповідь: ",
+    finish:"Завершити 🏁",min:"хв",sessions:"сесій",
+    accBySub:"Точність по предметах",weakZones:"Слабкі зони (помилки)",
+    priority:"Пріоритет вивчення (до 80%)",needMin2:"Потрібно мінімум 2 сесії",
+    forecast:"Прогноз наступної сесії: ",totalAcc:"Загальна точність (всі сесії)"
+  },
+  en:{
+    eyebrow:"K Mentorship Hub / 🧭 REAL-PREP-EDUCATION",
+    title:"Master Training",
+    lede:"🤝 You've got this. Pick your sphere — 🩺 Science, 🚀 Entrepreneurship, 💻 Technology — and train alongside the community.",
+    frontDoor:"Front Door",
+    uiLang:"Interface language",qLang:"Question language",
+    subS:"🔬 Biology, chemistry, physics, medicine, ecology",
+    subE:"📈 Management, marketing, finance, venture, innovation",
+    subT:"🛠️ Programming, AI, systems, security, DevOps",
+    msgTitle:"Your trainer is right here.",msgBody:"Pick a sphere and level — let's start together. You've got this!",
+    practice:"Practice",simulation:"Simulation",
+    resources:"Resources",back:"Back",next:"Next",
+    desc:"Descriptive",diag:"Diagnostic",presc:"Prescriptive",pred:"Predictive",
+    descTitle:"Descriptive analytics — what happened?",
+    diagTitle:"Diagnostic — why?",
+    prescTitle:"Prescriptive — what to do?",
+    predTitle:"Predictive — what's next?",
+    readiness:"Readiness signal",sharedTitle:"Overall progress by subject",
+    endTitle:"Session complete!",endGreat:"Well done!",
+    endMsg:"Every session is a step forward. Keep going, you've got this!",
+    newSession:"New session",
+    allSubjects:"All subjects",correct:"Correct!",wrong:"Wrong. Answer: ",
+    finish:"Finish 🏁",min:"min",sessions:"sessions",
+    accBySub:"Accuracy by subject",weakZones:"Weak zones (errors)",
+    priority:"Study priority (to 80%)",needMin2:"Need at least 2 sessions",
+    forecast:"Next session forecast: ",totalAcc:"Overall accuracy (all sessions)"
+  }
+};
+let lang=localStorage.getItem("mt_lang")||"ua";
+function t(k){return(I18N[lang]||I18N.ua)[k]||k;}
+function applyI18N(){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.dataset.i18n;
+    if(t(k)!==k)el.textContent=t(k);
+  });
+  // Update analytics titles
+  const at={descriptive:"descTitle",diagnostic:"diagTitle",prescriptive:"prescTitle",predictive:"predTitle"};
+  const ct=document.getElementById("chartTitle");
+  if(ct&&at[state.analyticsType])ct.textContent=t(at[state.analyticsType]);
+}
+
 let state={sphere:null,level:"bachelor",subject:"all",mode:"practice",analyticsType:"descriptive",questions:[],currentIdx:0,answers:{},sessionStart:null,sessions:JSON.parse(localStorage.getItem("mt_sessions")||"[]"),sessionLog:[],sheetsData:[]};
 
 // Load from Google Sheets on init
@@ -46,6 +116,18 @@ async function saveToSheet(session){
 
 // Init: load sheets data
 loadSheetsData();
+
+// Language controls
+document.getElementById("uiLang").value=lang;
+applyI18N();
+document.getElementById("uiLang").addEventListener("change",e=>{
+  lang=e.target.value;
+  localStorage.setItem("mt_lang",lang);
+  applyI18N();
+  if(state.sphere){initSubjects();renderQ();renderStats();renderAnalytics();}
+});
+// Question language is locked to EN (questions are in English)
+// qLang select stays disabled
 
 // Sphere cards
 document.querySelectorAll(".sphere-card").forEach(c=>{
@@ -92,7 +174,7 @@ document.getElementById("nextBtn").addEventListener("click",()=>{if(state.curren
 function initSubjects(){
   const sel=document.getElementById("subjectFilter");
   const subs=SPHERES[state.sphere][state.level];
-  sel.innerHTML='<option value="all">\u0423\u0441\u0456 \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u0438</option>';
+  sel.innerHTML=`<option value="all">${t('allSubjects')}</option>`;
   subs.forEach(s=>{const o=document.createElement("option");o.value=s;o.textContent=s;sel.appendChild(o);});
 }
 
@@ -121,7 +203,7 @@ function renderQ(){
     else if(ua===i)c+=" selected";
     return `<div class="${c}" data-i="${i}">${o}</div>`;
   }).join("");
-  area.innerHTML=`<div class="q-card"><div style="font-size:12px;color:var(--muted);margin-bottom:8px">${q.subject}</div><h3>${q.q}</h3><div class="q-options">${oh}</div>${answered?`<div style="margin-top:12px;font-size:13px;color:${ua===q.ans?'#22c55e':'#ef4444'}">${ua===q.ans?'\u2705 \u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e!':'\u274c \u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e. \u0412\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u044c: '+q.opts[q.ans]}</div>`:''}</div>`;
+  area.innerHTML=`<div class="q-card"><div style="font-size:12px;color:var(--muted);margin-bottom:8px">${q.subject}</div><h3>${q.q}</h3><div class="q-options">${oh}</div>${answered?`<div style="margin-top:12px;font-size:13px;color:${ua===q.ans?'#22c55e':'#ef4444'}">${ua===q.ans?'✅ '+t('correct'):'❌ '+t('wrong')+q.opts[q.ans]}</div>`:''}</div>`;
   area.querySelectorAll(".q-opt:not(.correct):not(.wrong):not(.reveal)").forEach(el=>{
     el.addEventListener("click",()=>{
       const idx=parseInt(el.dataset.i);state.answers[state.currentIdx]=idx;
@@ -130,7 +212,7 @@ function renderQ(){
     });
   });
   document.getElementById("prevBtn").disabled=state.currentIdx===0;
-  document.getElementById("nextBtn").textContent=state.currentIdx===state.questions.length-1?"\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0438 \u{1F3C1}":"\u0414\u0430\u043b\u0456 \u2192";
+  document.getElementById("nextBtn").innerHTML=state.currentIdx===state.questions.length-1?t('finish'):t('next')+" →";
 }
 
 function endSession(){
@@ -145,7 +227,7 @@ function endSession(){
   document.getElementById("finalScore").textContent=acc+"%";
   document.getElementById("finalScore").style.color=acc>=80?"#22c55e":acc>=60?"#eab308":"#ef4444";
   const r=getReadiness();
-  document.getElementById("finalStats").innerHTML=`<span class="stat-pill">\u23F1 ${el} \u0445\u0432</span><span class="stat-pill">\u2705 ${cor}/${tot}</span><span class="stat-pill">\u{1F3AF} ${acc}%</span><span class="stat-pill">\u{1F7E2} ${r.label}</span>`;
+  document.getElementById("finalStats").innerHTML=`<span class="stat-pill">⏱ ${el} ${t('min')}</span><span class="stat-pill">✅ ${cor}/${tot}</span><span class="stat-pill">🎯 ${acc}%</span><span class="stat-pill">🟢 ${r.label}</span>`;
 }
 
 function renderStats(){
@@ -153,7 +235,7 @@ function renderStats(){
   const acc=tot?Math.round(cor/tot*100):0;
   const el=state.sessionStart?Math.max(0,Math.round((Date.now()-state.sessionStart)/60000)):0;
   const r=getReadiness();
-  document.getElementById("sessionStats").innerHTML=`<span class="stat-pill">\u23F1 <span class="val">${el} \u0445\u0432</span></span><span class="stat-pill">\u2705 <span class="val">${cor}/${tot}</span></span><span class="stat-pill">\u{1F3AF} <span class="val">${acc}%</span></span><span class="stat-pill">\u{1F4CB} <span class="val">${state.sessions.length} \u0441\u0435\u0441\u0456\u0439</span></span><span class="stat-pill">\u{1F7E2} <span class="val">${r.label}</span></span>`;
+  document.getElementById("sessionStats").innerHTML=`<span class="stat-pill">⏱ <span class="val">${el} ${t('min')}</span></span><span class="stat-pill">✅ <span class="val">${cor}/${tot}</span></span><span class="stat-pill">🎯 <span class="val">${acc}%</span></span><span class="stat-pill">📋 <span class="val">${state.sessions.length} ${t('sessions')}</span></span><span class="stat-pill">🟢 <span class="val">${r.label}</span></span>`;
   const rv=document.getElementById("readinessValue");rv.textContent=r.label;rv.className="readiness "+r.cls;
   const bar=document.getElementById("readinessBar");bar.style.width=r.pct+"%";bar.style.background=r.cls==="high"?"#22c55e":r.cls==="medium"?"#eab308":"#ef4444";
 }
@@ -176,16 +258,16 @@ function renderResources(){
 }
 
 function renderAnalytics(){
-  const t=state.analyticsType;
-  const titles={descriptive:"\u041e\u043f\u0438\u0441\u043e\u0432\u0430 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0430 \u2014 \u0449\u043e \u0441\u0442\u0430\u043b\u043e\u0441\u044f?",diagnostic:"\u0414\u0456\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u0447\u043d\u0430 \u2014 \u0447\u043e\u043c\u0443?",prescriptive:"\u041f\u0440\u0435\u0441\u043a\u0440\u0438\u043f\u0442\u0438\u0432\u043d\u0430 \u2014 \u0449\u043e \u0440\u043e\u0431\u0438\u0442\u0438?",predictive:"\u041f\u0440\u0435\u0434\u0438\u043a\u0442\u0438\u0432\u043d\u0430 \u2014 \u0449\u043e \u0431\u0443\u0434\u0435?"};
-  document.getElementById("chartTitle").textContent=titles[t]||"";
+  const atype=state.analyticsType;
+  const titles={descriptive:t('descTitle'),diagnostic:t('diagTitle'),prescriptive:t('prescTitle'),predictive:t('predTitle')};
+  document.getElementById("chartTitle").textContent=titles[atype]||"";
   const c=document.getElementById("mainChart"),ctx=c.getContext("2d");
   c.width=c.offsetWidth*2;c.height=360;ctx.clearRect(0,0,c.width,c.height);
   const subs=SPHERES[state.sphere][state.level],log=state.sessionLog,sess=state.sessions.filter(s=>s.sphere===state.sphere);
-  if(t==="descriptive")drawAcc(ctx,c,subs,log);
-  else if(t==="diagnostic")drawWeak(ctx,c,subs,log);
-  else if(t==="prescriptive")drawPriority(ctx,c,subs,log);
-  else if(t==="predictive")drawPredict(ctx,c,sess);
+  if(atype==="descriptive")drawAcc(ctx,c,subs,log);
+  else if(atype==="diagnostic")drawWeak(ctx,c,subs,log);
+  else if(atype==="prescriptive")drawPriority(ctx,c,subs,log);
+  else if(atype==="predictive")drawPredict(ctx,c,sess);
   drawShared();
 }
 
@@ -193,33 +275,33 @@ function drawAcc(ctx,c,subs,log){
   const acc={};subs.forEach(s=>acc[s]={c:0,t:0});
   log.forEach(l=>{if(acc[l.subject]){acc[l.subject].t++;if(l.correct)acc[l.subject].c++;}});
   const vals=subs.map(s=>acc[s].t?Math.round(acc[s].c/acc[s].t*100):0);
-  barChart(ctx,c.width,c.height,subs,vals,["#3b82f6","#8b5cf6","#06b6d4","#f59e0b","#ef4444"],"\u0422\u043e\u0447\u043d\u0456\u0441\u0442\u044c \u043f\u043e \u043f\u0440\u0435\u0434\u043c\u0435\u0442\u0430\u0445");
+  barChart(ctx,c.width,c.height,subs,vals,["#3b82f6","#8b5cf6","#06b6d4","#f59e0b","#ef4444"],t('accBySub'));
 }
 
 function drawWeak(ctx,c,subs,log){
   const w={};subs.forEach(s=>w[s]=0);
   log.filter(l=>!l.correct).forEach(l=>{if(w[l.subject]!==undefined)w[l.subject]++;});
   const mx=Math.max(...Object.values(w),1),vals=subs.map(s=>Math.round(w[s]/mx*100));
-  barChart(ctx,c.width,c.height,subs,vals,["#ef4444","#f97316","#eab308","#f43f5e","#dc2626"],"\u0421\u043b\u0430\u0431\u043a\u0456 \u0437\u043e\u043d\u0438 (\u043f\u043e\u043c\u0438\u043b\u043a\u0438)");
+  barChart(ctx,c.width,c.height,subs,vals,["#ef4444","#f97316","#eab308","#f43f5e","#dc2626"],t('weakZones'));
 }
 
 function drawPriority(ctx,c,subs,log){
   const acc={};const cnt={};subs.forEach(s=>{acc[s]=0;cnt[s]=0;});
   log.forEach(l=>{if(cnt[l.subject]!==undefined){cnt[l.subject]++;if(l.correct)acc[l.subject]++;}});
   const vals=subs.map(s=>{const a=cnt[s]?Math.round(acc[s]/cnt[s]*100):0;return Math.max(0,80-a);});
-  barChart(ctx,c.width,c.height,subs,vals,["#22c55e","#16a34a","#15803d","#166534","#14532d"],"\u041f\u0440\u0456\u043e\u0440\u0438\u0442\u0435\u0442 \u0432\u0438\u0432\u0447\u0435\u043d\u043d\u044f (\u0434\u043e 80%)");
+  barChart(ctx,c.width,c.height,subs,vals,["#22c55e","#16a34a","#15803d","#166534","#14532d"],t('priority'));
 }
 
 function drawPredict(ctx,c,sess){
   const r=sess.slice(-10);
-  if(r.length<2){ctx.fillStyle="var(--muted)";ctx.font="14px system-ui";ctx.fillText("\u041f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043c\u0456\u043d\u0456\u043c\u0443\u043c 2 \u0441\u0435\u0441\u0456\u0457",60,100);return;}
+  if(r.length<2){ctx.fillStyle="var(--muted)";ctx.font="14px system-ui";ctx.fillText(t('needMin2'),60,100);return;}
   const a=r.map(s=>s.accuracy),n=a.length;
   const sx=a.reduce((s,_,i)=>s+i,0),sy=a.reduce((s,v)=>s+v,0),sxy=a.reduce((s,v,i)=>s+i*v,0),sxx=a.reduce((s,_,i)=>s+i*i,0);
   const slope=(n*sxy-sx*sy)/(n*sxx-sx*sx),intercept=(sy-slope*sx)/n;
   const pred=Math.min(100,Math.max(0,Math.round(intercept+slope*n)));
   const w=c.width,h=c.height,pad=60,cw=w-pad*2,ch=h-pad*2;
   ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue("--ink")||"#333";
-  ctx.font="bold 14px system-ui";ctx.fillText("\u041f\u0440\u043e\u0433\u043d\u043e\u0437 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0457 \u0441\u0435\u0441\u0456\u0457: "+pred+"%",pad,30);
+  ctx.font="bold 14px system-ui";ctx.fillText(t('forecast')+pred+"%",pad,30);
   a.forEach((v,i)=>{const x=pad+i*(cw/(n-1||1)),y=h-pad-(v/100)*ch;ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle="#3b82f6";ctx.fill();});
   ctx.strokeStyle="#3b82f6";ctx.lineWidth=2;ctx.beginPath();
   ctx.moveTo(pad,h-pad-(a[0]/100)*ch);ctx.lineTo(pad+(n-1)*(cw/(n-1||1)),h-pad-(a[n-1]/100)*ch);ctx.stroke();
@@ -234,7 +316,7 @@ function drawShared(){
   const acc={};subs.forEach(s=>acc[s]={c:0,t:0});
   all.forEach(s=>(s.log||[]).forEach(l=>{if(acc[l.subject]){acc[l.subject].t++;if(l.correct)acc[l.subject].c++;}}));
   const vals=subs.map(s=>acc[s].t?Math.round(acc[s].c/acc[s].t*100):0);
-  barChart(ctx,c.width,c.height,subs,vals,["#3b82f6","#8b5cf6","#06b6d4","#f59e0b","#ef4444"],"\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0430 \u0442\u043e\u0447\u043d\u0456\u0441\u0442\u044c (\u0432\u0441\u0456 \u0441\u0435\u0441\u0456\u0457)");
+  barChart(ctx,c.width,c.height,subs,vals,["#3b82f6","#8b5cf6","#06b6d4","#f59e0b","#ef4444"],t('totalAcc'));
 }
 
 function barChart(ctx,w,h,labels,values,colors,title){
