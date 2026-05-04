@@ -23,5 +23,7 @@ const RES={
 "AI/ML Engineering":[{l:"Made With ML",u:"https://madewithml.com/"},{l:"MLflow Docs",u:"https://mlflow.org/docs/latest/index.html"}],
 "Software Systems":[{l:"Martin Fowler",u:"https://martinfowler.com/"},{l:"Docker Docs",u:"https://docs.docker.com/"}],
 "Data Science":[{l:"Kaggle Learn",u:"https://www.kaggle.com/learn"},{l:"Towards Data Science",u:"https://towardsdatascience.com/"}],
-"Cybersecurity":[{l:"OWASP",u:"https://owasp.org/"},{l:"Cybrary",u:"https://www.cybrary.it/"}]
+"Cybersecurity":[{l:"OWASP",u:"https://owasp.org/"},{l:"Cybrary",u:"https://www.cybrary.it/"}],
+"Tech Literacy":[{l:"Google Digital Garage",u:"https://learndigital.withgoogle.com/digitalgarage"},{l:"Khan Academy Computing",u:"https://www.khanacademy.org/computing"}],
+"Digital Ethics":[{l:"MIT Tech Review Ethics",u:"https://www.technologyreview.com/topic/artificial-intelligence/"},{l:"Stanford Encyclopedia - Ethics of AI",u:"https://plato.stanford.edu/entries/ethics-ai/"}]
 };

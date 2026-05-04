@@ -6,6 +6,6 @@ const SPHERES={
     bachelor:["Management","Marketing","Finance","Economics","English"],
     master:["Strategic Leadership","Innovation Mgmt","Venture Finance","Behavioral Econ","English"]},
   T:{name:"Technology",icon:"\u{1F4BB}",color:"var(--technology)",
-    bachelor:["Programming","Algorithms","Databases","Networking","English"],
-    master:["AI/ML Engineering","Software Systems","Data Science","Cybersecurity","English"]}
+    bachelor:["Programming","Algorithms","Databases","Networking","Tech Literacy","English"],
+    master:["AI/ML Engineering","Software Systems","Data Science","Cybersecurity","Digital Ethics","English"]}
 };

@@ -1,4 +1,51 @@
-let state={sphere:null,level:"bachelor",subject:"all",mode:"practice",analyticsType:"descriptive",questions:[],currentIdx:0,answers:{},sessionStart:null,sessions:JSON.parse(localStorage.getItem("mt_sessions")||"[]"),sessionLog:[]};
+// Google Sheets config — change SHEET_ID to your sheet
+const SHEET_ID="1GcgjCJEPDAFtqOwONsfN_np5zdZFe3v2qa2lNzqDZd4";
+const SHEET_URL=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+// Apps Script web app URL for writing — deploy from Extensions > Apps Script
+let APPS_SCRIPT_URL="";
+
+let state={sphere:null,level:"bachelor",subject:"all",mode:"practice",analyticsType:"descriptive",questions:[],currentIdx:0,answers:{},sessionStart:null,sessions:JSON.parse(localStorage.getItem("mt_sessions")||"[]"),sessionLog:[],sheetsData:[]};
+
+// Load from Google Sheets on init
+async function loadSheetsData(){
+  try{
+    const r=await fetch(SHEET_URL);
+    const txt=await r.text();
+    // gviz returns jsonp-like: )]}',{table:...}
+    const json=JSON.parse(txt.replace(/^\)\]\}'\n/,""));
+    const rows=json.table.rows;
+    state.sheetsData=rows.map(r=>r.c.map(c=>c?v(c.v):""));
+    // Merge sheets data into sessions if not already present
+    if(state.sheetsData.length>0){
+      const existing=JSON.parse(localStorage.getItem("mt_sessions")||"[]");
+      const existingDates=new Set(existing.map(s=>s.date));
+      const fromSheet=state.sheetsData.filter(r=>r[0]&&!existingDates.has(r[0])).map(r=>({
+        date:r[0],sphere:r[1],level:r[2],subject:r[3],mode:r[4],
+        minutes:parseInt(r[5])||1,total:parseInt(r[6])||0,correct:parseInt(r[7])||0,
+        accuracy:parseInt(r[8])||0,log:[]
+      }));
+      if(fromSheet.length){
+        state.sessions=[...existing,...fromSheet];
+        localStorage.setItem("mt_sessions",JSON.stringify(state.sessions));
+      }
+    }
+  }catch(e){console.log("Sheets load skipped:",e.message);}
+}
+
+// Save session to Google Sheets via Apps Script
+async function saveToSheet(session){
+  if(!APPS_SCRIPT_URL)return;
+  try{
+    await fetch(APPS_SCRIPT_URL,{
+      method:"POST",mode:"no-cors",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({date:session.date,sphere:session.sphere,level:session.level,subject:session.subject,mode:session.mode,minutes:session.minutes,total:session.total,correct:session.correct,accuracy:session.accuracy})
+    });
+  }catch(e){console.log("Sheets save skipped:",e.message);}
+}
+
+// Init: load sheets data
+loadSheetsData();
 
 // Sphere cards
 document.querySelectorAll(".sphere-card").forEach(c=>{
@@ -92,6 +139,7 @@ function endSession(){
   const acc=tot?Math.round(cor/tot*100):0;
   state.sessions.push({sphere:state.sphere,level:state.level,subject:state.subject,mode:state.mode,date:new Date().toISOString(),minutes:el,total:tot,correct:cor,accuracy:acc,log:state.sessionLog});
   localStorage.setItem("mt_sessions",JSON.stringify(state.sessions));
+  saveToSheet(state.sessions[state.sessions.length-1]);
   document.getElementById("trainerMain").style.display="none";
   document.getElementById("sessionEnd").style.display="block";
   document.getElementById("finalScore").textContent=acc+"%";
