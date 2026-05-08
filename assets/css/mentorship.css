@@ -172,8 +172,9 @@ body{
 .horse-option.active{background:var(--ink);color:#fff;border-color:var(--ink)}
 [data-theme="dark"] .horse-option{background:var(--card-bg);color:var(--ink);border-color:rgba(180,200,190,.16)}
 [data-theme="dark"] .horse-option.active{background:var(--ink);color:var(--bg)}
-#raceButton{transition:all .15s}
+#raceButton{background:#002000;transition:all .15s}
 #raceButton:hover{background:#003a00;border-color:#3ecf94}
+[data-theme="dark"] #raceButton{background:#002000;color:#fff;border:1px solid #3ecf94}
 [data-theme="dark"] #raceButton:hover{background:#003a00;border-color:rgba(62,207,148,.7)}
 .horse-dot{display:inline-block;width:12px;height:12px;border-radius:50%}
 .horse-blue{background:#4f7cff}
