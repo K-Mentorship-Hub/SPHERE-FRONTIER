@@ -161,6 +161,11 @@ body{
 .mission-actions button{border:1px solid var(--line);background:var(--input-bg);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
 .mission-actions button:hover{background:var(--ink);color:#fff}
 
+/* Dark mode buttons */
+[data-theme="dark"] button,[data-theme="dark"] select{background:#0c1410;color:var(--ink);border-color:rgba(180,200,190,.14)}
+[data-theme="dark"] select option{background:#0c1410;color:var(--ink)}
+[data-theme="dark"] .pill-button{background:#0c1410}
+
 /* Race Simulator */
 .horse-option{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--input-bg);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
 .horse-option.active{background:var(--ink);color:#fff;border-color:var(--ink)}
