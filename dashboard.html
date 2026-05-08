@@ -29,7 +29,7 @@
           <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
             <label style="display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:14px">
               <span>Sphere</span>
-              <select id="sphereFilter" style="border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-size:15px;background:#fffdfa;color:var(--ink)">
+              <select id="sphereFilter" style="border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-size:15px;background:var(--input-bg);color:var(--ink)">
                 <option value="all">All</option>
                 <option value="S">Science</option>
                 <option value="E">Entrepreneurship</option>
@@ -39,7 +39,7 @@
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:14px">
               <span>Focus</span>
-              <select id="focusFilter" style="border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-size:15px;background:#fffdfa;color:var(--ink)">
+              <select id="focusFilter" style="border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-size:15px;background:var(--input-bg);color:var(--ink)">
                 <option value="all">All</option>
                 <option value="academy">Academy</option>
                 <option value="mvp">MVP Lab</option>
@@ -94,11 +94,11 @@
         <div>
           <h2>Solo Logic Race Simulator</h2>
           <p style="color:var(--muted);font-size:14px">Pick the horse you think will win based on the task card. Then run the race and see what happens. This is the first playful prototype.</p>
-          <div id="simulatorCard" style="background:#fffdfa;border:1px solid var(--line);border-radius:22px;padding:18px;margin:12px 0"></div>
+          <div id="simulatorCard" style="background:var(--card-bg);border:1px solid var(--line);border-radius:22px;padding:18px;margin:12px 0"></div>
           <div id="horsePicker" style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0"></div>
           <div style="display:flex;gap:8px;margin-top:8px">
             <button id="raceButton" style="background:var(--ink);color:#fff;border:none;border-radius:999px;padding:10px 18px;font-weight:600;cursor:pointer">Run Race</button>
-            <button id="nextCardButton" style="background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:10px 18px;font-weight:600;cursor:pointer">Next Card</button>
+            <button id="nextCardButton" style="background:var(--card-bg);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:10px 18px;font-weight:600;cursor:pointer">Next Card</button>
           </div>
           <p id="simulatorResult" style="color:var(--muted);font-size:13px;margin-top:8px"></p>
         </div>
