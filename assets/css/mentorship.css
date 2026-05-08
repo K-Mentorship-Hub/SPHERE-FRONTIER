@@ -165,7 +165,7 @@ body{
 [data-theme="dark"] button,[data-theme="dark"] select{background:#0c1410;color:var(--ink);border:1px solid var(--line)}
 [data-theme="dark"] select option{background:#0c1410;color:var(--ink)}
 [data-theme="dark"] .pill-button{background:#0c1410}
-[data-theme="dark"] .hero-links a:hover,[data-theme="dark"] .link-pill:hover,[data-theme="dark"] .card-actions button:hover,[data-theme="dark"] .card-actions a:hover,[data-theme="dark"] .mission-actions button:hover,[data-theme="dark"] .pill-button.active,[data-theme="dark"] .pill-button:hover{background:#002000;color:#fff;border-color:#002000}
+[data-theme="dark"] .hero-links a:hover,[data-theme="dark"] .link-pill:hover,[data-theme="dark"] .card-actions button:hover,[data-theme="dark"] .card-actions a:hover,[data-theme="dark"] .mission-actions button:hover,[data-theme="dark"] .pill-button.active,[data-theme="dark"] .pill-button:hover{background:#002000;color:#fff;border-color:rgba(62,207,148,.5)}
 
 /* Race Simulator */
 .horse-option{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--input-bg);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
