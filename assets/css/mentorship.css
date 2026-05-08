@@ -162,10 +162,9 @@ body{
 .mission-actions button:hover{background:var(--ink);color:#fff}
 
 /* Dark mode buttons */
-[data-theme="dark"] button,[data-theme="dark"] select{background:#0c1410;color:var(--ink);border:1px solid #3ecf94}
+[data-theme="dark"] button,[data-theme="dark"] select{background:#0c1410;color:var(--ink);border:1px solid var(--line)}
 [data-theme="dark"] select option{background:#0c1410;color:var(--ink)}
-[data-theme="dark"] .pill-button{background:#0c1410;border:1px solid #3ecf94}
-[data-theme="dark"] .hero-links a,[data-theme="dark"] .link-pill,[data-theme="dark"] .card-actions button,[data-theme="dark"] .card-actions a,[data-theme="dark"] .mission-actions button{border:1px solid #3ecf94}
+[data-theme="dark"] .pill-button{background:#0c1410}
 [data-theme="dark"] .hero-links a:hover,[data-theme="dark"] .link-pill:hover,[data-theme="dark"] .card-actions button:hover,[data-theme="dark"] .card-actions a:hover,[data-theme="dark"] .mission-actions button:hover,[data-theme="dark"] .pill-button.active,[data-theme="dark"] .pill-button:hover{background:#002000;color:#fff;border:1px solid #3ecf94}
 
 /* Race Simulator */
