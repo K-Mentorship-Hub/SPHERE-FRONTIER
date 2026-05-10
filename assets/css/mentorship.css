@@ -110,9 +110,9 @@ body{
 /* Animated gradient border */
 @keyframes borderSpin{to{--angle:360deg}}
 @property --angle{syntax:"<angle>";initial-value:0deg;inherits:false}
-.glow-wrap{position:relative;border-radius:24px;padding:2px;background:conic-gradient(from var(--angle),var(--science),var(--entrepreneurship),var(--technology),var(--science));animation:borderSpin 4s linear infinite}
+.glow-wrap{position:relative;border-radius:23px;padding:1px;background:conic-gradient(from var(--angle),rgba(30,122,94,.15),rgba(30,122,94,.5),rgba(30,122,94,.15));animation:borderSpin 4s linear infinite}
 .glow-wrap .direction-card{border:none;border-radius:22px;background:var(--card-bg)}
-[data-theme="dark"] .glow-wrap{background:conic-gradient(from var(--angle),var(--science),var(--entrepreneurship),var(--technology),var(--science))}
+[data-theme="dark"] .glow-wrap{background:conic-gradient(from var(--angle),rgba(62,207,148,.05),rgba(62,207,148,.35),rgba(62,207,148,.05))}
 .direction-topline{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .chip{border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700}
 .chip-s{background:rgba(30,122,94,.12);color:var(--science)}
