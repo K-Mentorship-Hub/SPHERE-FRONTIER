@@ -1,96 +1,103 @@
-// Quest Viewer — loads markdown from GitHub and renders it
-const REPO = 'K-Mentorship-Hub';
-const BRANCH = 'main';
-const BASE = `https://raw.githubusercontent.com/${REPO}`;
+const quests = [
+  {id:"S1",sphere:"S",dir:"S1 — 🩺  Biomedical & Oncology",label:"🩺 S1 Biomedical & Oncology"},
+  {id:"S2",sphere:"S",dir:"S2 — 🌿 Plant Science & Phytochemistry",label:"🌿 S2 Plant Science & Phytochemistry"},
+  {id:"S3",sphere:"S",dir:"S3 — 🌾 Agricultural Biology & Biofertilizers",label:"🌾 S3 AgBio & Biofertilizers"},
+  {id:"S4",sphere:"S",dir:"S4 — ⚗️ Biochemistry & Metabolomics",label:"⚗️ S4 Biochemistry & Metabolomics"},
+  {id:"S5",sphere:"S",dir:"S5 — 🧠 Neuroscience & Aging",label:"🧠 S5 Neuroscience & Aging"},
+  {id:"S6",sphere:"S",dir:"S6 — 🌍 Ecology & Environmental Science",label:"🌍 S6 Ecology & Environmental"},
+  {id:"S7",sphere:"S",dir:"S7 — 📚 K Life OS",label:"📚 S7 K Life OS"},
+  {id:"E1",sphere:"E",dir:"E1 - Venture, Product & Opportunity Systems",label:"💼 E1 Venture & Product"},
+  {id:"E2",sphere:"E",dir:"E2 - Market, Audience & Behavioral Intelligence",label:"📊 E2 Market & Behavioral"},
+  {id:"E3",sphere:"E",dir:"E3 - Ecosystem, Partnerships & External Signals",label:"🤝 E3 Ecosystem & Partners"},
+  {id:"E4",sphere:"E",dir:"E4 - Applied Investigations & Public Cases",label:"📋 E4 Applied Investigations"},
+  {id:"T1",sphere:"T",dir:"T1 - Research Tools, ML & Analytical Engines",label:"🤖 T1 Research Tools & ML"},
+  {id:"T2",sphere:"T",dir:"T2 - Reproducibility, Scoring & Method Systems",label:"💻 T2 Reproducibility & Scoring"},
+  {id:"T3",sphere:"T",dir:"T3 - Dashboards, Interfaces & Open Infrastructure",label:"🖥️ T3 Dashboards & Infra"}
+];
 
-const QUESTS = {
-  S: [
-    { repo: 'SPHERE-I-SCIENCE', path: 'quests/%F0%9F%A9%BA-S1-HealthTech.md', label: '🩺 S1 — HealthTech' },
-    { repo: 'SPHERE-I-SCIENCE', path: 'quests/%F0%9F%8C%BF-S2-Green-Sustainability.md', label: '🌿 S2 — Green / Sustainability' },
-    { repo: 'SPHERE-I-SCIENCE', path: 'quests/%F0%9F%8C%BE-S3-AgTech-Food.md', label: '🌾 S3 — AgTech & Food' },
-    { repo: 'SPHERE-I-SCIENCE', path: 'quests/%F0%9F%93%9A-S4-Human-Systems.md', label: '📚 S4 — Human Systems' },
-  ],
-  E: [
-    { repo: 'SPHERE-II-ENTREPRENEURSHIP', path: 'quests/%F0%9F%92%BC-E1-Venture-Product.md', label: '💼 E1 — Venture / Product' },
-    { repo: 'SPHERE-II-ENTREPRENEURSHIP', path: 'quests/%F0%9F%93%8A-E2-Validation-GTM.md', label: '📊 E2 — Validation / GTM' },
-    { repo: 'SPHERE-II-ENTREPRENEURSHIP', path: 'quests/%F0%9F%A4%9D-E3-Ecosystem-Partners.md', label: '🤝 E3 — Ecosystem & Partners' },
-    { repo: 'SPHERE-II-ENTREPRENEURSHIP', path: 'quests/%F0%9F%93%8B-E4-Founder-Ops.md', label: '📋 E4 — Founder Ops' },
-  ],
-  T: [
-    { repo: 'SPHERE-III-TECHNOLOGY', path: 'quests/%F0%9F%A4%96-T1-AI-Data-Analytics.md', label: '🤖 T1 — AI / Data' },
-    { repo: 'SPHERE-III-TECHNOLOGY', path: 'quests/%F0%9F%92%BB-T2-Software-Engineering.md', label: '💻 T2 — Software Engineering' },
-    { repo: 'SPHERE-III-TECHNOLOGY', path: 'quests/%F0%9F%96%A5%EF%B8%8F-T3-Dashboards-Interfaces.md', label: '🖥️ T3 — Dashboards' },
-    { repo: 'SPHERE-III-TECHNOLOGY', path: 'quests/%E2%9A%99%EF%B8%8F-T4-Infra-Reproducibility.md', label: '⚙️ T4 — Infra & Repro' },
-  ]
+// Research quests from RESEARCH-QUESTS folder
+const researchQuests = [
+  {id:"R1",sphere:"R",dir:"research-quest-01-ai-data-pipeline",label:"🔬 R1 AI & Data Pipeline Investigation"},
+  {id:"R2",sphere:"R",dir:"research-quest-02-reproducibility-check",label:"🔬 R2 Reproducibility Check"},
+  {id:"R3",sphere:"R",dir:"research-quest-03-method-validation",label:"🔬 R3 Method Validation"}
+];
+
+const REPO_MAP = {
+  S:"K-RnD-Lab/SPHERE-I-SCIENCE",
+  E:"K-RnD-Lab/SPHERE-II-ENTREPRENEURSHIP",
+  T:"K-RnD-Lab/SPHERE-III-TECHNOLOGY",
+  R:"K-RnD-Lab/SPHERE-FRONTIER"
 };
 
-const content = document.getElementById('questContent');
-const stats = document.getElementById('stats');
-let activeLink = null;
+const nav = document.getElementById("questNav");
+const content = document.getElementById("mdContent");
 
-// Build stats
-const statCards = [
-  { label: 'Total Quests', value: 12, className: '' },
-  { label: 'Science', value: QUESTS.S.length, className: 'science' },
-  { label: 'Entrepreneurship', value: QUESTS.E.length, className: 'entrepreneurship' },
-  { label: 'Technology', value: QUESTS.T.length, className: 'technology' },
-];
-stats.innerHTML = '';
-for (const c of statCards) {
-  const el = document.createElement('article');
-  el.className = `stat-card ${c.className}`;
-  el.innerHTML = `<div class="stat-value">${c.value}</div><div class="stat-label">${c.label}</div>`;
-  stats.appendChild(el);
+function buildNav(){
+  const groups = {S:[],E:[],T:[],R:[]};
+  quests.forEach(q => groups[q.sphere].push(q));
+  researchQuests.forEach(q => groups[q.sphere].push(q));
+  
+  const labels = {S:"Science",E:"Entrepreneurship",T:"Technology",R:"Research Quests"};
+  let html = `<a href="./index.html" class="back-link">← K R&D Lab</a><h2>Quests</h2>`;
+  
+  Object.entries(groups).forEach(([sphere,items]) => {
+    if(items.length === 0) return;
+    html += `<div class="nav-${sphere}"><h3>${labels[sphere]}</h3>`;
+    items.forEach(q => {
+      html += `<a href="#${q.id}" data-dir="${encodeURIComponent(q.dir)}" data-sphere="${q.sphere}">${q.label}</a>`;
+    });
+    html += `</div>`;
+  });
+  
+  nav.innerHTML = html;
+  
+  nav.querySelectorAll("a[data-dir]").forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      nav.querySelectorAll("a").forEach(x => x.classList.remove("active"));
+      a.classList.add("active");
+      loadQuest(decodeURIComponent(a.dataset.dir), a.dataset.sphere);
+    });
+  });
 }
 
-// Build nav
-Object.entries(QUESTS).forEach(([sphere, quests]) => {
-  const container = document.getElementById(
-    sphere === 'S' ? 'navScience' :
-    sphere === 'E' ? 'navEntrepreneurship' : 'navTechnology'
-  );
-  quests.forEach(q => {
-    const a = document.createElement('a');
-    a.textContent = q.label;
-    a.href = '#';
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      loadQuest(q, sphere, a);
-    });
-    container.appendChild(a);
-  });
-});
-
-async function loadQuest(q, sphere, link) {
-  if (activeLink) activeLink.classList.remove('active');
-  link.classList.add('active');
-  activeLink = link;
-
-  content.className = `md-content sphere-${sphere}`;
-  content.innerHTML = '<p style="color:var(--muted);font-style:italic">Loading…</p>';
-
+async function loadQuest(dir, sphere){
+  let url;
+  if(sphere === "R"){
+    // Research quests are in the same repo (SPHERE-FRONTIER)
+    url = `https://raw.githubusercontent.com/K-RnD-Lab/SPHERE-FRONTIER/TEZv-research/RESEARCH-QUESTS/${dir}.md`;
+  } else {
+    const repo = REPO_MAP[sphere];
+    url = `https://raw.githubusercontent.com/${repo}/main/${dir}/README.md`;
+  }
+  
+  content.innerHTML = "<p style='color:var(--muted)'>Loading quest...</p>";
+  
   try {
-    const url = `${BASE}/${q.repo}/${BRANCH}/${q.path}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error(res.statusText);
+    if(!res.ok) throw new Error(res.status);
     const md = await res.text();
-    content.innerHTML = marked.parse(md, { gfm: true, breaks: true });
-    content.scrollTop = 0;
-    window.scrollTo(0, 0);
-  } catch (err) {
-    content.innerHTML = `<p style="color:var(--muted)">Failed to load: ${err.message}</p>`;
+    content.innerHTML = marked.parse(md);
+  } catch(err) {
+    let ghUrl;
+    if(sphere === "R"){
+      ghUrl = `https://github.com/K-RnD-Lab/SPHERE-FRONTIER/tree/TEZv-research/RESEARCH-QUESTS`;
+    } else {
+      const repo = REPO_MAP[sphere];
+      ghUrl = `https://github.com/${repo}/tree/main/${dir}`;
+    }
+    content.innerHTML = `<p style='color:var(--muted)'>Could not load quest. <a href="${ghUrl}" target="_blank" rel="noreferrer">Open on GitHub →</a></p>`;
   }
 }
 
-// Auto-load from hash
+buildNav();
+
 const hash = location.hash.slice(1);
-if (hash) {
-  const [s, i] = hash.split('-');
-  const idx = parseInt(i) - 1;
-  if (QUESTS[s] && QUESTS[s][idx]) {
-    const q = QUESTS[s][idx];
-    const container = document.querySelector(`.nav-${s}`);
-    const links = container.querySelectorAll('a');
-    if (links[idx]) loadQuest(q, s, links[idx]);
+if(hash){
+  const allQuests = [...quests, ...researchQuests];
+  const q = allQuests.find(q => q.id === hash);
+  if(q){
+    const a = nav.querySelector(`a[href="#${q.id}"]`);
+    if(a){ a.classList.add("active"); loadQuest(q.dir, q.sphere); }
   }
 }
