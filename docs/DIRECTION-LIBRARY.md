@@ -58,6 +58,7 @@ Good public outputs:
 ### 0. Start Here: 7 Days Challenge
 
 - `Sphere`: Bridge
+- `Play Intro`: [`quests/play/d00-7-days.md`](../quests/play/d00-7-days.md)
 - `Best for`: people who are curious but not yet decided
 - `Start with`: three tiny experiments from three different directions
 - `Build artifact`: a one-page reflection board called `What fits me best now?`
@@ -65,6 +66,7 @@ Good public outputs:
 ### 1. Tech + AI & Data Careers
 
 - `Sphere`: T
+- `Play Intro`: [`quests/play/d01-ai-data.md`](../quests/play/d01-ai-data.md)
 - `Good first outputs`: tiny dataset, dashboard, prompt workflow, metrics explainer
 - `Starter resources`: Kaggle Learn, SQLBolt, Tableau Training
 - `Starter MVP ideas`: small analytics tracker, creator dashboard, productivity helper
@@ -72,6 +74,7 @@ Good public outputs:
 ### 2. Tech + Code & Engineering
 
 - `Sphere`: T
+- `Play Intro`: [`quests/play/d02-code.md`](../quests/play/d02-code.md)
 - `Good first outputs`: small interface, tiny API, QA checklist, docs PR
 - `Starter resources`: MDN, React Learn, Python Tutorial
 - `Starter MVP ideas`: study buddy app, portfolio builder, community utility
@@ -79,6 +82,7 @@ Good public outputs:
 ### 3. Tech + Cybersecurity & Infrastructure
 
 - `Sphere`: T
+- `Play Intro`: [`quests/play/d03-cyber.md`](../quests/play/d03-cyber.md)
 - `Good first outputs`: cyber hygiene checklist, CI/CD explainer, deployment map
 - `Starter resources`: GitHub Actions docs, Docker Get Started, AWS onboarding docs
 - `Starter MVP ideas`: project deployment template, beginner security dashboard
@@ -86,6 +90,7 @@ Good public outputs:
 ### 4. Tech + Digital Product & Growth
 
 - `Sphere`: E
+- `Play Intro`: [`quests/play/d04-product.md`](../quests/play/d04-product.md)
 - `Good first outputs`: opportunity map, validation sprint, messaging board, interview guide
 - `Starter resources`: Y Combinator Library, Google SEO Starter Guide, Google Analytics Help
 - `Starter MVP ideas`: founder validation board, audience tracker, message testing system
@@ -93,6 +98,7 @@ Good public outputs:
 ### 5. Tech + Design & UX
 
 - `Sphere`: Bridge
+- `Play Intro`: [`quests/play/d05-design.md`](../quests/play/d05-design.md)
 - `Good first outputs`: wireframe set, user flow map, onboarding redesign, design checklist
 - `Starter resources`: Figma Resource Library, Material Design, The A11Y Project
 - `Starter MVP ideas`: landing page kit, UX refresh for an existing flow, component starter pack
@@ -100,6 +106,7 @@ Good public outputs:
 ### 6. Tech + Medicine / Biology
 
 - `Sphere`: S
+- `Play Intro`: [`quests/play/d06-med-bio.md`](../quests/play/d06-med-bio.md)
 - `Good first outputs`: glossary, problem map, evidence ladder, beginner research dashboard
 - `Starter resources`: NCBI Basics, PubMed, beginner bioinformatics materials
 - `Starter MVP ideas`: symptom-navigation explainer, beginner bioinformatics resource board
@@ -107,6 +114,7 @@ Good public outputs:
 ### 7. Tech + Green / Sustainability
 
 - `Sphere`: S
+- `Play Intro`: [`quests/play/d07-green.md`](../quests/play/d07-green.md)
 - `Good first outputs`: climate problem map, local intervention list, impact tracker concept
 - `Starter resources`: IPCC, UNEP, sustainability docs and datasets
 - `Starter MVP ideas`: habit tracker, local sustainability map, carbon-awareness board
@@ -114,6 +122,7 @@ Good public outputs:
 ### 8. Tech + AgTech & Food Security
 
 - `Sphere`: S
+- `Play Intro`: [`quests/play/d08-agtech.md`](../quests/play/d08-agtech.md)
 - `Good first outputs`: food-system map, agri checklist, urban farming notes, data brief
 - `Starter resources`: FAO, CGIAR, food-security explainers
 - `Starter MVP ideas`: crop information dashboard, urban farming tracker, food-security explainer
@@ -121,6 +130,7 @@ Good public outputs:
 ### 9. Tech + MilTech & Dual-Use
 
 - `Sphere`: Bridge
+- `Play Intro`: [`quests/play/d09-miltech.md`](../quests/play/d09-miltech.md)
 - `Good first outputs`: logistics checklist, safe dual-use explainer, systems map
 - `Starter resources`: FAA UAS onboarding, NASA aeronautics, CISA guidance
 - `Starter MVP ideas`: field-readiness board, dual-use awareness map, operations checklist tool
@@ -128,6 +138,7 @@ Good public outputs:
 ### 10. Tech + HardTech & Industry 4.0
 
 - `Sphere`: Bridge
+- `Play Intro`: [`quests/play/d10-hardtech.md`](../quests/play/d10-hardtech.md)
 - `Good first outputs`: prototype plan, hardware-vs-software comparison, systems map
 - `Starter resources`: Arduino docs, ROS docs, 3D printing help centers
 - `Starter MVP ideas`: hardware iteration tracker, prototyping workflow board
@@ -135,6 +146,7 @@ Good public outputs:
 ### 11. Tech + ChemTech & Materials
 
 - `Sphere`: S
+- `Play Intro`: [`quests/play/d11-chemtech.md`](../quests/play/d11-chemtech.md)
 - `Good first outputs`: materials overview, resource ladder, use-case note, energy-storage summary
 - `Starter resources`: Materials Project, MIT OCW, energy-storage explainers
 - `Starter MVP ideas`: materials navigator, non-specialist energy-storage board
@@ -142,6 +154,7 @@ Good public outputs:
 ### 12. NonTech + General Development
 
 - `Sphere`: Bridge
+- `Play Intro`: [`quests/play/d12-learning.md`](../quests/play/d12-learning.md)
 - `Good first outputs`: study reset plan, anti-chaos checklist, learning system board
 - `Starter resources`: Khan Academy, Learning How to Learn, Deep Work
 - `Starter MVP ideas`: personal learning dashboard, focus rhythm planner
@@ -149,6 +162,7 @@ Good public outputs:
 ### 13. NonTech + General Language Learning
 
 - `Sphere`: Bridge
+- `Play Intro`: [`quests/play/d13-language.md`](../quests/play/d13-language.md)
 - `Good first outputs`: practice rhythm, vocabulary tracker, micro-challenge plan
 - `Starter resources`: BBC Learning English, Cambridge Dictionary, Language Reactor
 - `Starter MVP ideas`: language accountability board, context-based vocabulary system
@@ -156,6 +170,7 @@ Good public outputs:
 ### 14. NonTech + People-Intensive (Human Factor)
 
 - `Sphere`: Bridge
+- `Play Intro`: [`quests/play/d14-people.md`](../quests/play/d14-people.md)
 - `Good first outputs`: team protocol, workshop outline, burnout checklist, peer-support framework
 - `Starter resources`: Atlassian Team Playbook, Google re:Work, Center for Creative Leadership
 - `Starter MVP ideas`: team-health dashboard, peer-support toolkit, micro-coaching kit
@@ -217,6 +232,7 @@ Ask one question:
 
 ## What To Do Next
 
+- If you want a 30-second entry map, open [`./PLAY-LAYER.md`](./PLAY-LAYER.md), use **Play Intro** on [`../dashboard.html`](../dashboard.html), or browse cards in [`../quest.html`](../quest.html)
 - If you want a practical visual map, open [`../dashboard.html`](../dashboard.html)
 - If you want deeper repo logic, open [`./REPO-SYSTEM.md`](./REPO-SYSTEM.md)
 - If you want contribution rules, open [`./CONTRIBUTION-BRIDGE.md`](./CONTRIBUTION-BRIDGE.md)

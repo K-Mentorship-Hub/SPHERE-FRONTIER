@@ -2,6 +2,25 @@
 const REPO = 'K-Mentorship-Hub';
 const BRANCH = 'main';
 const BASE = `https://raw.githubusercontent.com/${REPO}`;
+const FRONTIER_BASE = `${BASE}/SPHERE-FRONTIER/${BRANCH}`;
+
+const PLAY_INTROS = [
+  { path: 'quests/play/d00-7-days.md', label: '🧭 Play · 7 Days' },
+  { path: 'quests/play/d01-ai-data.md', label: '🚰 Play · AI & Data' },
+  { path: 'quests/play/d02-code.md', label: '🧱 Play · Code' },
+  { path: 'quests/play/d03-cyber.md', label: '🔐 Play · Cyber' },
+  { path: 'quests/play/d04-product.md', label: '🗺️ Play · Product' },
+  { path: 'quests/play/d05-design.md', label: '🪧 Play · Design' },
+  { path: 'quests/play/d06-med-bio.md', label: '🔬 Play · Med / Bio' },
+  { path: 'quests/play/d07-green.md', label: '🌱 Play · Green' },
+  { path: 'quests/play/d08-agtech.md', label: '🌾 Play · AgTech' },
+  { path: 'quests/play/d09-miltech.md', label: '🛂 Play · MilTech' },
+  { path: 'quests/play/d10-hardtech.md', label: '🔧 Play · HardTech' },
+  { path: 'quests/play/d11-chemtech.md', label: '🧪 Play · ChemTech' },
+  { path: 'quests/play/d12-learning.md', label: '📅 Play · Learning' },
+  { path: 'quests/play/d13-language.md', label: '💬 Play · Language' },
+  { path: 'quests/play/d14-people.md', label: '🤝 Play · People' }
+];
 
 const QUESTS = {
   S: [
@@ -31,6 +50,7 @@ let activeLink = null;
 // Build stats
 const statCards = [
   { label: 'Total Quests', value: 12, className: '' },
+  { label: 'Play Intros', value: PLAY_INTROS.length, className: '' },
   { label: 'Science', value: QUESTS.S.length, className: 'science' },
   { label: 'Entrepreneurship', value: QUESTS.E.length, className: 'entrepreneurship' },
   { label: 'Technology', value: QUESTS.T.length, className: 'technology' },
@@ -42,6 +62,19 @@ for (const c of statCards) {
   el.innerHTML = `<div class="stat-value">${c.value}</div><div class="stat-label">${c.label}</div>`;
   stats.appendChild(el);
 }
+
+// Build Play Intro nav
+const navPlay = document.getElementById('navPlay');
+PLAY_INTROS.forEach((item) => {
+  const a = document.createElement('a');
+  a.textContent = item.label;
+  a.href = '#';
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    loadPlayIntro(item, a);
+  });
+  navPlay.appendChild(a);
+});
 
 // Build nav
 Object.entries(QUESTS).forEach(([sphere, quests]) => {
@@ -60,6 +93,27 @@ Object.entries(QUESTS).forEach(([sphere, quests]) => {
     container.appendChild(a);
   });
 });
+
+async function loadPlayIntro(item, link) {
+  if (activeLink) activeLink.classList.remove('active');
+  link.classList.add('active');
+  activeLink = link;
+
+  content.className = 'md-content sphere-bridge';
+  content.innerHTML = '<p style="color:var(--muted);font-style:italic">Loading…</p>';
+
+  try {
+    const url = `${FRONTIER_BASE}/${item.path}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(res.statusText);
+    const md = await res.text();
+    content.innerHTML = marked.parse(md, { gfm: true, breaks: true });
+    content.scrollTop = 0;
+    window.scrollTo(0, 0);
+  } catch (err) {
+    content.innerHTML = `<p style="color:var(--muted)">Failed to load: ${err.message}</p>`;
+  }
+}
 
 async function loadQuest(q, sphere, link) {
   if (activeLink) activeLink.classList.remove('active');

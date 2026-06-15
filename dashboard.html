@@ -13,10 +13,11 @@
     <section class="hero">
       <p class="eyebrow">SPHERE FRONTIER / practice board / simulator</p>
       <h1>Interactive Dashboard</h1>
-      <p class="lede">Choose a sphere. Pick a direction. Start a practical. Or play a solo logic race.</p>
+      <p class="lede">Choose a sphere. Pick a direction. Play Intro first, then start a practical or solo logic race.</p>
       <div class="hero-links">
         <a href="./index.html">Front Door</a>
         <a href="./quest.html">Quest Viewer</a>
+        <a href="./docs.html#2">Play Layer</a>
         <a href="https://github.com/K-Mentorship-Hub" target="_blank" rel="noreferrer">GitHub Org</a>
       </div>
     </section>
@@ -50,11 +51,12 @@
         <div>
           <h2>How To Use</h2>
           <ul style="color:var(--muted);font-size:14px;line-height:1.6">
-            <li>Browse directions and pick one entry point instead of ten tabs.</li>
-            <li>Open one resource, do one starter task, and turn it into one visible artifact.</li>
+            <li>Start with <strong>Play Intro</strong> — one metaphor, 30 seconds.</li>
+            <li>Then <strong>Launch Mission</strong> for mode, deliverable, and checklist.</li>
             <li>Fork when exploring. Open a PR when the output improves the shared surface.</li>
           </ul>
-          <a href="./docs.html" class="link-pill" style="margin-top:8px;display:inline-block">Open Direction Library</a>
+          <a href="./docs.html" class="link-pill" style="margin-top:8px;display:inline-block">Open Docs</a>
+          <a href="./quest.html" class="link-pill" style="margin-top:8px;display:inline-block;margin-left:8px">Quest Viewer</a>
         </div>
       </div>
     </section>
@@ -69,17 +71,18 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
         <div>
           <h2>Interactive Mission Lab</h2>
-          <p style="color:var(--muted);font-size:14px">Static tasks are the archive. This block is the practice engine: pick one direction, lock one mode, choose one deliverable, and move through a guided sprint.</p>
+          <p style="color:var(--muted);font-size:14px"><strong>Play Intro</strong> is the 30-second entry map. <strong>Launch Mission</strong> is the practice engine: mode, deliverable, checklist, and twist.</p>
           <div id="missionPlaceholder" style="border:1px dashed var(--line);border-radius:20px;padding:28px;text-align:center;color:var(--muted);background:rgba(255,255,255,.5)">
-            Select <strong>Launch Mission</strong> on any direction card to open a guided practice sprint.
+            Select <strong>Play Intro</strong> for a 30-second map, or <strong>Launch Mission</strong> for the full sprint.
           </div>
+          <div id="playLab" class="play-lab" hidden></div>
           <div id="missionLab" hidden></div>
         </div>
         <div>
           <h2>What Changes Here</h2>
           <ul style="color:var(--muted);font-size:14px;line-height:1.6">
+            <li>Play Intro gives one clear picture before any heavy task list.</li>
             <li>One direction becomes one active mission instead of a passive reading list.</li>
-            <li>You choose a mode: Academy, MVP Lab, or Networking.</li>
             <li>Your checkpoints and notes are saved locally in the browser.</li>
             <li>A random twist keeps the task from feeling flat.</li>
           </ul>

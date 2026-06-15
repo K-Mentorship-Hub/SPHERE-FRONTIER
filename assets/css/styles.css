@@ -480,6 +480,109 @@ button{
 .runner.horse-sun{background:linear-gradient(90deg,#ffd447,#fff0a2)}
 .runner.horse-indigo{background:linear-gradient(90deg,#6170ff,#a9b2ff)}
 .runner.horse-scarlet{background:linear-gradient(90deg,#ff5a55,#ffaaa7)}
+.play-lab{
+  margin-top:18px;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:rgba(255,255,255,.04);
+}
+.play-header{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+.play-hook{
+  color:#fff;
+  font-size:1.02rem;
+  line-height:1.7;
+}
+.play-flow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  margin:16px 0;
+}
+.play-node{
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  font-weight:600;
+}
+.play-node.accent{
+  border-color:rgba(79,124,255,.45);
+  background:rgba(79,124,255,.16);
+}
+.play-arrow{
+  color:rgba(247,245,239,.5);
+  font-weight:700;
+}
+.play-powers{
+  color:var(--muted);
+  line-height:1.7;
+}
+.play-gate{
+  margin-top:18px;
+  padding:16px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.12);
+}
+.play-gate-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+.thumb-button{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  border-radius:999px;
+  padding:10px 16px;
+  cursor:pointer;
+  font:inherit;
+}
+.thumb-button.subtle{
+  opacity:.82;
+}
+.play-next{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+.play-next a,
+.mission-launch-inline{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  padding:12px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.04);
+}
+.mission-launch-inline{
+  cursor:pointer;
+  font:inherit;
+}
+.direction-card.play-active{
+  border-color:rgba(217,109,255,.55);
+  box-shadow:0 0 0 1px rgba(217,109,255,.2);
+}
+.card-actions .play-launch{
+  border:1px solid rgba(217,109,255,.45);
+  background:rgba(217,109,255,.12);
+  color:#fff;
+  border-radius:999px;
+  padding:10px 14px;
+  cursor:pointer;
+  font:inherit;
+}
 blockquote{
   margin:0;
   font-size:1.06rem;

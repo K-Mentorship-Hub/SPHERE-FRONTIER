@@ -6,6 +6,7 @@ const BASE = `https://raw.githubusercontent.com/${REPO}/SPHERE-FRONTIER/${BRANCH
 const DOCS = [
   { path: 'docs/SET-GUIDEBOOK.md', label: '📖 SET Guidebook' },
   { path: 'docs/REPO-SYSTEM.md', label: '🗂️ Repo System' },
+  { path: 'docs/PLAY-LAYER.md', label: '🎮 Play Layer' },
   { path: 'docs/DIRECTION-LIBRARY.md', label: '🧭 Direction Library' },
   { path: 'docs/DISCORD-BLUEPRINT.md', label: '💬 Discord Blueprint' },
   { path: 'docs/CONTRIBUTION-BRIDGE.md', label: '🌉 Contribution Bridge' },

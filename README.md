@@ -63,11 +63,13 @@ Hybrid work is welcome:
 
 | Repository | Role |
 | --- | --- |
-| [`SPHERE-FRONTIER`](https://github.com/K-Mentorship-Hub/SPHERE-FRONTIER) | Public front door, guidebook, dashboard, and routing |
+| [`SPHERE-FRONTIER`](https://github.com/K-Mentorship-Hub/SPHERE-FRONTIER) | Public front door, guidebook, dashboard, Play Layer, and routing |
+| [`SPHERE-DIRECTION-TEST-DRIVE`](https://github.com/K-Mentorship-Hub/SPHERE-DIRECTION-TEST-DRIVE) | Test-drive a career direction — 7-day challenge + 14 mini-quests |
 | [`SPHERE-I-SCIENCE`](https://github.com/K-Mentorship-Hub/SPHERE-I-SCIENCE) | Science-first questions, measurable domains, research-facing framing |
 | [`SPHERE-II-ENTREPRENEURSHIP`](https://github.com/K-Mentorship-Hub/SPHERE-II-ENTREPRENEURSHIP) | Venture logic, validation, founder systems, and public cases |
 | [`SPHERE-III-TECHNOLOGY`](https://github.com/K-Mentorship-Hub/SPHERE-III-TECHNOLOGY) | Tools, code, AI, dashboards, automation, and reusable systems |
-| [`SPHERE-DIRECTION-TEST-DRIVE`](https://github.com/K-Mentorship-Hub/SPHERE-DIRECTION-TEST-DRIVE) | Test-drive a career direction before committing — 7-day challenge + 14 mini-quests |
+
+> `K-Mentorship-Hub/K-Mentorship-Hub` redirects to `SPHERE-FRONTIER` on GitHub. Use **SPHERE-FRONTIER** in new links.
 
 Supporting docs in this repo:
 
@@ -76,6 +78,8 @@ Supporting docs in this repo:
 - [`docs/DISCORD-BLUEPRINT.md`](./docs/DISCORD-BLUEPRINT.md)
 - [`docs/CONTRIBUTION-BRIDGE.md`](./docs/CONTRIBUTION-BRIDGE.md)
 - [`docs/DIRECTION-LIBRARY.md`](./docs/DIRECTION-LIBRARY.md)
+- [`docs/PLAY-LAYER.md`](./docs/PLAY-LAYER.md)
+- [`quests/play/`](./quests/play/) — 15 short Play Intro cards (UA)
 - [`dashboard.html`](./dashboard.html)
 
 ---
@@ -123,7 +127,9 @@ It should let people:
 
 The main public surfaces for that are:
 
-- [`dashboard.html`](./dashboard.html)
+- [`dashboard.html`](./dashboard.html) — **Play Intro** (step 0) + Mission Lab
+- [`docs/PLAY-LAYER.md`](./docs/PLAY-LAYER.md)
+- [`quests/play/`](./quests/play/)
 - [`docs/DIRECTION-LIBRARY.md`](./docs/DIRECTION-LIBRARY.md)
 - [`SPHERE-DIRECTION-TEST-DRIVE`](https://github.com/K-Mentorship-Hub/SPHERE-DIRECTION-TEST-DRIVE) — test-drive a direction with hands-on mini-quests before committing
 

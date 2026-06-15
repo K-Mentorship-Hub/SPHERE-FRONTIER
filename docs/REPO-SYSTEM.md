@@ -4,7 +4,8 @@
 
 Use a layered system:
 
-- `K-Mentorship-Hub` -> public home and docs
+- `SPHERE-FRONTIER` (hub front door; legacy URL `K-Mentorship-Hub/K-Mentorship-Hub` redirects here) -> public home and docs
+- `SPHERE-DIRECTION-TEST-DRIVE` -> 7-day direction test drive
 - `SPHERE-I-SCIENCE` -> science-first work
 - `SPHERE-II-ENTREPRENEURSHIP` -> venture and market-first work
 - `SPHERE-III-TECHNOLOGY` -> tooling and system-first work

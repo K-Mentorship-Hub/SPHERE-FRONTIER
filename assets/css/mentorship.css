@@ -161,6 +161,25 @@ body{
 .mission-actions button{border:1px solid var(--line);background:var(--input-bg);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
 .mission-actions button:hover{background:var(--ink);color:#fff}
 
+/* Play Layer */
+.play-lab{margin-top:14px;padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card-bg)}
+.play-header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px}
+.play-hook{color:var(--ink);font-size:15px;line-height:1.65;margin:0}
+.play-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0}
+.play-node{padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--input-bg);font-weight:600;font-size:13px}
+.play-node.accent{border-color:rgba(30,122,94,.35);background:rgba(30,122,94,.08)}
+.play-arrow{color:var(--muted);font-weight:700}
+.play-powers{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
+.play-gate{margin-top:14px;padding:14px;border-radius:14px;border:1px solid var(--line);background:rgba(19,33,28,.03)}
+.play-gate-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.thumb-button{border:1px solid var(--line);background:var(--input-bg);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer}
+.thumb-button.subtle{opacity:.85}
+.play-next{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.play-next a,.mission-launch-inline{text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--input-bg);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600}
+.mission-launch-inline{cursor:pointer;font:inherit}
+.direction-card.play-active{border-color:rgba(139,92,246,.45);box-shadow:0 0 0 2px rgba(139,92,246,.12)}
+.card-actions .play-launch{border-color:rgba(139,92,246,.35);background:rgba(139,92,246,.08)}
+
 /* Race Simulator */
 .horse-option{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--input-bg);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
 .horse-option.active{background:var(--ink);color:#fff;border-color:var(--ink)}

@@ -132,7 +132,7 @@ const directions = [
     focus: ["academy", "mvp"],
     summary: "HealthTech, MedTech, BioTech, and translational thinking.",
     resources: [
-      { label: "NCBI Basics", url: "https://www.ncbi.nlm.nih.gov/guide/howto/learn-basics" },
+      { label: "NCBI Basics", url: "https://www.ncbi.nlm.nih.gov/guide/howto/learn-basics/" },
       { label: "NCBI Bioinformatics Book", url: "https://www.ncbi.nlm.nih.gov/books/NBK569562/" },
       { label: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/" }
     ],
@@ -360,6 +360,7 @@ const sphereFilter = document.getElementById("sphereFilter");
 const focusFilter = document.getElementById("focusFilter");
 const missionPlaceholder = document.getElementById("missionPlaceholder");
 const missionLab = document.getElementById("missionLab");
+const playLab = document.getElementById("playLab");
 const missionStatus = document.getElementById("missionStatus");
 const simulatorCard = document.getElementById("simulatorCard");
 const horsePicker = document.getElementById("horsePicker");
@@ -371,6 +372,139 @@ const simulatorResult = document.getElementById("simulatorResult");
 let selectedHorse = null;
 let cardIndex = 0;
 let activeMissionId = null;
+let activePlayId = null;
+let playCards = [];
+
+function getPlayCardByDirectionId(directionId) {
+  return playCards.find((card) => card.directionId === directionId);
+}
+
+function getPlayStorageKey(directionId) {
+  return `kmh-play-${directionId}`;
+}
+
+function isPlayComplete(directionId) {
+  try {
+    return window.localStorage.getItem(getPlayStorageKey(directionId)) === "yes";
+  } catch (error) {
+    return false;
+  }
+}
+
+function markPlayComplete(directionId, value) {
+  try {
+    window.localStorage.setItem(getPlayStorageKey(directionId), value);
+  } catch (error) {
+    return;
+  }
+}
+
+function renderPlayFlow(card) {
+  return `
+    <div class="play-flow">
+      <span class="play-node">${card.flow[0]}</span>
+      <span class="play-arrow">→</span>
+      <span class="play-node accent">${card.flow[1]}</span>
+      <span class="play-arrow">→</span>
+      <span class="play-node">${card.flow[2]}</span>
+    </div>
+  `;
+}
+
+function launchPlay(directionId) {
+  activePlayId = directionId;
+  activeMissionId = null;
+  renderDirections();
+  renderPlay();
+  renderMission();
+  missionPlaceholder.hidden = true;
+  missionLab.hidden = true;
+  playLab.hidden = false;
+  playLab.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function renderPlay() {
+  if (!activePlayId || !playLab) {
+    if (playLab) {
+      playLab.hidden = true;
+    }
+    return;
+  }
+
+  const direction = getDirectionById(activePlayId);
+  const card = getPlayCardByDirectionId(activePlayId);
+
+  if (!direction || !card) {
+    playLab.hidden = true;
+    return;
+  }
+
+  const repoLabel = card.repoUrl.split("/").pop();
+  const playDone = isPlayComplete(activePlayId);
+
+  playLab.innerHTML = `
+    <div class="play-header">
+      <div>
+        <p class="eyebrow">Play Layer / step 0</p>
+        <h3>${card.title}</h3>
+        <p class="play-hook">${card.hook}</p>
+      </div>
+      ${playDone ? `<span class="chip subtle">Play intro done</span>` : ""}
+    </div>
+    ${renderPlayFlow(card)}
+    <p class="play-powers">${card.powers.join(" · ")}</p>
+    <div class="play-gate">
+      <p><strong>Ворота:</strong> ${card.gate}</p>
+      <div class="play-gate-actions">
+        <button class="thumb-button" data-play-answer="yes" type="button">👍 Зрозуміло</button>
+        <button class="thumb-button subtle" data-play-answer="no" type="button">👎 Інший напрям</button>
+      </div>
+    </div>
+    <div class="play-next">
+      <a href="${card.repoUrl}" target="_blank" rel="noreferrer">Open ${repoLabel}</a>
+      <a href="./quests/play/${card.file}">Read Play Card</a>
+      <button class="mission-launch-inline" data-direction-id="${direction.id}" type="button">Launch Mission →</button>
+    </div>
+  `;
+
+  playLab.querySelectorAll("[data-play-answer]").forEach((button) => {
+    button.addEventListener("click", () => {
+      markPlayComplete(activePlayId, button.dataset.playAnswer);
+      if (button.dataset.playAnswer === "yes") {
+        setMissionStatus("Play intro saved. You can launch the mission sprint next.");
+      } else {
+        setMissionStatus("Try another direction filter or open the Direction Library.");
+      }
+      renderPlay();
+      renderDirections();
+    });
+  });
+
+  const missionButton = playLab.querySelector(".mission-launch-inline");
+  if (missionButton) {
+    missionButton.addEventListener("click", () => {
+      launchMission(direction.id);
+    });
+  }
+}
+
+async function initPlayCards() {
+  try {
+    const response = await fetch("./quests/play/manifest.json");
+    if (!response.ok) {
+      throw new Error("manifest missing");
+    }
+    const data = await response.json();
+    playCards = data.cards || [];
+  } catch (error) {
+    playCards = [];
+  }
+
+  renderDirections();
+  renderPlay();
+  renderMission();
+  renderCard();
+}
 
 function renderDirections() {
   const sphereValue = sphereFilter.value;
@@ -384,10 +518,12 @@ function renderDirections() {
 
   directionGrid.innerHTML = filtered
     .map((direction) => {
-      const surface = getSurface(direction.sphere);
+      const surface = getSurface(direction);
       const activeClass = activeMissionId === direction.id ? " active" : "";
+      const playActiveClass = activePlayId === direction.id ? " play-active" : "";
+      const playDone = isPlayComplete(direction.id);
       return `
-        <article class="direction-card${activeClass}">
+        <article class="direction-card${activeClass}${playActiveClass}">
           <div class="direction-topline">
             <span class="chip chip-${direction.sphere.toLowerCase()}">${direction.sphere}</span>
             <span class="chip subtle">${direction.focus.join(" / ")}</span>
@@ -419,6 +555,7 @@ function renderDirections() {
             </ul>
           </details>
           <div class="card-actions">
+            <button class="play-launch" data-direction-id="${direction.id}" type="button">${playDone ? "Replay Play" : "Play Intro"}</button>
             <button class="mission-launch" data-direction-id="${direction.id}" type="button">Launch Mission</button>
             <a href="${surface.url}" target="_blank" rel="noreferrer">Open Repo Surface</a>
           </div>
@@ -432,10 +569,22 @@ function renderDirections() {
       launchMission(button.dataset.directionId);
     });
   });
+
+  directionGrid.querySelectorAll(".play-launch").forEach((button) => {
+    button.addEventListener("click", () => {
+      launchPlay(button.dataset.directionId);
+    });
+  });
 }
 
-function getSurface(sphere) {
-  switch (sphere) {
+function getSurface(direction) {
+  const playCard = getPlayCardByDirectionId(direction.id);
+  if (playCard?.repoUrl) {
+    const label = playCard.repoUrl.split("/").pop();
+    return { label, url: playCard.repoUrl };
+  }
+
+  switch (direction.sphere) {
     case "S":
       return {
         label: "SPHERE-I-SCIENCE",
@@ -453,8 +602,8 @@ function getSurface(sphere) {
       };
     default:
       return {
-        label: "K-Mentorship-Hub",
-        url: "https://github.com/K-Mentorship-Hub/K-Mentorship-Hub"
+        label: "SPHERE-FRONTIER",
+        url: "https://github.com/K-Mentorship-Hub/SPHERE-FRONTIER"
       };
   }
 }
@@ -626,16 +775,21 @@ ${state.notes || "Add what you learned, built, or want help with."}
 
 function launchMission(directionId) {
   activeMissionId = directionId;
+  activePlayId = null;
   renderDirections();
+  renderPlay();
   renderMission();
   missionPlaceholder.hidden = true;
   missionLab.hidden = false;
+  if (playLab) {
+    playLab.hidden = true;
+  }
   missionLab.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderMission() {
   if (!activeMissionId) {
-    missionPlaceholder.hidden = false;
+    missionPlaceholder.hidden = activePlayId ? true : false;
     missionLab.hidden = true;
     return;
   }
@@ -888,6 +1042,4 @@ nextCardButton.addEventListener("click", () => {
   renderCard();
 });
 
-renderDirections();
-renderMission();
-renderCard();
+initPlayCards();
