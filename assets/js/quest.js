@@ -4,24 +4,6 @@ const BRANCH = 'main';
 const BASE = `https://raw.githubusercontent.com/${REPO}`;
 const FRONTIER_BASE = `${BASE}/SPHERE-FRONTIER/${BRANCH}`;
 
-const PLAY_INTROS = [
-  { path: 'quests/play/d00-7-days.md', label: '🧭 Play · 7 Days' },
-  { path: 'quests/play/d01-ai-data.md', label: '🚰 Play · AI & Data' },
-  { path: 'quests/play/d02-code.md', label: '🧱 Play · Code' },
-  { path: 'quests/play/d03-cyber.md', label: '🔐 Play · Cyber' },
-  { path: 'quests/play/d04-product.md', label: '🗺️ Play · Product' },
-  { path: 'quests/play/d05-design.md', label: '🪧 Play · Design' },
-  { path: 'quests/play/d06-med-bio.md', label: '🔬 Play · Med / Bio' },
-  { path: 'quests/play/d07-green.md', label: '🌱 Play · Green' },
-  { path: 'quests/play/d08-agtech.md', label: '🌾 Play · AgTech' },
-  { path: 'quests/play/d09-miltech.md', label: '🛂 Play · MilTech' },
-  { path: 'quests/play/d10-hardtech.md', label: '🔧 Play · HardTech' },
-  { path: 'quests/play/d11-chemtech.md', label: '🧪 Play · ChemTech' },
-  { path: 'quests/play/d12-learning.md', label: '📅 Play · Learning' },
-  { path: 'quests/play/d13-language.md', label: '💬 Play · Language' },
-  { path: 'quests/play/d14-people.md', label: '🤝 Play · People' }
-];
-
 const QUESTS = {
   S: [
     { repo: 'SPHERE-I-SCIENCE', path: 'quests/%F0%9F%A9%BA-S1-HealthTech.md', label: '🩺 S1 — HealthTech' },
@@ -47,67 +29,20 @@ const content = document.getElementById('questContent');
 const stats = document.getElementById('stats');
 let activeLink = null;
 
-// Build stats
-const statCards = [
-  { label: 'Total Quests', value: 12, className: '' },
-  { label: 'Play Intros', value: PLAY_INTROS.length, className: '' },
-  { label: 'Science', value: QUESTS.S.length, className: 'science' },
-  { label: 'Entrepreneurship', value: QUESTS.E.length, className: 'entrepreneurship' },
-  { label: 'Technology', value: QUESTS.T.length, className: 'technology' },
-];
-stats.innerHTML = '';
-for (const c of statCards) {
-  const el = document.createElement('article');
-  el.className = `stat-card ${c.className}`;
-  el.innerHTML = `<div class="stat-value">${c.value}</div><div class="stat-label">${c.label}</div>`;
-  stats.appendChild(el);
-}
-
-// Build Play Intro nav
-const navPlay = document.getElementById('navPlay');
-PLAY_INTROS.forEach((item) => {
-  const a = document.createElement('a');
-  a.textContent = item.label;
-  a.href = '#';
-  a.addEventListener('click', (e) => {
-    e.preventDefault();
-    loadPlayIntro(item, a);
-  });
-  navPlay.appendChild(a);
-});
-
-// Build nav
-Object.entries(QUESTS).forEach(([sphere, quests]) => {
-  const container = document.getElementById(
-    sphere === 'S' ? 'navScience' :
-    sphere === 'E' ? 'navEntrepreneurship' : 'navTechnology'
-  );
-  quests.forEach(q => {
-    const a = document.createElement('a');
-    a.textContent = q.label;
-    a.href = '#';
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      loadQuest(q, sphere, a);
-    });
-    container.appendChild(a);
-  });
-});
-
-async function loadPlayIntro(item, link) {
+async function loadFrontierMd(path, link, className, eyebrow) {
   if (activeLink) activeLink.classList.remove('active');
   link.classList.add('active');
   activeLink = link;
 
-  content.className = 'md-content sphere-bridge';
+  content.className = className;
   content.innerHTML = '<p style="color:var(--muted);font-style:italic">Loading…</p>';
 
   try {
-    const url = `${FRONTIER_BASE}/${item.path}`;
+    const url = `${FRONTIER_BASE}/${path}`;
     const res = await fetch(url);
     if (!res.ok) throw new Error(res.statusText);
     const md = await res.text();
-    content.innerHTML = marked.parse(md, { gfm: true, breaks: true });
+    content.innerHTML = `<p class="eyebrow">${eyebrow}</p>` + marked.parse(md, { gfm: true, breaks: true });
     content.scrollTop = 0;
     window.scrollTo(0, 0);
   } catch (err) {
@@ -136,15 +71,113 @@ async function loadQuest(q, sphere, link) {
   }
 }
 
-// Auto-load from hash
-const hash = location.hash.slice(1);
-if (hash) {
-  const [s, i] = hash.split('-');
-  const idx = parseInt(i) - 1;
-  if (QUESTS[s] && QUESTS[s][idx]) {
-    const q = QUESTS[s][idx];
-    const container = document.querySelector(`.nav-${s}`);
-    const links = container.querySelectorAll('a');
-    if (links[idx]) loadQuest(q, s, links[idx]);
+function buildNav(container, items, handler) {
+  items.forEach((item) => {
+    const a = document.createElement('a');
+    a.textContent = item.label;
+    a.href = '#';
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      handler(item, a);
+    });
+    container.appendChild(a);
+  });
+}
+
+async function initQuestViewer() {
+  let playItems = [];
+  let briefItems = [];
+  let spotDirectionItems = [];
+  let spotSphereItems = [];
+
+  try {
+    const [playRes, briefRes, spotRes] = await Promise.all([
+      fetch('./quests/play/manifest.json'),
+      fetch('./quests/briefs/manifest.json'),
+      fetch('./quests/spot-check/manifest.json')
+    ]);
+    if (playRes.ok) {
+      playItems = (await playRes.json()).cards.map((c) => ({
+        path: `quests/play/${c.file}`,
+        label: `🎮 ${c.title}`
+      }));
+    }
+    if (briefRes.ok) {
+      briefItems = (await briefRes.json()).directions.map((c) => ({
+        path: `quests/briefs/${c.briefFile}`,
+        label: `📋 ${c.title}`
+      }));
+    }
+    if (spotRes.ok) {
+      const spotData = await spotRes.json();
+      spotDirectionItems = spotData.directions.map((c) => ({
+        path: `quests/spot-check/${c.spotFile}`,
+        label: `🔍 ${c.title}`
+      }));
+      spotSphereItems = spotData.sphereQuests.map((c) => ({
+        path: `quests/spot-check/${c.spotFile}`,
+        label: `🔍 ${c.title}`
+      }));
+    }
+  } catch (err) {
+    console.warn('Layer manifests not loaded', err);
+  }
+
+  const statCards = [
+    { label: 'Deep Quests', value: 12, className: '' },
+    { label: 'Play + Brief', value: briefItems.length, className: 'entrepreneurship' },
+    { label: 'Spot Checks', value: spotDirectionItems.length + spotSphereItems.length, className: 'science' },
+    { label: 'Spheres', value: 3, className: 'technology' },
+  ];
+  stats.innerHTML = '';
+  for (const c of statCards) {
+    const el = document.createElement('article');
+    el.className = `stat-card ${c.className}`;
+    el.innerHTML = `<div class="stat-value">${c.value}</div><div class="stat-label">${c.label}</div>`;
+    stats.appendChild(el);
+  }
+
+  buildNav(document.getElementById('navPlay'), playItems, (item, a) =>
+    loadFrontierMd(item.path, a, 'md-content sphere-bridge', 'Play Intro')
+  );
+  buildNav(document.getElementById('navBrief'), briefItems, (item, a) =>
+    loadFrontierMd(item.path, a, 'md-content sphere-bridge', 'Quest Brief')
+  );
+  buildNav(document.getElementById('navSpot'), spotDirectionItems, (item, a) =>
+    loadFrontierMd(item.path, a, 'md-content sphere-bridge', 'Spot Check · Direction')
+  );
+  buildNav(document.getElementById('navSpotSphere'), spotSphereItems, (item, a) =>
+    loadFrontierMd(item.path, a, 'md-content sphere-bridge', 'Spot Check · S/E/T Quest')
+  );
+
+  Object.entries(QUESTS).forEach(([sphere, quests]) => {
+    const container = document.getElementById(
+      sphere === 'S' ? 'navScience' :
+      sphere === 'E' ? 'navEntrepreneurship' : 'navTechnology'
+    );
+    quests.forEach((q) => {
+      const a = document.createElement('a');
+      a.textContent = q.label;
+      a.href = '#';
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        loadQuest(q, sphere, a);
+      });
+      container.appendChild(a);
+    });
+  });
+
+  const hash = location.hash.slice(1);
+  if (hash) {
+    const [s, i] = hash.split('-');
+    const idx = parseInt(i) - 1;
+    if (QUESTS[s] && QUESTS[s][idx]) {
+      const q = QUESTS[s][idx];
+      const container = document.querySelector(`.nav-${s}`);
+      const links = container.querySelectorAll('a');
+      if (links[idx]) loadQuest(q, s, links[idx]);
+    }
   }
 }
+
+initQuestViewer();

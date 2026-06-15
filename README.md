@@ -79,7 +79,8 @@ Supporting docs in this repo:
 - [`docs/CONTRIBUTION-BRIDGE.md`](./docs/CONTRIBUTION-BRIDGE.md)
 - [`docs/DIRECTION-LIBRARY.md`](./docs/DIRECTION-LIBRARY.md)
 - [`docs/PLAY-LAYER.md`](./docs/PLAY-LAYER.md)
-- [`quests/play/`](./quests/play/) — 15 short Play Intro cards (UA)
+- [`docs/LEARNING-LAYERS.md`](./docs/LEARNING-LAYERS.md)
+- [`quests/`](./quests/) — Play · Brief · Spot Check (15 + 15 + 27 cards)
 - [`dashboard.html`](./dashboard.html)
 
 ---
@@ -127,9 +128,9 @@ It should let people:
 
 The main public surfaces for that are:
 
-- [`dashboard.html`](./dashboard.html) — **Play Intro** (step 0) + Mission Lab
-- [`docs/PLAY-LAYER.md`](./docs/PLAY-LAYER.md)
-- [`quests/play/`](./quests/play/)
+- [`dashboard.html`](./dashboard.html) — **🎮 Play · 📋 Brief · 🔍 Spot Check · Mission Lab**
+- [`docs/LEARNING-LAYERS.md`](./docs/LEARNING-LAYERS.md)
+- [`quests/`](./quests/)
 - [`docs/DIRECTION-LIBRARY.md`](./docs/DIRECTION-LIBRARY.md)
 - [`SPHERE-DIRECTION-TEST-DRIVE`](https://github.com/K-Mentorship-Hub/SPHERE-DIRECTION-TEST-DRIVE) — test-drive a direction with hands-on mini-quests before committing
 

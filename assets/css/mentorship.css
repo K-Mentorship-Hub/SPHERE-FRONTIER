@@ -179,6 +179,13 @@ body{
 .mission-launch-inline{cursor:pointer;font:inherit}
 .direction-card.play-active{border-color:rgba(139,92,246,.45);box-shadow:0 0 0 2px rgba(139,92,246,.12)}
 .card-actions .play-launch{border-color:rgba(139,92,246,.35);background:rgba(139,92,246,.08)}
+.card-actions .brief-launch{border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.1)}
+.card-actions .spot-launch{border-color:rgba(24,179,163,.35);background:rgba(24,179,163,.1)}
+.direction-card.brief-active{border-color:rgba(245,158,11,.45);box-shadow:0 0 0 2px rgba(245,158,11,.12)}
+.direction-card.spot-active{border-color:rgba(24,179,163,.45);box-shadow:0 0 0 2px rgba(24,179,163,.12)}
+.layer-lab{margin-top:14px;padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card-bg);font-size:14px;line-height:1.65}
+.layer-lab h1,.layer-lab h2,.layer-lab h3{margin-top:0}
+.layer-lab details{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--input-bg)}
 
 /* Race Simulator */
 .horse-option{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--input-bg);color:var(--ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}

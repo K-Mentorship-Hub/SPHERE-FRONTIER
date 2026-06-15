@@ -361,6 +361,8 @@ const focusFilter = document.getElementById("focusFilter");
 const missionPlaceholder = document.getElementById("missionPlaceholder");
 const missionLab = document.getElementById("missionLab");
 const playLab = document.getElementById("playLab");
+const briefLab = document.getElementById("briefLab");
+const spotLab = document.getElementById("spotLab");
 const missionStatus = document.getElementById("missionStatus");
 const simulatorCard = document.getElementById("simulatorCard");
 const horsePicker = document.getElementById("horsePicker");
@@ -373,7 +375,73 @@ let selectedHorse = null;
 let cardIndex = 0;
 let activeMissionId = null;
 let activePlayId = null;
+let activeBriefId = null;
+let activeSpotId = null;
 let playCards = [];
+let briefCards = [];
+let spotCards = [];
+
+function getBriefCardByDirectionId(directionId) {
+  return briefCards.find((card) => card.directionId === directionId);
+}
+
+function getSpotCardByDirectionId(directionId) {
+  return spotCards.find((card) => card.directionId === directionId);
+}
+
+function hideAllLabs() {
+  if (playLab) playLab.hidden = true;
+  if (briefLab) briefLab.hidden = true;
+  if (spotLab) spotLab.hidden = true;
+  if (missionLab) missionLab.hidden = true;
+}
+
+async function renderMarkdownPanel(container, path, eyebrow) {
+  container.hidden = false;
+  container.innerHTML = `<p class="eyebrow">${eyebrow}</p><p style="color:var(--muted)">Loading…</p>`;
+  try {
+    const response = await fetch(path);
+    if (!response.ok) throw new Error("file missing");
+    const md = await response.text();
+    container.innerHTML = `<p class="eyebrow">${eyebrow}</p>${marked.parse(md, { gfm: true, breaks: true })}`;
+  } catch (error) {
+    container.innerHTML = `<p class="eyebrow">${eyebrow}</p><p style="color:var(--muted)">Could not load ${path}</p>`;
+  }
+}
+
+function launchBrief(directionId) {
+  activeBriefId = directionId;
+  activePlayId = null;
+  activeSpotId = null;
+  activeMissionId = null;
+  renderDirections();
+  hideAllLabs();
+  missionPlaceholder.hidden = true;
+  const card = getBriefCardByDirectionId(directionId);
+  if (card && briefLab) {
+    renderMarkdownPanel(briefLab, `./quests/briefs/${card.briefFile}`, "Quest Brief / what to do");
+    briefLab.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  renderPlay();
+  renderMission();
+}
+
+function launchSpot(directionId) {
+  activeSpotId = directionId;
+  activePlayId = null;
+  activeBriefId = null;
+  activeMissionId = null;
+  renderDirections();
+  hideAllLabs();
+  missionPlaceholder.hidden = true;
+  const card = getSpotCardByDirectionId(directionId);
+  if (card && spotLab) {
+    renderMarkdownPanel(spotLab, `./quests/spot-check/${card.spotFile}`, "Spot Check / something's off");
+    spotLab.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  renderPlay();
+  renderMission();
+}
 
 function getPlayCardByDirectionId(directionId) {
   return playCards.find((card) => card.directionId === directionId);
@@ -413,12 +481,14 @@ function renderPlayFlow(card) {
 
 function launchPlay(directionId) {
   activePlayId = directionId;
+  activeBriefId = null;
+  activeSpotId = null;
   activeMissionId = null;
   renderDirections();
+  hideAllLabs();
   renderPlay();
   renderMission();
   missionPlaceholder.hidden = true;
-  missionLab.hidden = true;
   playLab.hidden = false;
   playLab.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -488,16 +558,20 @@ function renderPlay() {
   }
 }
 
-async function initPlayCards() {
+async function initLayers() {
   try {
-    const response = await fetch("./quests/play/manifest.json");
-    if (!response.ok) {
-      throw new Error("manifest missing");
-    }
-    const data = await response.json();
-    playCards = data.cards || [];
+    const [playRes, briefRes, spotRes] = await Promise.all([
+      fetch("./quests/play/manifest.json"),
+      fetch("./quests/briefs/manifest.json"),
+      fetch("./quests/spot-check/manifest.json")
+    ]);
+    if (playRes.ok) playCards = (await playRes.json()).cards || [];
+    if (briefRes.ok) briefCards = (await briefRes.json()).directions || [];
+    if (spotRes.ok) spotCards = (await spotRes.json()).directions || [];
   } catch (error) {
     playCards = [];
+    briefCards = [];
+    spotCards = [];
   }
 
   renderDirections();
@@ -521,9 +595,11 @@ function renderDirections() {
       const surface = getSurface(direction);
       const activeClass = activeMissionId === direction.id ? " active" : "";
       const playActiveClass = activePlayId === direction.id ? " play-active" : "";
+      const briefActiveClass = activeBriefId === direction.id ? " brief-active" : "";
+      const spotActiveClass = activeSpotId === direction.id ? " spot-active" : "";
       const playDone = isPlayComplete(direction.id);
       return `
-        <article class="direction-card${activeClass}${playActiveClass}">
+        <article class="direction-card${activeClass}${playActiveClass}${briefActiveClass}${spotActiveClass}">
           <div class="direction-topline">
             <span class="chip chip-${direction.sphere.toLowerCase()}">${direction.sphere}</span>
             <span class="chip subtle">${direction.focus.join(" / ")}</span>
@@ -555,7 +631,9 @@ function renderDirections() {
             </ul>
           </details>
           <div class="card-actions">
-            <button class="play-launch" data-direction-id="${direction.id}" type="button">${playDone ? "Replay Play" : "Play Intro"}</button>
+            <button class="play-launch" data-direction-id="${direction.id}" type="button">${playDone ? "🎮 Replay" : "🎮 Play"}</button>
+            <button class="brief-launch" data-direction-id="${direction.id}" type="button">📋 Brief</button>
+            <button class="spot-launch" data-direction-id="${direction.id}" type="button">🔍 Check</button>
             <button class="mission-launch" data-direction-id="${direction.id}" type="button">Launch Mission</button>
             <a href="${surface.url}" target="_blank" rel="noreferrer">Open Repo Surface</a>
           </div>
@@ -573,6 +651,18 @@ function renderDirections() {
   directionGrid.querySelectorAll(".play-launch").forEach((button) => {
     button.addEventListener("click", () => {
       launchPlay(button.dataset.directionId);
+    });
+  });
+
+  directionGrid.querySelectorAll(".brief-launch").forEach((button) => {
+    button.addEventListener("click", () => {
+      launchBrief(button.dataset.directionId);
+    });
+  });
+
+  directionGrid.querySelectorAll(".spot-launch").forEach((button) => {
+    button.addEventListener("click", () => {
+      launchSpot(button.dataset.directionId);
     });
   });
 }
@@ -776,20 +866,20 @@ ${state.notes || "Add what you learned, built, or want help with."}
 function launchMission(directionId) {
   activeMissionId = directionId;
   activePlayId = null;
+  activeBriefId = null;
+  activeSpotId = null;
   renderDirections();
+  hideAllLabs();
   renderPlay();
   renderMission();
   missionPlaceholder.hidden = true;
   missionLab.hidden = false;
-  if (playLab) {
-    playLab.hidden = true;
-  }
   missionLab.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderMission() {
   if (!activeMissionId) {
-    missionPlaceholder.hidden = activePlayId ? true : false;
+    missionPlaceholder.hidden = activePlayId || activeBriefId || activeSpotId ? true : false;
     missionLab.hidden = true;
     return;
   }
@@ -1042,4 +1132,4 @@ nextCardButton.addEventListener("click", () => {
   renderCard();
 });
 
-initPlayCards();
+initLayers();

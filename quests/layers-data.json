@@ -1,0 +1,678 @@
+{
+  "directions": [
+    {
+      "id": "sc-d00",
+      "directionId": "g0",
+      "title": "7 Days Challenge",
+      "label": "0",
+      "sphere": "Bridge",
+      "skill": "orientation",
+      "playFile": "d00-7-days.md",
+      "spotFile": "sc-d00.md",
+      "briefFile": "brief-d00.md",
+      "spot": {
+        "hook": "Перевірити, чи тест-драйв справді різноманітний — чи це три однакові задачі в новій упаковці.",
+        "scenario": "Менті пише: «За 7 днів спробувала SQL, Python і Figma — обрала напрям». Але всі три міні-задачі були з **Technology**, жодної з Science чи Entrepreneurship.",
+        "tasks": [
+          "Чи це справжній тест-драйв по SET?",
+          "Що саме вона **не** перевірила?",
+          "Як переписати план на 7 днів, щоб компас працював?"
+        ],
+        "trap": "«Три інструменти» ≠ «три сфери». Різноманітність — по **питаннях**, не по софту.",
+        "answer": "**Ні**, це не повний test-drive: усі три — T. Вона не перевірила S (дослідницьке питання / джерело) і E (користувач / валідація).\n\n**Краще:** День 1 — одне S-міні (глосарій + одне джерело). День 2 — E (5 питань людині про проблему). День 3 — T (маленький SQL або кнопка). Потім рефлексія «що заходить»."
+      },
+      "brief": {
+        "goal": "За 7 днів **спробувати три різні сфери SET**, а не три тули з однієї.",
+        "steps": [
+          "Обери **3 міні-задачі** — по одній з S, E, T (див. Direction Library).",
+          "Після кожної: 3 речення — що з energizing / confusing / promising.",
+          "На день 7: одна сторінка «What fits me best now?» + **один** наступний напрям."
+        ],
+        "trap": "Не роби три дні лише коду — це не компас, а тунель.",
+        "start": "Відкрий [SPHERE-DIRECTION-TEST-DRIVE](https://github.com/K-Mentorship-Hub/SPHERE-DIRECTION-TEST-DRIVE) або Dashboard → Direction 0 → Launch Mission."
+      }
+    },
+    {
+      "id": "sc-d01",
+      "directionId": "1",
+      "title": "AI & Data",
+      "label": "1",
+      "sphere": "T",
+      "skill": "data-joins",
+      "playFile": "d01-ai-data.md",
+      "spotFile": "sc-d01.md",
+      "briefFile": "brief-d01.md",
+      "spot": {
+        "hook": "Два списки компаній виглядають сумісними — але JOIN може бути **не на тому** ключі.",
+        "scenario": "Таблиці `company` і `fortune500`. Колега каже: «JOIN по `name` — адже там назви компаній». Але в `company.name` — **юридична назва**, у `fortune500.name` — **бренд для ЗМІ** (Apple Inc. vs Apple).",
+        "tasks": [
+          "Чому JOIN лише по однаковій **назві стовпця** небезпечний?",
+          "Які ще стовпці варто порівняти перед JOIN?",
+          "Хто постраждає від звіту, якщо злиття «майже збігається»?"
+        ],
+        "trap": "Однакова назва стовпця ≠ однаковий **зміст** даних.",
+        "answer": "Юридична vs брендова назва → хибні матчі або втрачені рядки. CEO отримає неправильний revenue-by-F500.\n\n**Перед JOIN:** inspect обидва стовпці, шукай **стабільний унікальний** ключ (ticker, company_id, normalized name). Якщо кілька кандидатів — порівняй **кількість рядків** після кожного JOIN."
+      },
+      "brief": {
+        "goal": "Побачити **один insight** з маленького набору даних — без великого стеку.",
+        "steps": [
+          "Відкрий Kaggle Learn або SQLBolt — **один** модуль (SELECT / JOIN).",
+          "Збери **tiny dataset** (10–50 рядків): CSV або таблиця в курсі.",
+          "Напиши **3 речення**: що в даних, один висновок, одне питання «не знаю»."
+        ],
+        "trap": "Не починай з dashboard у Tableau — спочатку **зрозумій рядки**.",
+        "start": "Dashboard → Direction 1 → Quest Brief → потім Launch Mission (Academy mode)."
+      }
+    },
+    {
+      "id": "sc-d02",
+      "directionId": "2",
+      "title": "Code & Engineering",
+      "label": "2",
+      "sphere": "T",
+      "skill": "logic",
+      "playFile": "d02-code.md",
+      "spotFile": "sc-d02.md",
+      "briefFile": "brief-d02.md",
+      "spot": {
+        "hook": "Код «працює на моєму ноуті» — але логіка ламає крайній випадок.",
+        "scenario": "```python\nusers = []\nfor i in range(1, len(users)):\n    print(users[i]['name'])\n```\nМентор каже: «Цикл ок для списку користувачів».",
+        "tasks": [
+          "Що станеться, якщо `users` порожній або з 1 елементом?",
+          "Чому `range(1, len(users))` пропускає першого?",
+          "Як переписати безпечніше для «першого практичного»?"
+        ],
+        "trap": "Працює на happy path ≠ коректна логіка.",
+        "answer": "Порожній список — цикл не виконається (ок). Один елемент — теж пропуск (баг, якщо треба всіх). `range(1, len)` **завжди** пропускає index 0.\n\n**Fix:** `for user in users:` або `for i in range(len(users))` з перевіркою порожнього списку."
+      },
+      "brief": {
+        "goal": "Зібрати **одну видиму річ** — кнопку, форму або маленький скрипт.",
+        "steps": [
+          "Обери **один** стек (HTML+JS або Python CLI — не обидва).",
+          "Список з **3 функцій** max для v0.",
+          "Закоміть у GitHub — навіть якщо «некрасиво»."
+        ],
+        "trap": "Не проектуй архітектуру мікросервісів для першої кнопки.",
+        "start": "MDN або React Learn — один tutorial до кінця, потім свій fork."
+      }
+    },
+    {
+      "id": "sc-d03",
+      "directionId": "3",
+      "title": "Cyber & Infrastructure",
+      "label": "3",
+      "sphere": "T",
+      "skill": "security",
+      "playFile": "d03-cyber.md",
+      "spotFile": "sc-d03.md",
+      "briefFile": "brief-d03.md",
+      "spot": {
+        "hook": "CI зелений ✅ — але секрет уже в історії git.",
+        "scenario": "У PR `.env` видалили, але в коментарі лишилось:\n`DATABASE_URL=postgres://user:SECRET@host/db`\nІ в `docker-compose.yml` порт `5432:5432` на публічному VPS без firewall rule.",
+        "tasks": [
+          "Що небезпечніше: файл чи коментар?",
+          "Чому «видалили .env» недостатньо?",
+          "Назви 2 дії до merge."
+        ],
+        "trap": "Зелений pipeline ≠ безпечний деплой.",
+        "answer": "Секрет у коментарі = в історії git назавжди → rotate credentials, rewrite history або revoke.\n\nПублічний порт БД → scan bots. **Дії:** rotate secret, BFG/git filter, закрити port/firewall, secrets у vault, never in PR comments."
+      },
+      "brief": {
+        "goal": "Особистий **cyber hygiene checklist** на 1 сторінку.",
+        "steps": [
+          "10 пунктів: паролі, 2FA, оновлення, backup, phishing.",
+          "Один пункт про **secrets у git** (що ніколи не комітити).",
+          "Покажи другу людині — чи зрозуміло без жаргону?"
+        ],
+        "trap": "Не купуй enterprise SIEM для першого чекліста.",
+        "start": "GitHub Actions docs — прочитай «Understanding secrets» (15 хв)."
+      }
+    },
+    {
+      "id": "sc-d04",
+      "directionId": "4",
+      "title": "Product & Growth",
+      "label": "4",
+      "sphere": "E",
+      "skill": "validation",
+      "playFile": "d04-product.md",
+      "spotFile": "sc-d04.md",
+      "briefFile": "brief-d04.md",
+      "spot": {
+        "hook": "Інтерв'ю «підтвердили demand» — але питання **наводили** на «так».",
+        "scenario": "5 питань:\n1. «Вам же незручно без нашого app?»\n2. «Ви б точно заплатили $9?»\n3. «Це ж краще за Excel, правда?»\n4–5. Так само.\n12/15 сказали «так». Founder: «Product-market fit!»",
+        "tasks": [
+          "Чому це не валідація?",
+          "Як переформулювати **одне** питання нейтрально?",
+          "Що краще міряти замість «скільки сказали так»?"
+        ],
+        "trap": "Leading questions = ти чуєш те, що хочеш.",
+        "answer": "Social desirability + leading → фальшивий PMF.\n\n**Краще:** «Розкажіть, як ви **зараз** робите X» / «Коли востаннє…?» / «Скільки коштує проблема в часі?»\n\nМіряй **поведінку** (pre-order, waitlist з контекстом), не лише слова."
+      },
+      "brief": {
+        "goal": "Перетворити **одну vague ідею** на opportunity map на 1 сторінці.",
+        "steps": [
+          "Problem → User → Alternative → Why now → Risk (5 блоків).",
+          "5 **нейтральних** interview questions (без «правда?»).",
+          "Один tiniest experiment на тиждень."
+        ],
+        "trap": "Не пиши feature list до першої розмови.",
+        "start": "Y Combinator Library → одна стаття про user interviews."
+      }
+    },
+    {
+      "id": "sc-d05",
+      "directionId": "5",
+      "title": "Design & UX",
+      "label": "5",
+      "sphere": "Bridge",
+      "skill": "ux",
+      "playFile": "d05-design.md",
+      "spotFile": "sc-d05.md",
+      "briefFile": "brief-d05.md",
+      "spot": {
+        "hook": "Кнопка **красива** — але користувач не розуміє, що станеться після кліку.",
+        "scenario": "CTA: «Поїхали!» на формі з 12 полями. Колір контрастний ✅. A/B test: +2% clicks. Але 80% drop-off **на кроці 2** — поле «UUID партнера».",
+        "tasks": [
+          "Чому +2% clicks не = успіх?",
+          "Що не так з «Поїхали!»?",
+          "Одна зміна для кроку 2."
+        ],
+        "trap": "Метрика кліку ≠ завершений шлях.",
+        "answer": "Clicks без completion — dark funnel. «Поїхали!» не каже **що** відбудеться.\n\n**Fix:** «Надіслати заявку (2 хв)» + прибрати/пояснити UUID + progress indicator."
+      },
+      "brief": {
+        "goal": "Перемалювати **один** заплутаний flow (3–5 кроків max).",
+        "steps": [
+          "Скрін або схема «як зараз».",
+          "Стрілки: де люди **зависають** (навіть уявно).",
+          "Wireframe «як має бути» — pen & paper OK."
+        ],
+        "trap": "Не починай з кольорової палітри — спочатку **шлях**.",
+        "start": "Figma або папір → один user journey end-to-end."
+      }
+    },
+    {
+      "id": "sc-d06",
+      "directionId": "6",
+      "title": "Medicine / Biology",
+      "label": "6",
+      "sphere": "S",
+      "skill": "evidence",
+      "playFile": "d06-med-bio.md",
+      "spotFile": "sc-d06.md",
+      "briefFile": "brief-d06.md",
+      "spot": {
+        "hook": "Заголовок «дослід довів» — але **n=12** і без control group.",
+        "scenario": "Пост: «Новий суперфуд знизив маркер X на 40% за 2 тижні!» Джерело — прес-реліз стартапу. Немає peer review, немає placebo arm.",
+        "tasks": [
+          "3 red flags у цьому claim.",
+          "Що означає «маркер X» без контексту?",
+          "Як відповісти другу, не будучи панікувальницею?"
+        ],
+        "trap": "Correlation + small n + conflict of interest ≠ доказ.",
+        "answer": "Red flags: n=12, no control, industry PR, «40%» без CI, surrogate marker maybe irrelevant.\n\n**Відповідь другу:** «Цікаво як гіпотеза; шукай RCT або systematic review в PubMed; не міняй лікування по посту.»"
+      },
+      "brief": {
+        "goal": "Глосарій **10 термінів** простою мовою + одне джерело.",
+        "steps": [
+          "Обери вузьку тему (не «вся онкологія»).",
+          "10 термінів — реченням, без Wikipedia-copy.",
+          "1 посилання PubMed/NCBI — чому довіряєш."
+        ],
+        "trap": "Не давай медичних порад — лише **навігація по джерелах**.",
+        "start": "NCBI Basics → один tutorial, потім один term sheet."
+      }
+    },
+    {
+      "id": "sc-d07",
+      "directionId": "7",
+      "title": "Green / Sustainability",
+      "label": "7",
+      "sphere": "S",
+      "skill": "systems",
+      "playFile": "d07-green.md",
+      "spotFile": "sc-d07.md",
+      "briefFile": "brief-d07.md",
+      "spot": {
+        "hook": "«Carbon neutral» — але рахують лише **Scope 1**, ігноруючи ланцюг постачання.",
+        "scenario": "Бренд: «Ми carbon neutral 2025!» Звіт: лише офісні кондиціонери. Виробництvo, доставка, постачальники — «пізніше».",
+        "tasks": [
+          "Що таке Scope 1/2/3 — одним реченням кожен.",
+          "Чому claim misleading?",
+          "Яке **маленьке** дію може менті зробити локально?"
+        ],
+        "trap": "Green label без boundary = greenwashing.",
+        "answer": "Scope 1 = direct emissions; 2 = energy bought; 3 = value chain (often 70%+).\n\nClaim без Scope 3 — incomplete. **Локально:** один вимірюваний habit (transport, waste log 2 weeks) — не performative post."
+      },
+      "brief": {
+        "goal": "Problem map: **actors → intervention → metric** на 1 сторінці.",
+        "steps": [
+          "Одна локальна climate/problem (не глобальний IPCC summary).",
+          "3 актори, 1 intervention, 1 metric на 30 днів.",
+          "Джерело: IPCC або UNEP — одна цитата з context."
+        ],
+        "trap": "Не роби «рятуємо планету» без measurable grain.",
+        "start": "IPCC FAQ — один розділ, потім своя map."
+      }
+    },
+    {
+      "id": "sc-d08",
+      "directionId": "8",
+      "title": "AgTech & Food",
+      "label": "8",
+      "sphere": "S",
+      "skill": "data-grain",
+      "playFile": "d08-agtech.md",
+      "spotFile": "sc-d08.md",
+      "briefFile": "brief-d08.md",
+      "spot": {
+        "hook": "Середній урожай **по країні** ховає голод **в одному районі**.",
+        "scenario": "Dashboard: «Ukraine wheat yield +15% YoY!» Агреговано nationally. Окремий region −40% через drought — зникає в average.",
+        "tasks": [
+          "Що таке **grain** тут (країна vs поле)?",
+          "Хто приймає рішення на поганих даних?",
+          "Як показати truth без 1000 maps?"
+        ],
+        "trap": "Average без geography = silent crisis.",
+        "answer": "National avg masks regional failure. Decision-makers under-allocate aid.\n\n**Fix:** report by region + flag outliers; never single national KPI for operational decisions."
+      },
+      "brief": {
+        "goal": "Food chain map: **field → storage → plate** + одна pain point.",
+        "steps": [
+          "Намалюй 5 вузлів ланцюга для одного продукту.",
+          "Де найбільші **втрати** (навчальна гіпотеза OK).",
+          "1 data point або open source (FAO/CGIAR)."
+        ],
+        "trap": "Не роби «AgTech startup deck» без одного field visit або interview.",
+        "start": "FAO food chain explainer — 20 хв read."
+      }
+    },
+    {
+      "id": "sc-d09",
+      "directionId": "9",
+      "title": "MilTech & Dual-Use",
+      "label": "9",
+      "sphere": "Bridge",
+      "skill": "ethics",
+      "playFile": "d09-miltech.md",
+      "spotFile": "sc-d09.md",
+      "briefFile": "brief-d09.md",
+      "spot": {
+        "hook": "«Dual-use» drone tutorial — без **ethics gate** і export context.",
+        "scenario": "Repo README: «Build autonomous drone!» GPS waypoint, payload bay. Zero mention: legal airspace, licensing, harm scenarios, export controls.",
+        "tasks": [
+          "Чому «просто tutorial» не neutral?",
+          "3 питання ethics gate перед fork.",
+          "Що додати в README minimally?"
+        ],
+        "trap": "Cool tech ≠ responsible publish.",
+        "answer": "Missing: airspace rules, intent, misuse scenarios, local law, no targeting guidance.\n\n**README add:** purpose (education only), legal checklist link, «do not weaponize», export disclaimer, contact for concerns."
+      },
+      "brief": {
+        "goal": "Safe dual-use **explainer** — 1 сторінка boundaries.",
+        "steps": [
+          "Topic: logistics / sensing / comms — **not** weapons how-to.",
+          "Section: Risks & limits (5 bullets).",
+          "3 reputable sources (CISA, FAA, etc.)."
+        ],
+        "trap": "Не публікуй operational military details — навіть «для навчання».",
+        "start": "FAA UAS getting started — legal frame first."
+      }
+    },
+    {
+      "id": "sc-d10",
+      "directionId": "10",
+      "title": "HardTech & Industry 4.0",
+      "label": "10",
+      "sphere": "Bridge",
+      "skill": "constraints",
+      "playFile": "d10-hardtech.md",
+      "spotFile": "sc-d10.md",
+      "briefFile": "brief-d10.md",
+      "spot": {
+        "hook": "Software timeline (**2 weeks MVP**) на **hardware** без tooling lead time.",
+        "scenario": "Sprint plan: Week 1 design PCB, Week 2 manufacture 100 units, Week 3 ship globally. Team — only software background.",
+        "tasks": [
+          "3 unrealistic assumptions.",
+          "Що таке tooling / lead time — простими словами?",
+          "Realistic v0 for hardware?"
+        ],
+        "trap": "Hardware iteration cost >> git push.",
+        "answer": "PCB fab 2–4 weeks, revisions costly, certifications, supply chain, failure modes physical.\n\n**v0:** breadboard + one sensor + log data; **not** 100 units global ship in 3 weeks."
+      },
+      "brief": {
+        "goal": "3-stage prototype plan **on paper** before buying parts.",
+        "steps": [
+          "Stage 1: sense/measure (what exactly?).",
+          "Stage 2: log/display.",
+          "Stage 3: one user test — criteria pass/fail."
+        ],
+        "trap": "Не замовляй 3D print + PCB day one.",
+        "start": "Arduino docs — blink + one sensor tutorial."
+      }
+    },
+    {
+      "id": "sc-d11",
+      "directionId": "11",
+      "title": "ChemTech & Materials",
+      "label": "11",
+      "sphere": "S",
+      "skill": "literacy",
+      "playFile": "d11-chemtech.md",
+      "spotFile": "sc-d11.md",
+      "briefFile": "brief-d11.md",
+      "spot": {
+        "hook": "«Battery breakthrough 10× capacity!» — lab cell vs **commercial pack**.",
+        "scenario": "News cites lab coin cell at room temp once. No cycle life, no thermal runaway data, no manufacturing scale.",
+        "tasks": [
+          "Lab result vs product — різниця?",
+          "3 questions for due diligence.",
+          "How to explain to non-tech friend?"
+        ],
+        "trap": "Hero metric without cycles / safety / scale.",
+        "answer": "Coin cell ≠ EV pack. Missing: cycle count, degradation, cost, safety certification, supply of materials.\n\n**Friend version:** «Promising in lab; years and many tests before your phone benefits.»"
+      },
+      "brief": {
+        "goal": "Materials **navigator**: 5 terms + 3 use cases + 1 deep link.",
+        "steps": [
+          "Pick one family (e.g. lithium, polymers).",
+          "Table: term | plain meaning | where used.",
+          "Materials Project or MIT OCW — one resource."
+        ],
+        "trap": "Не copy-paste formulas without intuition.",
+        "start": "Materials Project homepage — explore one material."
+      }
+    },
+    {
+      "id": "sc-d12",
+      "directionId": "12",
+      "title": "General Development",
+      "label": "12",
+      "sphere": "Bridge",
+      "skill": "learning",
+      "playFile": "d12-learning.md",
+      "spotFile": "sc-d12.md",
+      "briefFile": "brief-d12.md",
+      "spot": {
+        "hook": "«12 годин навчання щодня» — без sleep / review → **illusion of competence**.",
+        "scenario": "Plan: 6 courses parallel, 2h each, no spaced repetition, no practice output, «finish badges».",
+        "tasks": [
+          "3 signs this plan fails.",
+          "What is spaced repetition in one line?",
+          "Rewrite to sustainable 7-day plan."
+        ],
+        "trap": "Input hours ≠ skill.",
+        "answer": "No sleep, no retrieval practice, no project, context switching kills depth.\n\n**7-day:** 1 course, 45min/day, daily 5-min recall, one artifact Friday."
+      },
+      "brief": {
+        "goal": "7-day **focus reset** — one skill, one output.",
+        "steps": [
+          "Pick ONE skill (not 6 tabs).",
+          "Daily: 30–45 min learn + 15 min practice.",
+          "Day 7: show one artifact (note, demo, checklist)."
+        ],
+        "trap": "Badges ≠ portfolio.",
+        "start": "Khan or Coursera «Learning How to Learn» — module 1."
+      }
+    },
+    {
+      "id": "sc-d13",
+      "directionId": "13",
+      "title": "Language Learning",
+      "label": "13",
+      "sphere": "Bridge",
+      "skill": "communication",
+      "playFile": "d13-language.md",
+      "spotFile": "sc-d13.md",
+      "briefFile": "brief-d13.md",
+      "spot": {
+        "hook": "2000 flashcard words — але **0 хвилин speaking**.",
+        "scenario": "Mentee: «I know 2000 words Anki!» Cannot order coffee or ask for help at work.",
+        "tasks": [
+          "Active vs passive vocabulary?",
+          "One weekly habit fix.",
+          "Metric better than «cards reviewed»?"
+        ],
+        "trap": "Recognition ≠ production.",
+        "answer": "Passive ≠ can speak/write under pressure.\n\n**Fix:** 3×15min/week speaking (partner or self-record). Metric: 2-minute monologue without script."
+      },
+      "brief": {
+        "goal": "Weekly rhythm: **input + output + review**.",
+        "steps": [
+          "Pick context (work, travel, books).",
+          "3×20min: listen/read, speak/write, fix 3 mistakes.",
+          "Partner or Language Reactor — one tool only."
+        ],
+        "trap": "Don't add 4 apps day one.",
+        "start": "BBC Learning English — one 6-min episode + shadowing."
+      }
+    },
+    {
+      "id": "sc-d14",
+      "directionId": "14",
+      "title": "People (Human Factor)",
+      "label": "14",
+      "sphere": "Bridge",
+      "skill": "facilitation",
+      "playFile": "d14-people.md",
+      "spotFile": "sc-d14.md",
+      "briefFile": "brief-d14.md",
+      "spot": {
+        "hook": "Retro де **лише lead говорить** — команда мовчки киває.",
+        "scenario": "«Що покращити?» — тиша. Lead fills 20 min monologue. Action items assigned to juniors only. Next retro — same issues.",
+        "tasks": [
+          "3 facilitation failures.",
+          "One technique for equal voice.",
+          "How to measure retro success?"
+        ],
+        "trap": "Meeting happened ≠ team learned.",
+        "answer": "No psychological safety, no round-robin, blame downward, no follow-up.\n\n**Fix:** silent brainstorm 5min → dot vote; rotate facilitator; check last actions first."
+      },
+      "brief": {
+        "goal": "One-page **team protocol** for small project (5 rules).",
+        "steps": [
+          "Rules: how we decide, how we disagree, how we async.",
+          "Burnout early signal — 3 signs.",
+          "Share draft with one person for feedback."
+        ],
+        "trap": "Don't copy Spotify model for 3-person team.",
+        "start": "Atlassian Team Playbook — one play, adapt it."
+      }
+    }
+  ],
+  "sphereQuests": [
+    {
+      "id": "sc-s1",
+      "questId": "S1",
+      "sphere": "S",
+      "title": "S1 HealthTech",
+      "skill": "evidence",
+      "spotFile": "sc-s1-healthtech.md",
+      "questHash": "S-1",
+      "spot": {
+        "hook": "Health app claim «FDA approved» — але це ** wellness app**, не medical device.",
+        "scenario": "App store: «FDA approved algorithm!» Fine print: FDA registered facility for food packaging, not the AI diagnostic feature.",
+        "tasks": ["Decode the claim.", "User harm if trusted?", "One question for founder."],
+        "trap": "Word «FDA» has many meanings.",
+        "answer": "Facility registration ≠ algorithm clearance. Users may delay real care.\n\n**Ask founder:** «Which FDA pathway — 510(k), De Novo, or none for this feature?»"
+      }
+    },
+    {
+      "id": "sc-s2",
+      "questId": "S2",
+      "sphere": "S",
+      "title": "S2 Green / Sustainability",
+      "skill": "systems",
+      "spotFile": "sc-s2-green.md",
+      "questHash": "S-2",
+      "spot": {
+        "hook": "Offset purchase без **additionality** — paying for trees already planted.",
+        "scenario": "Startup buys cheap offsets; project existed 10 years; no new carbon removed.",
+        "tasks": ["What is additionality?", "Why metric fails?", "Better local action?"],
+        "trap": "Cheap offset ≠ impact.",
+        "answer": "No new reduction; accounting trick. Prefer measure-reduce-verify locally before offsets."
+      }
+    },
+    {
+      "id": "sc-s3",
+      "questId": "S3",
+      "sphere": "S",
+      "title": "S3 AgTech & Food",
+      "skill": "data-grain",
+      "spotFile": "sc-s3-agtech.md",
+      "questHash": "S-3",
+      "spot": {
+        "hook": "IoT soil sensor average across **100ha** — farmer needs **per-plot** irrigation.",
+        "scenario": "Dashboard one moisture number; corner plot dry; overwater center.",
+        "tasks": ["Grain mismatch?", "Who loses money?", "Fix without 1000 sensors?"],
+        "trap": "One number hides spatial variance.",
+        "answer": "Wrong irrigation decisions. Zones or minimum 3 sensor clusters + map."
+      }
+    },
+    {
+      "id": "sc-s4",
+      "questId": "S4",
+      "sphere": "S",
+      "title": "S4 Human Systems",
+      "skill": "research-ethics",
+      "spotFile": "sc-s4-human.md",
+      "questHash": "S-4",
+      "spot": {
+        "hook": "Survey on trauma — **no trigger warning**, public Google Form with names.",
+        "scenario": "Student project: «Tell us your worst experience» + required full name field, results sheet shared «for transparency».",
+        "tasks": ["3 ethics violations.", "Minimal fix.", "When to involve supervisor?"],
+        "trap": "Curiosity ≠ informed consent.",
+        "answer": "No consent, re-traumatization risk, PII public. Anonymous optional, content warning, ethics review, secure storage."
+      }
+    },
+    {
+      "id": "sc-e1",
+      "questId": "E1",
+      "sphere": "E",
+      "title": "E1 Venture / Product",
+      "skill": "strategy",
+      "spotFile": "sc-e1-venture.md",
+      "questHash": "E-1",
+      "spot": {
+        "hook": "TAM slide **$100B** — sum of unrelated markets.",
+        "scenario": "Pitch: TAM = all software + all healthcare + all AI globally.",
+        "tasks": ["Why investors red-flag?", "SAM vs TAM?", "Honest reframing?"],
+        "trap": "Big number ≠ addressable market.",
+        "answer": "Inflated TAM shows lazy thinking. Define SAM: who pays you first, geo, wedge."
+      }
+    },
+    {
+      "id": "sc-e2",
+      "questId": "E2",
+      "sphere": "E",
+      "title": "E2 Validation / GTM",
+      "skill": "metrics",
+      "spotFile": "sc-e2-validation.md",
+      "questHash": "E-2",
+      "spot": {
+        "hook": "10k landing page visits, **0 qualified leads** — «great awareness».",
+        "scenario": "Traffic from generic ads; form asks 20 fields; no ICP targeting.",
+        "tasks": ["Vanity vs actionable metric?", "One fix for form.", "Better success metric?"],
+        "trap": "Traffic ≠ validation.",
+        "answer": "Measure qualified conversations or waitlist with use case. Short form, ICP targeting."
+      }
+    },
+    {
+      "id": "sc-e3",
+      "questId": "E3",
+      "sphere": "E",
+      "title": "E3 Ecosystem & Partners",
+      "skill": "partnerships",
+      "spotFile": "sc-e3-ecosystem.md",
+      "questHash": "E-3",
+      "spot": {
+        "hook": "MOU signed — **zero obligations**, PR only.",
+        "scenario": "«Strategic partnership» press release; no integration timeline, no owner, no KPI.",
+        "tasks": ["MOU vs real partnership?", "3 questions before celebrating.", "Red flag phrase?"],
+        "trap": "Logo on slide ≠ distribution.",
+        "answer": "Ask: who builds what by when, exclusivity, success metric. «Exploring synergies» = empty."
+      }
+    },
+    {
+      "id": "sc-e4",
+      "questId": "E4",
+      "sphere": "E",
+      "title": "E4 Founder Ops",
+      "skill": "operations",
+      "spotFile": "sc-e4-ops.md",
+      "questHash": "E-4",
+      "spot": {
+        "hook": "Runway «18 months» — assumes **zero churn** and founder $0 salary.",
+        "scenario": "Spreadsheet: flat revenue, no hires, founder unpaid, best-case only.",
+        "tasks": ["3 hidden assumptions.", "Conservative scenario?", "One ops habit."],
+        "trap": "Spreadsheet optimism.",
+        "answer": "Add churn, salary, 15% buffer, monthly actuals vs plan review."
+      }
+    },
+    {
+      "id": "sc-t1",
+      "questId": "T1",
+      "sphere": "T",
+      "title": "T1 AI / Data",
+      "skill": "data-joins",
+      "spotFile": "sc-t1-ai-data.md",
+      "questHash": "T-1",
+      "spot": {
+        "hook": "ChatGPT SQL «looks perfect» — **wrong JOIN key**, confident tone.",
+        "scenario": "AI query joins `users.id` to `orders.user_uuid`. Runs without error. Revenue 3× inflated.",
+        "tasks": ["Why no error?", "Human check before ship?", "Prompt fix?"],
+        "trap": "Fluent SQL ≠ correct SQL.",
+        "answer": "Types match syntactically maybe wrong semantically. Always profile keys, row counts, sample joins."
+      }
+    },
+    {
+      "id": "sc-t2",
+      "questId": "T2",
+      "sphere": "T",
+      "title": "T2 Software Engineering",
+      "skill": "testing",
+      "spotFile": "sc-t2-engineering.md",
+      "questHash": "T-2",
+      "spot": {
+        "hook": "100% code coverage — **zero assertions** on business logic.",
+        "scenario": "Tests call functions but `assert True` everywhere; CI green.",
+        "tasks": ["Coverage myth?", "One meaningful test?", "What broke in prod anyway?"],
+        "trap": "Green CI ≠ quality.",
+        "answer": "Coverage without assertions is theater. Test one edge case that caused past bug."
+      }
+    },
+    {
+      "id": "sc-t3",
+      "questId": "T3",
+      "sphere": "T",
+      "title": "T3 Dashboards",
+      "skill": "analytics",
+      "spotFile": "sc-t3-dashboards.md",
+      "questHash": "T-3",
+      "spot": {
+        "hook": "Chart Y-axis starts at **950** not 0 — «huge growth».",
+        "scenario": "Metric 980→1000 shown as cliff chart; exec excited; change is 2%.",
+        "tasks": ["Visualization lie?", "Ethical fix?", "When truncated axis OK?"],
+        "trap": "Drama ≠ decision quality.",
+        "answer": "Misleading scale. Start at 0 or label clearly «zoomed»; show absolute + %."
+      }
+    },
+    {
+      "id": "sc-t4",
+      "questId": "T4",
+      "sphere": "T",
+      "title": "T4 Infra & Repro",
+      "skill": "reproducibility",
+      "spotFile": "sc-t4-infra.md",
+      "questHash": "T-4",
+      "spot": {
+        "hook": "«Works on my machine» docker — **:latest** tags, no lockfile.",
+        "scenario": "Dockerfile `FROM python:latest`; pip install no versions; rebuild next month breaks.",
+        "tasks": ["2 reproducibility sins.", "Fix one line each.", "Who pays downtime?"],
+        "trap": "Latest is a moving target.",
+        "answer": "Pin base image digest + requirements.txt hashes; CI rebuild weekly catch drift."
+      }
+    }
+  ]
+}

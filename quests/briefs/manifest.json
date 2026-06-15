@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "rule": "Steps without spoilers.",
+  "directions": [
+    {
+      "id": "sc-d00",
+      "directionId": "g0",
+      "title": "7 Days Challenge",
+      "sphere": "Bridge",
+      "briefFile": "brief-d00.md",
+      "playFile": "d00-7-days.md",
+      "spotFile": "sc-d00.md"
+    },
+    {
+      "id": "sc-d01",
+      "directionId": "1",
+      "title": "AI & Data",
+      "sphere": "T",
+      "briefFile": "brief-d01.md",
+      "playFile": "d01-ai-data.md",
+      "spotFile": "sc-d01.md"
+    },
+    {
+      "id": "sc-d02",
+      "directionId": "2",
+      "title": "Code & Engineering",
+      "sphere": "T",
+      "briefFile": "brief-d02.md",
+      "playFile": "d02-code.md",
+      "spotFile": "sc-d02.md"
+    },
+    {
+      "id": "sc-d03",
+      "directionId": "3",
+      "title": "Cyber & Infrastructure",
+      "sphere": "T",
+      "briefFile": "brief-d03.md",
+      "playFile": "d03-cyber.md",
+      "spotFile": "sc-d03.md"
+    },
+    {
+      "id": "sc-d04",
+      "directionId": "4",
+      "title": "Product & Growth",
+      "sphere": "E",
+      "briefFile": "brief-d04.md",
+      "playFile": "d04-product.md",
+      "spotFile": "sc-d04.md"
+    },
+    {
+      "id": "sc-d05",
+      "directionId": "5",
+      "title": "Design & UX",
+      "sphere": "Bridge",
+      "briefFile": "brief-d05.md",
+      "playFile": "d05-design.md",
+      "spotFile": "sc-d05.md"
+    },
+    {
+      "id": "sc-d06",
+      "directionId": "6",
+      "title": "Medicine / Biology",
+      "sphere": "S",
+      "briefFile": "brief-d06.md",
+      "playFile": "d06-med-bio.md",
+      "spotFile": "sc-d06.md"
+    },
+    {
+      "id": "sc-d07",
+      "directionId": "7",
+      "title": "Green / Sustainability",
+      "sphere": "S",
+      "briefFile": "brief-d07.md",
+      "playFile": "d07-green.md",
+      "spotFile": "sc-d07.md"
+    },
+    {
+      "id": "sc-d08",
+      "directionId": "8",
+      "title": "AgTech & Food",
+      "sphere": "S",
+      "briefFile": "brief-d08.md",
+      "playFile": "d08-agtech.md",
+      "spotFile": "sc-d08.md"
+    },
+    {
+      "id": "sc-d09",
+      "directionId": "9",
+      "title": "MilTech & Dual-Use",
+      "sphere": "Bridge",
+      "briefFile": "brief-d09.md",
+      "playFile": "d09-miltech.md",
+      "spotFile": "sc-d09.md"
+    },
+    {
+      "id": "sc-d10",
+      "directionId": "10",
+      "title": "HardTech & Industry 4.0",
+      "sphere": "Bridge",
+      "briefFile": "brief-d10.md",
+      "playFile": "d10-hardtech.md",
+      "spotFile": "sc-d10.md"
+    },
+    {
+      "id": "sc-d11",
+      "directionId": "11",
+      "title": "ChemTech & Materials",
+      "sphere": "S",
+      "briefFile": "brief-d11.md",
+      "playFile": "d11-chemtech.md",
+      "spotFile": "sc-d11.md"
+    },
+    {
+      "id": "sc-d12",
+      "directionId": "12",
+      "title": "General Development",
+      "sphere": "Bridge",
+      "briefFile": "brief-d12.md",
+      "playFile": "d12-learning.md",
+      "spotFile": "sc-d12.md"
+    },
+    {
+      "id": "sc-d13",
+      "directionId": "13",
+      "title": "Language Learning",
+      "sphere": "Bridge",
+      "briefFile": "brief-d13.md",
+      "playFile": "d13-language.md",
+      "spotFile": "sc-d13.md"
+    },
+    {
+      "id": "sc-d14",
+      "directionId": "14",
+      "title": "People (Human Factor)",
+      "sphere": "Bridge",
+      "briefFile": "brief-d14.md",
+      "playFile": "d14-people.md",
+      "spotFile": "sc-d14.md"
+    }
+  ]
+}

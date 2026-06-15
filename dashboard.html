@@ -73,9 +73,11 @@
           <h2>Interactive Mission Lab</h2>
           <p style="color:var(--muted);font-size:14px"><strong>Play Intro</strong> is the 30-second entry map. <strong>Launch Mission</strong> is the practice engine: mode, deliverable, checklist, and twist.</p>
           <div id="missionPlaceholder" style="border:1px dashed var(--line);border-radius:20px;padding:28px;text-align:center;color:var(--muted);background:rgba(255,255,255,.5)">
-            Select <strong>Play Intro</strong> for a 30-second map, or <strong>Launch Mission</strong> for the full sprint.
+            <strong>🎮 Play</strong> (30 сек) → <strong>📋 Brief</strong> (що робити) → <strong>🔍 Spot Check</strong> (що не так) → <strong>Launch Mission</strong>
           </div>
           <div id="playLab" class="play-lab" hidden></div>
+          <div id="briefLab" class="layer-lab brief-lab" hidden></div>
+          <div id="spotLab" class="layer-lab spot-lab" hidden></div>
           <div id="missionLab" hidden></div>
         </div>
         <div>
@@ -130,6 +132,7 @@
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="./assets/js/dashboard.js"></script>
   <script>document.getElementById("themeToggle").addEventListener("click",function(){const c=this.textContent==="🌙"?"dark":"light";document.documentElement.setAttribute("data-theme",c);localStorage.setItem("theme",c);this.textContent=c==="dark"?"☀️":"🌙";});</script>
 </body>

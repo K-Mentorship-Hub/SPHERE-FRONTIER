@@ -12,12 +12,14 @@ Play cards live in [`../quests/play/`](../quests/play/). Machine-readable index:
 
 ## Two Layers In The Hub
 
+See **[LEARNING-LAYERS.md](./LEARNING-LAYERS.md)** for the full stack (Play + Brief + Spot Check + Mission).
+
 | Layer | Purpose | Where |
 | --- | --- | --- |
-| **Play** | motivation, one clear picture | `quests/play/*.md`, dashboard **Play Intro** |
+| **Play** | motivation, one clear picture | `quests/play/*.md`, dashboard **🎮 Play** |
+| **Quest Brief** | what to do first (no spoiler) | `quests/briefs/*.md`, dashboard **📋 Brief** |
+| **Spot Check** | what's wrong (think first) | `quests/spot-check/*.md`, dashboard **🔍 Check** |
 | **Mission Lab** | mode, deliverable, checklist, twist | `dashboard.html` |
-
-Do not replace Mission Lab with Play cards. Play is step 0.
 
 ## Card Index
 

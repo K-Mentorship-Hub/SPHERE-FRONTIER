@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "rule": "Think first. No peeking.",
+  "directions": [
+    {
+      "id": "sc-d00",
+      "directionId": "g0",
+      "title": "7 Days Challenge",
+      "sphere": "Bridge",
+      "skill": "orientation",
+      "spotFile": "sc-d00.md",
+      "briefFile": "brief-d00.md",
+      "playFile": "d00-7-days.md"
+    },
+    {
+      "id": "sc-d01",
+      "directionId": "1",
+      "title": "AI & Data",
+      "sphere": "T",
+      "skill": "data-joins",
+      "spotFile": "sc-d01.md",
+      "briefFile": "brief-d01.md",
+      "playFile": "d01-ai-data.md"
+    },
+    {
+      "id": "sc-d02",
+      "directionId": "2",
+      "title": "Code & Engineering",
+      "sphere": "T",
+      "skill": "logic",
+      "spotFile": "sc-d02.md",
+      "briefFile": "brief-d02.md",
+      "playFile": "d02-code.md"
+    },
+    {
+      "id": "sc-d03",
+      "directionId": "3",
+      "title": "Cyber & Infrastructure",
+      "sphere": "T",
+      "skill": "security",
+      "spotFile": "sc-d03.md",
+      "briefFile": "brief-d03.md",
+      "playFile": "d03-cyber.md"
+    },
+    {
+      "id": "sc-d04",
+      "directionId": "4",
+      "title": "Product & Growth",
+      "sphere": "E",
+      "skill": "validation",
+      "spotFile": "sc-d04.md",
+      "briefFile": "brief-d04.md",
+      "playFile": "d04-product.md"
+    },
+    {
+      "id": "sc-d05",
+      "directionId": "5",
+      "title": "Design & UX",
+      "sphere": "Bridge",
+      "skill": "ux",
+      "spotFile": "sc-d05.md",
+      "briefFile": "brief-d05.md",
+      "playFile": "d05-design.md"
+    },
+    {
+      "id": "sc-d06",
+      "directionId": "6",
+      "title": "Medicine / Biology",
+      "sphere": "S",
+      "skill": "evidence",
+      "spotFile": "sc-d06.md",
+      "briefFile": "brief-d06.md",
+      "playFile": "d06-med-bio.md"
+    },
+    {
+      "id": "sc-d07",
+      "directionId": "7",
+      "title": "Green / Sustainability",
+      "sphere": "S",
+      "skill": "systems",
+      "spotFile": "sc-d07.md",
+      "briefFile": "brief-d07.md",
+      "playFile": "d07-green.md"
+    },
+    {
+      "id": "sc-d08",
+      "directionId": "8",
+      "title": "AgTech & Food",
+      "sphere": "S",
+      "skill": "data-grain",
+      "spotFile": "sc-d08.md",
+      "briefFile": "brief-d08.md",
+      "playFile": "d08-agtech.md"
+    },
+    {
+      "id": "sc-d09",
+      "directionId": "9",
+      "title": "MilTech & Dual-Use",
+      "sphere": "Bridge",
+      "skill": "ethics",
+      "spotFile": "sc-d09.md",
+      "briefFile": "brief-d09.md",
+      "playFile": "d09-miltech.md"
+    },
+    {
+      "id": "sc-d10",
+      "directionId": "10",
+      "title": "HardTech & Industry 4.0",
+      "sphere": "Bridge",
+      "skill": "constraints",
+      "spotFile": "sc-d10.md",
+      "briefFile": "brief-d10.md",
+      "playFile": "d10-hardtech.md"
+    },
+    {
+      "id": "sc-d11",
+      "directionId": "11",
+      "title": "ChemTech & Materials",
+      "sphere": "S",
+      "skill": "literacy",
+      "spotFile": "sc-d11.md",
+      "briefFile": "brief-d11.md",
+      "playFile": "d11-chemtech.md"
+    },
+    {
+      "id": "sc-d12",
+      "directionId": "12",
+      "title": "General Development",
+      "sphere": "Bridge",
+      "skill": "learning",
+      "spotFile": "sc-d12.md",
+      "briefFile": "brief-d12.md",
+      "playFile": "d12-learning.md"
+    },
+    {
+      "id": "sc-d13",
+      "directionId": "13",
+      "title": "Language Learning",
+      "sphere": "Bridge",
+      "skill": "communication",
+      "spotFile": "sc-d13.md",
+      "briefFile": "brief-d13.md",
+      "playFile": "d13-language.md"
+    },
+    {
+      "id": "sc-d14",
+      "directionId": "14",
+      "title": "People (Human Factor)",
+      "sphere": "Bridge",
+      "skill": "facilitation",
+      "spotFile": "sc-d14.md",
+      "briefFile": "brief-d14.md",
+      "playFile": "d14-people.md"
+    }
+  ],
+  "sphereQuests": [
+    {
+      "id": "sc-s1",
+      "questId": "S1",
+      "sphere": "S",
+      "title": "S1 HealthTech",
+      "skill": "evidence",
+      "spotFile": "sc-s1-healthtech.md",
+      "questHash": "S-1"
+    },
+    {
+      "id": "sc-s2",
+      "questId": "S2",
+      "sphere": "S",
+      "title": "S2 Green / Sustainability",
+      "skill": "systems",
+      "spotFile": "sc-s2-green.md",
+      "questHash": "S-2"
+    },
+    {
+      "id": "sc-s3",
+      "questId": "S3",
+      "sphere": "S",
+      "title": "S3 AgTech & Food",
+      "skill": "data-grain",
+      "spotFile": "sc-s3-agtech.md",
+      "questHash": "S-3"
+    },
+    {
+      "id": "sc-s4",
+      "questId": "S4",
+      "sphere": "S",
+      "title": "S4 Human Systems",
+      "skill": "research-ethics",
+      "spotFile": "sc-s4-human.md",
+      "questHash": "S-4"
+    },
+    {
+      "id": "sc-e1",
+      "questId": "E1",
+      "sphere": "E",
+      "title": "E1 Venture / Product",
+      "skill": "strategy",
+      "spotFile": "sc-e1-venture.md",
+      "questHash": "E-1"
+    },
+    {
+      "id": "sc-e2",
+      "questId": "E2",
+      "sphere": "E",
+      "title": "E2 Validation / GTM",
+      "skill": "metrics",
+      "spotFile": "sc-e2-validation.md",
+      "questHash": "E-2"
+    },
+    {
+      "id": "sc-e3",
+      "questId": "E3",
+      "sphere": "E",
+      "title": "E3 Ecosystem & Partners",
+      "skill": "partnerships",
+      "spotFile": "sc-e3-ecosystem.md",
+      "questHash": "E-3"
+    },
+    {
+      "id": "sc-e4",
+      "questId": "E4",
+      "sphere": "E",
+      "title": "E4 Founder Ops",
+      "skill": "operations",
+      "spotFile": "sc-e4-ops.md",
+      "questHash": "E-4"
+    },
+    {
+      "id": "sc-t1",
+      "questId": "T1",
+      "sphere": "T",
+      "title": "T1 AI / Data",
+      "skill": "data-joins",
+      "spotFile": "sc-t1-ai-data.md",
+      "questHash": "T-1"
+    },
+    {
+      "id": "sc-t2",
+      "questId": "T2",
+      "sphere": "T",
+      "title": "T2 Software Engineering",
+      "skill": "testing",
+      "spotFile": "sc-t2-engineering.md",
+      "questHash": "T-2"
+    },
+    {
+      "id": "sc-t3",
+      "questId": "T3",
+      "sphere": "T",
+      "title": "T3 Dashboards",
+      "skill": "analytics",
+      "spotFile": "sc-t3-dashboards.md",
+      "questHash": "T-3"
+    },
+    {
+      "id": "sc-t4",
+      "questId": "T4",
+      "sphere": "T",
+      "title": "T4 Infra & Repro",
+      "skill": "reproducibility",
+      "spotFile": "sc-t4-infra.md",
+      "questHash": "T-4"
+    }
+  ]
+}
